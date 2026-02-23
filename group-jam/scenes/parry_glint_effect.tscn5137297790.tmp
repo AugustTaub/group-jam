@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://colupnglkwgm2"]
+
+[ext_resource type="Shader" uid="uid://tfp7kty3hfol" path="res://parry_glint.tres" id="1_jdnd7"]
+[ext_resource type="PlaneMesh" uid="uid://db14b01r0w5vm" path="res://3D/windstream_effect.tres" id="2_p4yjw"]
+[ext_resource type="Script" uid="uid://bhwmv7hvro57e" path="res://scripts/parry_glint_effect.gd" id="3_p4yjw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yl074"]
+render_priority = 0
+shader = ExtResource("1_jdnd7")
+
+[node name="parry_glint" type="MeshInstance3D"]
+material_override = SubResource("ShaderMaterial_yl074")
+mesh = ExtResource("2_p4yjw")
+script = ExtResource("3_p4yjw")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dodo0bhd3irq4"]
+
+[ext_resource type="Script" uid="uid://ypgknvbk02pt" path="res://scenes/bullet_spawner.gd" id="1_nbxsn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nbxsn"]
+
+[node name="bullet_spawner" type="Node3D"]
+script = ExtResource("1_nbxsn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_nbxsn")
