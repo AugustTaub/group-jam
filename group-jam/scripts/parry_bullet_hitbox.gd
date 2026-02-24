@@ -1,4 +1,5 @@
-extends Node2D
+extends Area2D
+class_name parryBullet
 
 @export var speed: float = 400.0
 var move_direction = Vector2(-1, 1)
@@ -10,10 +11,13 @@ func _process(delta: float) -> void:
 # TO-DO
 # bis jetzt simpler Knockback, der ist aber arsch und 
 # für tests gedacht, guter muss noch implementiert werden
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.has_method("knockback"):
 		var bullet_velocity = move_direction.normalized() * speed
 		body.knockback(bullet_velocity)
 	
-	print("hit")
+	print("Hit Parry")
 	queue_free()
+
+func onParry():
+	pass
