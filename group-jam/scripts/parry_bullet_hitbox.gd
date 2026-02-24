@@ -1,5 +1,6 @@
 extends Area2D
-class_name parryBullet
+
+signal isParriedWall(value: String)
 
 @export var speed: float = 400.0
 var move_direction = Vector2(-1, 1)
@@ -16,8 +17,13 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 		var bullet_velocity = move_direction.normalized() * speed
 		body.knockback(bullet_velocity)
 	
+	if body.has_method("parry"):
+		isParried()
+	
 	print("Hit Parry")
 	queue_free()
 
-func onParry():
-	pass
+func isParried():
+	print("parry")
+	isParriedWall.emit("wall")
+	queue_free()
