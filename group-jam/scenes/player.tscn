@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://3i83m1sxh7ga"]
+
+[ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://7ad5s5v4l6uw" path="res://scripts/PlayerControll.gd" id="1_g2els"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(10, 18)
+
+[node name="Player" type="Node2D" unique_id=1806401251]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=722301748]
+y_sort_enabled = true
+script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1221488363]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=543145542]
+modulate = Color(0, 0, 0.9098039, 1)
+position = Vector2(0, -9)
+scale = Vector2(0.095703125, 0.15624999)
+texture = ExtResource("1_3vyb7")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=878384511]
+zoom = Vector2(1.82, 1.82)
