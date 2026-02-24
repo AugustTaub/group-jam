@@ -1,3 +1,23 @@
 [gd_scene format=3 uid="uid://bj0mjkjackwxm"]
 
+[ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="1_3ebxt"]
+[ext_resource type="Script" uid="uid://dvn44yewhelf3" path="res://scripts/parry_bullet_hitbox.gd" id="2_8a14a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8a14a"]
+size = Vector2(12, 12)
+
 [node name="parryBullet" type="Node2D" unique_id=1798408240]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=87109185]
+modulate = Color(18.892157, 0, 0, 1)
+scale = Vector2(0.10546872, 0.10546872)
+texture = ExtResource("1_3ebxt")
+
+[node name="parryBulletHitbox" type="Area2D" parent="Sprite2D" unique_id=1830075679]
+scale = Vector2(9.481484, 9.481484)
+script = ExtResource("2_8a14a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/parryBulletHitbox" unique_id=1857015505]
+shape = SubResource("RectangleShape2D_8a14a")
+
+[connection signal="body_entered" from="Sprite2D/parryBulletHitbox" to="Sprite2D/parryBulletHitbox" method="_on_body_entered"]
