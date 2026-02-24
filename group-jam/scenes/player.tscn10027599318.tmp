@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://7ad5s5v4l6uw" path="res://scripts/PlayerControll.gd" id="1_g2els"]
-[ext_resource type="Script" uid="uid://4wd1beium3h8" path="res://scripts/companion_logic.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://4wd1beium3h8" path="res://scipts/companion_logic.gd" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(10, 18)

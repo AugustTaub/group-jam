@@ -15,9 +15,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="group_jam"
-run/main_scene="uid://biuk6ds8udmh4"
+run/main_scene="uid://ds2o0boukesqr"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://2D/cool_icon.svg"
+
+[autoload]
+
+SignalBus="*uid://dpri3cytp0n7n"
 
 [file_customization]
 
