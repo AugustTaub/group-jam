@@ -168,9 +168,6 @@ texture_region_size = Vector2i(64, 64)
 8:15/0 = 0
 9:15/0 = 0
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30.907185, -8.921661, 0, -24.215939, 31.544445, -7.3285065, 0, 7.0098763)
-0:1/0/physics_layer_0/polygon_1/points = PackedVector2Array(-0.95589256, 31.544443, -0.31863213, 7.6471367, 30.907183, -7.0098763, 31.863077, 16.5688)
-0:1/0/physics_layer_0/polygon_2/points = PackedVector2Array(-32.181705, 16.568798, -1.2745209, 30.907185, -0.95589066, 7.0098763, -30.588552, -8.60303)
 
 [sub_resource type="TileSet" id="TileSet_h8avn"]
 tile_shape = 1

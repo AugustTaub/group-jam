@@ -2,29 +2,28 @@
 
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://7ad5s5v4l6uw" path="res://scripts/PlayerControll.gd" id="1_g2els"]
-[ext_resource type="Script" uid="uid://4wd1beium3h8" path="res://scripts/companion_logic.gd" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(10, 4)
+size = Vector2(10, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(14, 21)
 
-[node name="Player" type="CharacterBody2D" unique_id=1508676161]
+[node name="Player" type="CharacterBody2D" unique_id=1508676161 groups=["Player"]]
 script = ExtResource("1_g2els")
 knockback_power = 1000.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=239832683]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1221488363]
-position = Vector2(0, -3)
-shape = SubResource("RectangleShape2D_g2els")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=543145542]
 modulate = Color(0, 0, 0.9098039, 1)
-position = Vector2(0, -12)
+position = Vector2(0.125, 0)
 scale = Vector2(0.095703125, 0.15624999)
 texture = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1221488363 groups=["Bullet", "Player"]]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_g2els")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=878384511]
 zoom = Vector2(1.82, 1.82)
@@ -32,5 +31,7 @@ zoom = Vector2(1.82, 1.82)
 [node name="ParryHitbox" type="Area2D" parent="." unique_id=230190237]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParryHitbox" unique_id=775375219]
-position = Vector2(0, -12.5)
+visible = false
 shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="companion_container" type="Node" parent="." unique_id=2065979664]

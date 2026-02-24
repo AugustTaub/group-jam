@@ -3,14 +3,18 @@ class_name Companion
 
 const SPEED = 150.0
 
+@onready var hurtbox = find_child("hurtbox")
+
 @export var distance : int = 30
 
 var target : Node
 var target_position : Vector2
 var type : String
 var sprite : Sprite2D
+var id : int
 
 func _ready():
+	hurtbox.area_entered.connect(death)
 	SignalBus.player_move.connect(find_target_position)
 	
 func _process(delta: float) -> void:
@@ -27,3 +31,9 @@ func target_reached():
 	if target_distance < distance:
 		velocity.x = 0
 		velocity.y = 0
+
+func death(area : Node2D):
+	if area.is_in_group("Bullet"):
+		area.queue_free()
+		CompanionLogic.kill_comp(self)
+		

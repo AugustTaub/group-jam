@@ -22,12 +22,19 @@ config/icon="res://2D/cool_icon.svg"
 [autoload]
 
 SignalBus="*uid://dpri3cytp0n7n"
+CompanionLogic="*uid://4wd1beium3h8"
 
 [file_customization]
 
 folder_colors={
 "res://custom_res/": "pink"
 }
+
+[global_group]
+
+Bullet=""
+Player=""
+Companion=""
 
 [input]
 
