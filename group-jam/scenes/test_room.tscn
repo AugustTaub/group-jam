@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://3i83m1sxh7ga" path="res://scenes/player.tscn" id="2_4adyp"]
 [ext_resource type="PackedScene" uid="uid://d1vkpxvywieuh" path="res://scenes/bullet.tscn" id="3_h8avn"]
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="3_vqwjj"]
-[ext_resource type="PackedScene" uid="uid://dr7v0dqryacqv" path="res://scenes/boss.tscn" id="5_503t6"]
+[ext_resource type="PackedScene" uid="uid://bj0mjkjackwxm" path="res://scenes/parry_bullet.tscn" id="5_503t6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqwjj"]
 texture = ExtResource("1_im37l")
@@ -203,3 +203,9 @@ texture = ExtResource("3_vqwjj")
 [node name="Bullet" parent="Sprite2D" unique_id=647254166 instance=ExtResource("3_h8avn")]
 position = Vector2(0.93408203, -1.2907715)
 scale = Vector2(3, 3)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=646948069]
+position = Vector2(811.18774, -376.5973)
+
+[node name="parryBulletHitbox" parent="Marker2D" unique_id=387785815 instance=ExtResource("5_503t6")]
+speed = 400.0
