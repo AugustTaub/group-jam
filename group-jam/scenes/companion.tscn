@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://f8ou0wlyj4us"]
+
+[ext_resource type="Script" uid="uid://bwul01pghfdff" path="res://scripts/companion_entity.gd" id="1_dwm71"]
+[ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="2_y6mwj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eol6h"]
+size = Vector2(10, 13)
+
+[node name="companion" type="CharacterBody2D" unique_id=170054127 groups=["Companion"]]
+script = ExtResource("1_dwm71")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=67780837]
+position = Vector2(-1.1920929e-07, -9.536743e-07)
+scale = Vector2(0.109375, 0.1328125)
+texture = ExtResource("2_y6mwj")
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=3441314]
+
+[node name="shape" type="CollisionShape2D" parent="hurtbox" unique_id=984242030]
+shape = SubResource("RectangleShape2D_eol6h")
