@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://7ad5s5v4l6uw" path="res://scripts/PlayerControll.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://cgu3qetft43v8" path="res://scenes/in_game_ui.tscn" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(10, 18)
@@ -24,3 +25,7 @@ texture = ExtResource("1_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=878384511]
 zoom = Vector2(1.82, 1.82)
+
+[node name="UI_Canvas" type="CanvasLayer" parent="." unique_id=562795069]
+
+[node name="in_game_ui" parent="UI_Canvas" unique_id=1913189176 instance=ExtResource("3_qhqgy")]
