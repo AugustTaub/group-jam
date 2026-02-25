@@ -1,3 +1,74 @@
 [gd_scene format=3 uid="uid://dr7v0dqryacqv"]
 
+[ext_resource type="Texture2D" uid="uid://m8nh2bn6mb8f" path="res://Assets/Sprites/EnemySprite_Spider.png" id="1_dlmty"]
+
+[sub_resource type="Animation" id="Animation_dlmty"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_neq0i"]
+resource_name = "boss_idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.32, 0.46),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jncid"]
+_data = {
+&"RESET": SubResource("Animation_dlmty"),
+&"boss_idle": SubResource("Animation_neq0i")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_neq0i"]
+height = 38.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dlmty"]
+radius = 13.0
+height = 46.0
+
 [node name="Boss" type="Node2D" unique_id=1666674495]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=453237960]
+texture = ExtResource("1_dlmty")
+hframes = 3
+vframes = 2
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1323955473]
+libraries/ = SubResource("AnimationLibrary_jncid")
+autoplay = &"boss_idle"
+
+[node name="collision_area" type="StaticBody2D" parent="." unique_id=1111642979]
+
+[node name="shape" type="CollisionShape2D" parent="collision_area" unique_id=715238917]
+position = Vector2(2, -41)
+shape = SubResource("CapsuleShape2D_neq0i")
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=435404300]
+position = Vector2(0, -37)
+
+[node name="shape" type="CollisionShape2D" parent="hurtbox" unique_id=927959395]
+position = Vector2(2, -4)
+shape = SubResource("CapsuleShape2D_dlmty")
+debug_color = Color(0, 0.6509804, 0.38431373, 0.1254902)
