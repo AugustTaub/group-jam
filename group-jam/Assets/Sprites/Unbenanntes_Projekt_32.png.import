@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m8nh2bn6mb8f"
-path="res://.godot/imported/EnemySprite_Spider.png-ca393603a6863ea4a56b18d211b27231.ctex"
+uid="uid://drxg0fvdjmyx"
+path="res://.godot/imported/Unbenanntes_Projekt_32.png-088eccf11d8e2d320d4c5ac1c55e2753.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/EnemySprite_Spider.png"
-dest_files=["res://.godot/imported/EnemySprite_Spider.png-ca393603a6863ea4a56b18d211b27231.ctex"]
+source_file="res://Assets/Sprites/Unbenanntes_Projekt_32.png"
+dest_files=["res://.godot/imported/Unbenanntes_Projekt_32.png-088eccf11d8e2d320d4c5ac1c55e2753.ctex"]
 
 [params]
 

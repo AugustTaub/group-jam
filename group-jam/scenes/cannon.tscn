@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://bqmd5grcrgoiy"]
+
+[ext_resource type="Script" uid="uid://26r0mhsf67wq" path="res://scripts/cannon.gd" id="1_xuqfy"]
+[ext_resource type="Texture2D" uid="uid://ck1tlmbor66ck" path="res://Assets/Sprites/CannonSprite.png" id="2_pxhkx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjxeu"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfr8q"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0285d"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxhkx"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22shy"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ssa1"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5saov"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvlre"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogt75"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a4je"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ediu4"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pxhkx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjxeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfr8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0285d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxhkx")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22shy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ssa1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5saov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvlre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogt75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a4je")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ediu4")
+}],
+"loop": true,
+"name": &"start",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vda2x"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2udb"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01vp4"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr4va"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3p7l"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vda2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vda2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2udb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01vp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr4va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3p7l")
+}],
+"loop": false,
+"name": &"blow",
+"speed": 6.0
+}]
+
+[node name="cannon" type="Node2D" unique_id=468590572]
+script = ExtResource("1_xuqfy")
+
+[node name="cannon_animation" type="AnimatedSprite2D" parent="." unique_id=909371777]
+sprite_frames = SubResource("SpriteFrames_pxhkx")
+animation = &"shoot"
+frame = 3
+frame_progress = 1.0
+
+[node name="blow_animation" type="AnimatedSprite2D" parent="." unique_id=1095960678]
+position = Vector2(-6, -7)
+sprite_frames = SubResource("SpriteFrames_vda2x")
+animation = &"blow"

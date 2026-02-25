@@ -15,6 +15,10 @@ _data = {
 &"idle": SubResource("Animation_qhqgy")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+radius = 5.0
+height = 16.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(21, 26.5)
 

@@ -9,9 +9,8 @@ const SPEED = 150.0
 
 var target : Node
 var target_position : Vector2
-var type : String
+var type : int
 var sprite : Sprite2D
-var id : int
 
 func _ready():
 	hurtbox.area_entered.connect(death)
