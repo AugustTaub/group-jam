@@ -5,6 +5,8 @@ class_name PlayerController
 @export var speed : float = 200.0
 @export var knockback_power : float = 500.0
 
+var is_parrying : bool = false 
+
 func _ready():
 	CompanionLogic.player = self
 
@@ -31,15 +33,16 @@ func knockback(source_velocity: Vector2):
 
 	velocity = iso_knockback.normalized() * knockback_power
 	move_and_slide()
+	
 
-func _input(event: InputEvent) -> void:
-	if event.is_action("parry"):
-		if event.is_pressed():
-			play_animation("parryAnim")
 
 func parry():
-	pass
+	is_parrying = true
+	await get_tree().create_timer(0.2).timeout
+	is_parrying = false
 
 
-func canMove():
-	pass
+
+
+#func canMove():
+#	pass
