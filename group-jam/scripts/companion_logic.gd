@@ -3,11 +3,16 @@ class_name Compainions
 
 var companion_list : Array[Companion]
 var max_companions : int = 3
+
+#defined in Player
 var player : Node
+var container : Node
 
 func _ready():
 	SignalBus.create_conpanion.connect(add_comp)
-
+	
+##add
+#adds companion at end of line
 func add_comp(type):
 	if companion_list.size() < max_companions:
 		var comp = preload("res://scenes/companion.tscn")
@@ -22,12 +27,11 @@ func add_comp(type):
 		new_comp.global_position = player.global_position
 		new_comp.type = type
 		companion_list.append(new_comp)
-		player.find_child("companion_container").add_child(companion_list.back())
+		container.add_child(companion_list.back())
 		print(companion_list)
-		
-func remove_comp():
-	pass
-	
+
+##remove
+#used to delete and rerefference the character following player
 func rebind_comp(index : int):
 	companion_list[index].queue_free()
 	companion_list.remove_at(index)
@@ -39,11 +43,26 @@ func rebind_comp(index : int):
 			comp.target = companion_list[pos - 1]
 		pos += 1
 		print(pos,comp.name, comp.target.name)
-	
+
+#calls rebind_comp() by Companiontybe
 func kill_comp(companion : Companion):
 	var index = 0
 	for comp in companion_list:
 		if comp == companion:
 			rebind_comp(index)
 		index += 1
+
+#calls rebind_comp() by type and returns
+func remove_comp(type : int):
+	var index = 0
+	for comp in companion_list:
+		if type == comp.type:
+			rebind_comp(index)
+		index += 1
+
+func has_comp(type):
+	for comp in companion_list:
+		if type == comp.type:
+			return true
+	return false
 			

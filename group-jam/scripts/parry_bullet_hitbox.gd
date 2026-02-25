@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "ParryHitbox":
-		print("parry") 
+		print("parry")
 		isParried()   
 
 

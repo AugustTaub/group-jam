@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv7l4lcb65fcx"
-path="res://.godot/imported/Bullet_Sprites.png-8a1bf0924d8ff3ed9df401ec95f5c92b.ctex"
+uid="uid://ck1tlmbor66ck"
+path="res://.godot/imported/CannonSprite.png-0dc85707aa68eed3554e71aee3d8d881.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Bullet_Sprites.png"
-dest_files=["res://.godot/imported/Bullet_Sprites.png-8a1bf0924d8ff3ed9df401ec95f5c92b.ctex"]
+source_file="res://Assets/Sprites/CannonSprite.png"
+dest_files=["res://.godot/imported/CannonSprite.png-0dc85707aa68eed3554e71aee3d8d881.ctex"]
 
 [params]
 

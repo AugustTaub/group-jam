@@ -21,6 +21,7 @@ size = Vector2(21, 26.5)
 [node name="Player" type="CharacterBody2D" unique_id=1508676161 groups=["Player"]]
 position = Vector2(0, -13)
 script = ExtResource("1_g2els")
+speed = null
 knockback_power = 1000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=543145542]
