@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://f8ou0wlyj4us"]
+
+[ext_resource type="Script" uid="uid://bwul01pghfdff" path="res://scripts/companion_entity.gd" id="1_dwm71"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ewvi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eol6h"]
+size = Vector2(10, 13)
+
+[node name="companion" type="CharacterBody2D" unique_id=170054127 groups=["Companion"]]
+script = ExtResource("1_dwm71")
+
+[node name="sprites" type="Node2D" parent="." unique_id=508543827]
+
+[node name="sprite_0" type="AnimatedSprite2D" parent="sprites" unique_id=1586457653]
+
+[node name="sprite_1" type="AnimatedSprite2D" parent="sprites" unique_id=169229987]
+
+[node name="sprite_2" type="AnimatedSprite2D" parent="sprites" unique_id=15245774]
+sprite_frames = SubResource("SpriteFrames_0ewvi")
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=3441314]
+
+[node name="shape" type="CollisionShape2D" parent="hurtbox" unique_id=984242030]
+shape = SubResource("RectangleShape2D_eol6h")

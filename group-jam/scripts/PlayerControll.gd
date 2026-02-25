@@ -8,6 +8,7 @@ class_name PlayerController
 var is_parrying : bool = false 
 
 func _ready():
+	SignalBus.teleport_player.connect(teleport)
 	CompanionLogic.player = self
 	CompanionLogic.container = self.find_child("companion_container")
 
@@ -24,8 +25,10 @@ func _physics_process(_delta):
 	move_and_slide()
 
 	if Input.is_action_just_pressed("ui_accept"):
-		parry()
-		SignalBus.create_conpanion.emit(1)
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var my_random_number = rng.randi_range(0, 2)
+		SignalBus.create_conpanion.emit(my_random_number)
 
 #TO-DO
 func knockback(source_velocity: Vector2):
@@ -48,24 +51,34 @@ func parry():
 var ability_type_list : Array = [0,1,2]
 var ability_type : int = ability_type_list[0]
 
-func ability_switch():
+func switch_ability():
 	if ability_type > ability_type_list.size() -2:
 		ability_type = -1
 	ability_type = ability_type_list[ability_type + 1]
 	print("current ability: ",ability_type)
 	
+#creates projectile, that applies effect on landing	
 func cast_ability():
 	if CompanionLogic.has_comp(ability_type):
 		CompanionLogic.remove_comp(ability_type)
-		match(ability_type):
-			0:	cast_explosion()
-			1:	cast_wall()
-			2:	cast_teleport()
+		
+		var new_ability_proj = ability_proj.instantiate()
+		new_ability_proj.global_position = self.global_position
+		new_ability_proj.ability_type = self.ability_type
+		new_ability_proj.target_position = get_global_mouse_position()
+		get_parent().add_child(new_ability_proj)
+		
 		print("cast ability: ",ability_type)
 
-func cast_explosion():
-	pass
-func cast_wall():
-	pass
-func cast_teleport():
-	pass
+#inputlistener for ability cast and switch
+@onready var ability_proj = preload("res://scenes/player_projectile.tscn")
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("cast_ability_mouse_left"):
+		cast_ability()
+	if Input.is_action_just_pressed("switch_ability_mouse_right"):
+		switch_ability()	
+		
+		
+func teleport(pos : Vector2):
+	self.global_position = pos

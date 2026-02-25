@@ -5,7 +5,7 @@ extends Node2D
 @onready var cannon_ancor = find_child("cannon_ancor")
 
 var cannon_list : Array = []
-var pattern : Array = [0,1,1,0,1]
+var pattern : Array = [1,1,1,1,1]
 
 var cannonList : Dictionary = {}#patternlist -> cannonlist for loop 
 
@@ -34,7 +34,7 @@ func convert_boss(area : Area2D):
 	if area.name == "ParryHitbox":
 		boss_anim.play("boss_off")
 		await boss_anim.animation_finished
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(2.0).timeout
 		boss_anim.play("boss_on")
 		await boss_anim.animation_finished
 		boss_anim.play("boss_idle_converted")

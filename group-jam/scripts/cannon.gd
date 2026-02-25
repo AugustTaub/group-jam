@@ -11,8 +11,8 @@ extends Node2D
 func shoot():
 	cannon_anim.play("shoot")
 	blow_anim.play("blow")
-	await cannon_anim.animation_finished
 	create_bullet(1)
+	await cannon_anim.animation_finished
 
 func create_bullet(bullet_type):
 	var new_bullet : Node
