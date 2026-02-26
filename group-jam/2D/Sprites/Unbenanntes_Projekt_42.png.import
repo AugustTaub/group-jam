@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8ixmgtksxmy1"
-path="res://.godot/imported/Unbenanntes_Projekt_42.png-be0a1d6ed6c4ed6155064a00f5725b2a.ctex"
+path="res://.godot/imported/Unbenanntes_Projekt_42.png-adee1b6b452b26a25e979cbf6ff37272.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Unbenanntes_Projekt_42.png"
-dest_files=["res://.godot/imported/Unbenanntes_Projekt_42.png-be0a1d6ed6c4ed6155064a00f5725b2a.ctex"]
+source_file="res://2D/Sprites/Unbenanntes_Projekt_42.png"
+dest_files=["res://.godot/imported/Unbenanntes_Projekt_42.png-adee1b6b452b26a25e979cbf6ff37272.ctex"]
 
 [params]
 

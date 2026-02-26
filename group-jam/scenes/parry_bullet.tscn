@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c1i7kf11tfbjp"]
 
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="1_3ebxt"]
-[ext_resource type="Script" uid="uid://dvn44yewhelf3" path="res://scripts/parry_bullet.gd" id="2_8a14a"]
-[ext_resource type="Texture2D" uid="uid://b8ixmgtksxmy1" path="res://Assets/Sprites/Unbenanntes_Projekt_42.png" id="2_puhhl"]
+[ext_resource type="Script" path="res://scripts/parry_bullet.gd" id="1_puhhl"]
+[ext_resource type="Texture2D" uid="uid://b8ixmgtksxmy1" path="res://2D/Sprites/Unbenanntes_Projekt_42.png" id="2_puhhl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4va5"]
 atlas = ExtResource("2_puhhl")
@@ -68,7 +68,7 @@ animations = [{
 size = Vector2(12, 12)
 
 [node name="parry_bullet" type="Area2D" unique_id=387785815]
-script = ExtResource("2_8a14a")
+script = ExtResource("1_puhhl")
 
 [node name="anim_sprite" type="AnimatedSprite2D" parent="." unique_id=2139605471]
 position = Vector2(-1, -2)

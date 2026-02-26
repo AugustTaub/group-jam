@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dexkkm8lf6vf8"
-path="res://.godot/imported/EnemySprite_boss_arms.png-5ef691f8a2719b36b291ef8055de4fe1.ctex"
+path="res://.godot/imported/EnemySprite_boss_arms.png-448ecf920785da9cd51ddfc36b447dcb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/EnemySprite_boss_arms.png"
-dest_files=["res://.godot/imported/EnemySprite_boss_arms.png-5ef691f8a2719b36b291ef8055de4fe1.ctex"]
+source_file="res://2D/Sprites/EnemySprite_boss_arms.png"
+dest_files=["res://.godot/imported/EnemySprite_boss_arms.png-448ecf920785da9cd51ddfc36b447dcb.ctex"]
 
 [params]
 

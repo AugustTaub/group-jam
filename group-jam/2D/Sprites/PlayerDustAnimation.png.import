@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cy6lr0mnnmfj1"
-path="res://.godot/imported/PlayerDustAnimation.png-abec3045b60f71161e3de0c77cbb0133.ctex"
+path="res://.godot/imported/PlayerDustAnimation.png-12bb14e4696c721ba696100842387579.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/PlayerDustAnimation.png"
-dest_files=["res://.godot/imported/PlayerDustAnimation.png-abec3045b60f71161e3de0c77cbb0133.ctex"]
+source_file="res://2D/Sprites/PlayerDustAnimation.png"
+dest_files=["res://.godot/imported/PlayerDustAnimation.png-12bb14e4696c721ba696100842387579.ctex"]
 
 [params]
 

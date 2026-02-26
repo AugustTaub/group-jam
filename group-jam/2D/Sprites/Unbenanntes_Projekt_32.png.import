@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:group-jam/2D/Sprites/Unbenanntes_Projekt_32.png.import
-uid="uid://drxg0fvdjmyx"
+uid="uid://h0xc7f8pvg60"
 path="res://.godot/imported/Unbenanntes_Projekt_32.png-1ca3d7676df3d867bc45c8ce850eb16b.ctex"
-========
-uid="uid://c7kxg8vpx4p5f"
-path="res://.godot/imported/bullets.png-f1bd8b0eb83ab545a6ebe03d6aeb110b.ctex"
->>>>>>>> origin/Alex:group-jam/2D/bullets.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:group-jam/2D/Sprites/Unbenanntes_Projekt_32.png.import
 source_file="res://2D/Sprites/Unbenanntes_Projekt_32.png"
 dest_files=["res://.godot/imported/Unbenanntes_Projekt_32.png-1ca3d7676df3d867bc45c8ce850eb16b.ctex"]
-========
-source_file="res://2D/bullets.png"
-dest_files=["res://.godot/imported/bullets.png-f1bd8b0eb83ab545a6ebe03d6aeb110b.ctex"]
->>>>>>>> origin/Alex:group-jam/2D/bullets.png.import
 
 [params]
 
