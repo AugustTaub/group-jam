@@ -1,6 +1,6 @@
 extends Area2D
 
-signal isParriedVal(value: int)
+signal isParriedVal(value: String)
 
 @onready var anim_sprite = find_child("anim_sprite")
 
@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 	var iso_velocity = Vector2(move_direction.x, move_direction.y)
 	self.global_position += self.global_position.direction_to( iso_velocity) * speed * delta
 	look_at(-move_direction)
+
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	body_entered.connect(_on_body_entered)
