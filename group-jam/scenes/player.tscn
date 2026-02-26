@@ -195,6 +195,7 @@ size = Vector2(21, 26.5)
 [node name="Player" type="CharacterBody2D" unique_id=1508676161 groups=["Player"]]
 position = Vector2(0, -13)
 script = ExtResource("1_g2els")
+speedVal = null
 knockback_power = 1000.0
 
 [node name="PlayerAnimSprite" type="Sprite2D" parent="." unique_id=543145542]
@@ -205,18 +206,19 @@ vframes = 7
 [node name="DustParticle" type="Sprite2D" parent="." unique_id=994224396]
 visible = false
 self_modulate = Color(1, 1, 1, 0.27450982)
-position = Vector2(-21, 1)
+position = Vector2(-20, -3)
 texture = SubResource("CompressedTexture2D_g2els")
 hframes = 7
 vframes = 7
 
 [node name="PlayerShadow" type="Sprite2D" parent="." unique_id=17143619]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1422785754]
 libraries/ = SubResource("AnimationLibrary_dqkch")
 
 [node name="WalkHitbox" type="CollisionShape2D" parent="." unique_id=1221488363 groups=["Bullet", "Player"]]
-position = Vector2(0, 12.75)
+position = Vector2(-1, 14)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=878384511]

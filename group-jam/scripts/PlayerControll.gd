@@ -16,6 +16,8 @@ var can_move : bool = true:
 @export var knockback_power : float = 500.0
 
 @onready var animation = $AnimationPlayer
+@onready var dust_offset: float = $DustParticle.position.x
+var dust_flip: float = dust_offset + 15
 
 
 func _ready():
@@ -31,20 +33,26 @@ func _physics_process(_delta):
 	
 	var input_direction = Input.get_vector("left", "right", "forward", "back")
 	var iso_velocity = Vector2(input_direction.x, input_direction.y * 0.5)
-
-	if iso_velocity.length() > 0:
+	
+	if iso_velocity.length() == 0:
+		velocity = velocity.move_toward(Vector2.ZERO, speed)
+		animation.play("idle")
+		$DustParticle.self_modulate = 0
+	else:	
 		velocity = iso_velocity.normalized() * speed
 		animation.play("running")
 		SignalBus.player_move.emit()
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, speed)
-		animation.play("idle")
+
 		
 	if velocity.x != 0:
 		$PlayerAnimSprite.flip_h = velocity.x < 0
 		#TO-DO
 		# muss noch geflippt werden 
 		$DustParticle.flip_h = velocity.x < 0
+		$DustParticle.position.x = dust_flip
+	#else:
+		$DustParticle.position.x = - dust_flip
+
 
 	move_and_slide()
 
@@ -52,7 +60,7 @@ func _physics_process(_delta):
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var my_random_number = rng.randi_range(0, 2)
-		SignalBus.create_conpanion.emit(1)
+		SignalBus.create_conpanion.emit(my_random_number)
 
 #TO-DO
 func knockback(source_velocity: Vector2):
