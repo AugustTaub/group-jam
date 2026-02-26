@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://c0vtclm773y3u" path="res://2D/TestAssets/TileMapTester.png" id="1_im37l"]
 [ext_resource type="PackedScene" uid="uid://3i83m1sxh7ga" path="res://scenes/player.tscn" id="2_4adyp"]
 [ext_resource type="PackedScene" uid="uid://dr7v0dqryacqv" path="res://scenes/boss.tscn" id="3_h8avn"]
+[ext_resource type="PackedScene" uid="uid://nh5f0b4x6vok" path="res://scenes/ParryBullets/parry_bullet_explosion_hitbox.tscn" id="4_vqwjj"]
+[ext_resource type="PackedScene" uid="uid://bvu64htdeqjbt" path="res://scenes/ParryBullets/parry_bullet_tp_hitbox.tscn" id="5_503t6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqwjj"]
 texture = ExtResource("1_im37l")
@@ -188,3 +190,10 @@ position = Vector2(80, 22)
 
 [node name="Boss" parent="." unique_id=1666674495 instance=ExtResource("3_h8avn")]
 position = Vector2(720, -268)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=898701380]
+position = Vector2(291, -69)
+
+[node name="parryBulletExplosionHitbox" parent="Marker2D" unique_id=387785815 instance=ExtResource("4_vqwjj")]
+
+[node name="parryBulletTPHitbox" parent="Marker2D" unique_id=856453727 instance=ExtResource("5_503t6")]

@@ -16,8 +16,14 @@ var can_move : bool = true:
 @export var knockback_power : float = 500.0
 
 @onready var animation = $AnimationPlayer
-@onready var dust_offset: float = $DustParticle.position.x
-var dust_flip: float = dust_offset + 15
+#@onready var dust_offset: float = $DustParticle.position.x
+#var dust_flip: float = dust_offset + 15
+
+#var dustPosX = -20
+##var dustPosY = -3
+#var dustPosXreverse = 2000
+
+
 
 
 func _ready():
@@ -37,21 +43,20 @@ func _physics_process(_delta):
 	if iso_velocity.length() == 0:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
 		animation.play("idle")
-		$DustParticle.self_modulate = 0
+		#$DustParticle.self_modulate = 0
 	else:	
 		velocity = iso_velocity.normalized() * speed
-		animation.play("running")
+		animation.play("Running_new")
 		SignalBus.player_move.emit()
+		#$DustParticle.position.x = dustPosXreverse
 
 		
 	if velocity.x != 0:
-		$PlayerAnimSprite.flip_h = velocity.x < 0
-		#TO-DO
-		# muss noch geflippt werden 
-		$DustParticle.flip_h = velocity.x < 0
-		$DustParticle.position.x = dust_flip
-	#else:
-		$DustParticle.position.x = - dust_flip
+		$PlayerRun.flip_h = velocity.x < 0
+		#$DustParticle.position.x = dustPosX
+
+
+
 
 
 	move_and_slide()
