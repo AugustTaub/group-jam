@@ -42,7 +42,6 @@ func rebind_comp(index : int):
 		else:
 			comp.target = companion_list[pos - 1]
 		pos += 1
-		print(pos,comp.name, comp.target.name)
 
 #calls rebind_comp() by Companiontybe
 func kill_comp(companion : Companion):
@@ -50,6 +49,7 @@ func kill_comp(companion : Companion):
 	for comp in companion_list:
 		if comp == companion:
 			rebind_comp(index)
+			return
 		index += 1
 
 #calls rebind_comp() by type and returns
@@ -58,6 +58,7 @@ func remove_comp(type : int):
 	for comp in companion_list:
 		if type == comp.type:
 			rebind_comp(index)
+			return
 		index += 1
 
 func has_comp(type):

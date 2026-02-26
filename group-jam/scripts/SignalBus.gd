@@ -1,8 +1,5 @@
 extends Node
 
 signal player_move()
-signal create_companion(type)
-
-signal game_started
-
-signal play_audio(audio_name: String)
+signal create_conpanion(type : int)
+signal teleport_player(pos : Vector2)
