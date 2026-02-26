@@ -11,11 +11,17 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
+	body_entered.connect(_on_body_entered)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "ParryHitbox":
 		print("parry")
 		isParried()   
+		
+	if area.name == "EffectiveHitboxCompanion":
+		print("Effect Hit")
+		queue_free()
+
 
 
 # TO-DO

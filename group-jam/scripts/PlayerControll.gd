@@ -17,9 +17,6 @@ var can_move : bool = true:
 
 @onready var animation = $AnimationPlayer
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("parry"):
-		parry()
 
 func _ready():
 	SignalBus.teleport_player.connect(teleport)
@@ -67,6 +64,7 @@ func parry():
 		return 
 		
 	can_move = false 
+	$ParryHitbox/CollisionShape2D.set_deferred("disabled", false)
 	
 	animation.play("parry")
 	await animation.animation_finished
@@ -107,9 +105,15 @@ func cast_ability():
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("cast_ability_mouse_left"):
 		cast_ability()
+	
 	if Input.is_action_just_pressed("switch_ability_mouse_right"):
 		switch_ability()	
 		
-		
+	if Input.is_action_just_pressed("parry_v"):
+		print("parry")
+		parry()
+
+
+
 func teleport(pos : Vector2):
 	self.global_position = pos
