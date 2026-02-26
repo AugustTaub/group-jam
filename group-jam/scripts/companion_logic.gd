@@ -9,11 +9,21 @@ var player : Node
 var container : Node
 
 func _ready():
-	SignalBus.create_conpanion.connect(add_comp)
+	SignalBus.create_conpanion_by_id.connect(add_comp_by_id)
+	SignalBus.create_conpanion_by_name.connect(add_comp_by_name)
 	
 ##add
+#TODO
+func add_comp_by_name(type):
+	var new_type = -1
+	match(type):
+		"explosion": new_type = 0
+		"barrier": new_type = 1
+		"teleport": new_type = 2
+	add_comp_by_id(new_type)
+	
 #adds companion at end of line
-func add_comp(type):
+func add_comp_by_id(type):
 	if companion_list.size() < max_companions:
 		var comp = preload("res://scenes/companion.tscn")
 		var new_comp = comp.instantiate()

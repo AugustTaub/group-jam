@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyfvq2sgkxopl"
-path="res://.godot/imported/parry_bullets.png-a9ea1d771d852fcdc07e9b4195fc3743.ctex"
+uid="uid://dq4wthduu73mb"
+path="res://.godot/imported/Logo3.png-26deffa46439a28db188c73fc5e5450a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/parry_bullets.png"
-dest_files=["res://.godot/imported/parry_bullets.png-a9ea1d771d852fcdc07e9b4195fc3743.ctex"]
+source_file="res://Assets/Logo3.png"
+dest_files=["res://.godot/imported/Logo3.png-26deffa46439a28db188c73fc5e5450a.ctex"]
 
 [params]
 

@@ -5,8 +5,10 @@ class_name PlayerController
 @onready var dust_anim_left  = find_child("dust_anim_left")
 @onready var dust_anim_right  = find_child("dust_anim_right")
 @onready var parry_anim  = find_child("parry_anim")
+@onready var parry_hitbox  = find_child("ParryHitbox").get_child(0)
 
 @export_range(0,2) var number_comp : int = 0
+@export var parry_length : float = 0.3
 @export var speedVal : float = 200.0
 var speed : float = speedVal
 
@@ -21,9 +23,7 @@ var can_move : bool = true:
 
 @export var knockback_power : float = 500.0
 
-@onready var animation = $AnimationPlayer
-#@onready var dust_offset: float = $DustParticle.position.x
-#var dust_flip: float = dust_offset + 15
+
 
 #var dustPosX = -20
 ##var dustPosY = -3
@@ -63,17 +63,17 @@ func _physics_process(_delta):
 	
 	if iso_velocity.length() == 0:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
-		animation.play("idle")
+		#animation.play("idle")
 		#$DustParticle.self_modulate = 0
 	else:	
 		velocity = iso_velocity.normalized() * speed
-		animation.play("Running_new")
+		#animation.play("Running_new")
 		SignalBus.player_move.emit()
 		#$DustParticle.position.x = dustPosXreverse
 
 		
-	if velocity.x != 0:
-		$PlayerRun.flip_h = velocity.x < 0
+#	if velocity.x != 0:
+#		$PlayerRun.flip_h = velocity.x < 0
 		#$DustParticle.position.x = dustPosX
 		
 	move_and_slide()
@@ -97,11 +97,14 @@ func parry():
 		return 
 		
 	can_move = false 
-	$ParryHitbox/CollisionShape2D.set_deferred("disabled", false)
+	parry_hitbox.disabled = false
+	await get_tree().create_timer(parry_length).timeout
+	parry_hitbox.disabled = true
+#	$ParryHitbox/CollisionShape2D.set_deferred("disabled", false)
 	
-	animation.play("parry")
-	await animation.animation_finished
-	$ParryHitbox/CollisionShape2D.set_deferred("disabled", true)
+#	animation.play("parry")
+#	await animation.animation_finished
+#	$ParryHitbox/CollisionShape2D.set_deferred("disabled", true)
 	
 	can_move = true 
 
