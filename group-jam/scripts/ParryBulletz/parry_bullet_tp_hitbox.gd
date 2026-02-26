@@ -36,6 +36,6 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 	queue_free()
 
 func isParried():
-	print("parry")
+	print("parried")
 	isParriedVal.emit(2)
 	queue_free()

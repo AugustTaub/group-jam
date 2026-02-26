@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cilhiu3cpjoam" path="res://scripts/boss_logic.gd" id="1_neq0i"]
 [ext_resource type="Texture2D" uid="uid://kxq180lvm817" path="res://Assets/Sprites/EnemySprites_BossIdle.png" id="2_qnbj4"]
 [ext_resource type="Texture2D" uid="uid://4gwpyftqrei0" path="res://Assets/Sprites/EnemySprite_BossEnd.png" id="3_r3bxh"]
+[ext_resource type="Texture2D" uid="uid://dexkkm8lf6vf8" path="res://Assets/Sprites/EnemySprite_boss_arms.png" id="4_qnbj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqpjq"]
 atlas = ExtResource("2_qnbj4")
@@ -139,6 +140,63 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3bxh"]
+atlas = ExtResource("4_qnbj4")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk50o"]
+atlas = ExtResource("4_qnbj4")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_325t2"]
+atlas = ExtResource("4_qnbj4")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bagrn"]
+atlas = ExtResource("4_qnbj4")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3gxo"]
+atlas = ExtResource("4_qnbj4")
+region = Rect2(128, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dd2w"]
+atlas = ExtResource("4_qnbj4")
+region = Rect2(256, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj5kv"]
+atlas = ExtResource("4_qnbj4")
+region = Rect2(0, 128, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e1yhm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3bxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk50o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_325t2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bagrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3gxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dd2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj5kv")
+}],
+"loop": false,
+"name": &"boss_hug",
+"speed": 6.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_neq0i"]
 height = 38.0
 
@@ -152,9 +210,15 @@ script = ExtResource("1_neq0i")
 [node name="boss_animation" type="AnimatedSprite2D" parent="." unique_id=658980174]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_nk50o")
-animation = &"boss_idle"
+animation = &"boss_on"
 autoplay = "boss_idle"
-frame_progress = 0.43230987
+frame = 2
+frame_progress = 1.0
+
+[node name="tentacle_animation" type="AnimatedSprite2D" parent="." unique_id=710469563]
+position = Vector2(1, -32)
+sprite_frames = SubResource("SpriteFrames_e1yhm")
+animation = &"boss_hug"
 
 [node name="collision_area" type="StaticBody2D" parent="." unique_id=1111642979]
 
@@ -169,11 +233,3 @@ position = Vector2(0, -37)
 position = Vector2(2, -4)
 shape = SubResource("CapsuleShape2D_dlmty")
 debug_color = Color(0, 0.6509804, 0.38431373, 0.1254902)
-
-[node name="Timer" type="Timer" parent="." unique_id=1776960654]
-wait_time = 2.0
-autostart = true
-
-[node name="cannon_ancor" type="Node2D" parent="." unique_id=213939950]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

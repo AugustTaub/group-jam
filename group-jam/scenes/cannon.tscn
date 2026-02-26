@@ -216,7 +216,7 @@ script = ExtResource("1_xuqfy")
 position = Vector2(-2, 3)
 scale = Vector2(1.03125, 1)
 sprite_frames = SubResource("SpriteFrames_pxhkx")
-animation = &"shoot_up"
+animation = &"shoot_down"
 
 [node name="blow_animation" type="AnimatedSprite2D" parent="." unique_id=1095960678]
 position = Vector2(-7, -3)

@@ -3,9 +3,15 @@ extends Node2D
 @export var enabled : bool = true
 var can_shoot : bool = false
 
+@export_category("direction and pattern")
 @export_enum("down","left","right","up") var direction : String = "down"
+@export_enum("single_straight", "three_spray", "five_spray") var pattern : String = "single_straight"
+
+@export_category("bullet_parameter")
+@export_range(0,100) var shots_per_parry : int = 1.0 # amount of bullets fired before 1 parryable bullet fires
+var current_shot : int = 1
 @export var interval : float = 1.0
-@export_enum("single_straight", "three_spray") var pattern : String = "single_straight"
+@export_enum("random","explosion","barrier","teleport") var parry_type : String = "random"
 
 @onready var cannon_anim = find_child("cannon_animation")
 @onready var blow_anim = find_child("blow_animation")
@@ -41,19 +47,38 @@ func shoot():
 	await cannon_anim.animation_finished
 
 #instantiate bullet
-func create_bullet(bullet_type : int, target : Vector2):
+func create_bullet(bullet_type : String, target : Vector2):
+	var r = RandomNumberGenerator.new()
+	var type : String = ""
+	if parry_type == "random":
+		match(r.randi_range(0, 2)):
+			0: type = "explosion"
+			1: type = "barrier"
+			2: type = "teleport"
+		r.randomize()
+	else:
+		type = parry_type
+		
 	var new_bullet : Node
-	match(bullet_type):
-		1: new_bullet = bullet.instantiate()
-		2: new_bullet = parry_bullet.instantiate()
+	if bullet_type == "default":
+		new_bullet = bullet.instantiate()
+	elif bullet_type == "parry":
+		new_bullet = parry_bullet.instantiate()
+		new_bullet.type = type
 	new_bullet.move_direction = target
 	self.add_child(new_bullet)
-
+	
+#gott bewahre, dass es funktioniert "\_(-_-)_/"
 func fill_pattern():
 	for vector in pattern_node.get_children():
 		var target = vector.get_child(0)
-		var new_target =  target.global_position - self.global_position
-		create_bullet(1,new_target * 1000)
+		var new_target =  (target.global_position - self.global_position)  * 1000
+		if shots_per_parry == current_shot:	
+			create_bullet("parry",new_target)
+			current_shot = 0
+		else:
+			create_bullet("default",new_target)
+		current_shot += 1
 
 #sets new direction for vectors of bullets based on rotation selected
 func apply_direction():
@@ -73,9 +98,12 @@ func instantiate_pattern():
 	match(pattern):
 		"single_straight": pattern_type = preload("res://scenes/patterns/pattern_single_straight.tscn")
 		"three_spray": pattern_type = preload("res://scenes/patterns/pattern_three_spray.tscn")
+		"five_spray": pattern_type = preload("res://scenes/patterns/pattern_five_spray.tscn")
 	
 	var new_pattern = pattern_type.instantiate()
 	pattern_position.add_child(new_pattern)
 	pattern_node = new_pattern
 	
-	
+
+#TODO
+# mehr default bullets

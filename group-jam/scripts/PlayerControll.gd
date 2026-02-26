@@ -1,6 +1,12 @@
 extends CharacterBody2D
 class_name PlayerController
 
+@onready var player_anim  = find_child("player_anim")
+@onready var dust_anim_left  = find_child("dust_anim_left")
+@onready var dust_anim_right  = find_child("dust_anim_right")
+@onready var parry_anim  = find_child("parry_anim")
+
+@export_range(0,2) var number_comp : int = 0
 @export var speedVal : float = 200.0
 var speed : float = speedVal
 
@@ -16,12 +22,35 @@ var can_move : bool = true:
 @export var knockback_power : float = 500.0
 
 @onready var animation = $AnimationPlayer
+#@onready var dust_offset: float = $DustParticle.position.x
+#var dust_flip: float = dust_offset + 15
 
+#var dustPosX = -20
+##var dustPosY = -3
+#var dustPosXreverse = 2000
 
 func _ready():
 	SignalBus.teleport_player.connect(teleport)
 	CompanionLogic.player = self
 	CompanionLogic.container = self.find_child("companion_container")
+
+
+func _process(delta: float) -> void:
+	player_animation()
+
+## PLAYER ANIMATION
+func player_animation():
+	var motion_vector = Input.get_vector("left", "right", "forward", "back")
+	if motion_vector:
+		player_anim.play("player_walk")
+		if motion_vector.x < 0:
+			player_anim.flip_h = true
+			dust_anim_right.play("player_dust")
+		else:
+			player_anim.flip_h = false
+			dust_anim_left.play("player_dust")
+	else:
+		player_anim.play("player_idle")
 
 func _physics_process(_delta):
 	if not can_move:
@@ -31,28 +60,29 @@ func _physics_process(_delta):
 	
 	var input_direction = Input.get_vector("left", "right", "forward", "back")
 	var iso_velocity = Vector2(input_direction.x, input_direction.y * 0.5)
-
-	if iso_velocity.length() > 0:
-		velocity = iso_velocity.normalized() * speed
-		animation.play("running")
-		SignalBus.player_move.emit()
-	else:
+	
+	if iso_velocity.length() == 0:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
 		animation.play("idle")
+		#$DustParticle.self_modulate = 0
+	else:	
+		velocity = iso_velocity.normalized() * speed
+		animation.play("Running_new")
+		SignalBus.player_move.emit()
+		#$DustParticle.position.x = dustPosXreverse
+
 		
 	if velocity.x != 0:
-		$PlayerAnimSprite.flip_h = velocity.x < 0
-		#TO-DO
-		# muss noch geflippt werden 
-		$DustParticle.flip_h = velocity.x < 0
-
+		$PlayerRun.flip_h = velocity.x < 0
+		#$DustParticle.position.x = dustPosX
+		
 	move_and_slide()
-
+			
 	if Input.is_action_just_pressed("ui_accept"):
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var my_random_number = rng.randi_range(0, 2)
-		SignalBus.create_conpanion.emit(my_random_number)
+		SignalBus.create_conpanion.emit(number_comp)
 
 #TO-DO
 func knockback(source_velocity: Vector2):
@@ -106,6 +136,7 @@ func cast_ability():
 @onready var ability_proj = preload("res://scenes/player_projectile.tscn")
 
 func _input(event: InputEvent) -> void:
+		
 	if Input.is_action_just_pressed("cast_ability_mouse_left"):
 		cast_ability()
 	
@@ -113,10 +144,9 @@ func _input(event: InputEvent) -> void:
 		switch_ability()	
 		
 	if Input.is_action_just_pressed("parry_v"):
-		print("parry")
+		print("parry_button")
+		parry_anim.play("player_parry")
 		parry()
-
-
-
+		
 func teleport(pos : Vector2):
 	self.global_position = pos

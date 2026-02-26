@@ -1,18 +1,86 @@
-[gd_scene format=3 uid="uid://bj0mjkjackwxm"]
+[gd_scene format=3 uid="uid://c1i7kf11tfbjp"]
 
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="1_3ebxt"]
-[ext_resource type="Script" uid="uid://dvn44yewhelf3" path="res://scripts/parry_bullet_wall.gd" id="2_8a14a"]
+[ext_resource type="Script" uid="uid://dvn44yewhelf3" path="res://scripts/parry_bullet.gd" id="2_8a14a"]
+[ext_resource type="Texture2D" uid="uid://b8ixmgtksxmy1" path="res://Assets/Sprites/Unbenanntes_Projekt_42.png" id="2_puhhl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4va5"]
+atlas = ExtResource("2_puhhl")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeqg1"]
+atlas = ExtResource("2_puhhl")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5tuf"]
+atlas = ExtResource("2_puhhl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adu4x"]
+atlas = ExtResource("2_puhhl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arx3x"]
+atlas = ExtResource("2_puhhl")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iy4b"]
+atlas = ExtResource("2_puhhl")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8a14a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4va5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeqg1")
+}],
+"loop": true,
+"name": &"barrier_idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5tuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adu4x")
+}],
+"loop": true,
+"name": &"explosion_idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arx3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iy4b")
+}],
+"loop": true,
+"name": &"teleport_idle",
+"speed": 6.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a14a"]
 size = Vector2(12, 12)
 
-[node name="parryBulletWallHitbox" type="Area2D" unique_id=387785815]
+[node name="parry_bullet" type="Area2D" unique_id=387785815]
 script = ExtResource("2_8a14a")
+
+[node name="anim_sprite" type="AnimatedSprite2D" parent="." unique_id=2139605471]
+position = Vector2(-1, -2)
+sprite_frames = SubResource("SpriteFrames_8a14a")
+animation = &"explosion_idle"
+frame_progress = 0.9486604
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1857015505]
 shape = SubResource("RectangleShape2D_8a14a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=87109185]
+visible = false
 modulate = Color(18.892157, 0, 0, 1)
 scale = Vector2(0.10546872, 0.10546872)
 texture = ExtResource("1_3ebxt")

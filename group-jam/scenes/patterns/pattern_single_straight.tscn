@@ -2,7 +2,7 @@
 
 [node name="pattern_single_straight" type="Node2D" unique_id=1905044354]
 
-[node name="vector" type="RayCast2D" parent="." unique_id=27123740]
+[node name="vector_1" type="RayCast2D" parent="." unique_id=27123740]
 
-[node name="target_pos" type="Node2D" parent="vector" unique_id=773549787]
+[node name="target_pos" type="Node2D" parent="vector_1" unique_id=773549787]
 position = Vector2(0, 50)

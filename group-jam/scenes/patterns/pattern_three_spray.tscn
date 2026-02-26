@@ -2,15 +2,10 @@
 
 [node name="pattern_three_spray" type="Node2D" unique_id=630182112]
 
-[node name="vector_1" type="RayCast2D" parent="." unique_id=1119614487]
-
-[node name="target_pos" type="Node2D" parent="vector_1" unique_id=420159431]
-position = Vector2(0, 50)
-
-[node name="vector_2" type="RayCast2D" parent="." unique_id=339876823]
+[node name="vector_1" type="RayCast2D" parent="." unique_id=339876823]
 target_position = Vector2(-9, 50)
 
-[node name="target_pos" type="Node2D" parent="vector_2" unique_id=81842823]
+[node name="target_pos" type="Node2D" parent="vector_1" unique_id=81842823]
 position = Vector2(9, 50)
 
 [node name="vector_3" type="RayCast2D" parent="." unique_id=442009664]
@@ -18,3 +13,8 @@ target_position = Vector2(9, 50)
 
 [node name="target_pos" type="Node2D" parent="vector_3" unique_id=436508840]
 position = Vector2(-9, 50)
+
+[node name="vector_2" type="RayCast2D" parent="." unique_id=1119614487]
+
+[node name="target_pos" type="Node2D" parent="vector_2" unique_id=420159431]
+position = Vector2(0, 50)
