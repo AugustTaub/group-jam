@@ -6,7 +6,7 @@ extends Node2D
 @onready var blow_anim = find_child("blow_animation")
 
 @onready var bullet = preload("res://scenes/bullet.tscn")
-@onready var parry_bullet = preload("res://scenes/parry_bullet.tscn")
+@onready var parry_bullet = preload("res://scenes/ParryBullets/parry_bullet_wall.tscn")
 
 func shoot():
 	cannon_anim.play("shoot")
