@@ -73,8 +73,8 @@ script = ExtResource("1_puhhl")
 [node name="anim_sprite" type="AnimatedSprite2D" parent="." unique_id=2139605471]
 position = Vector2(-1, -2)
 sprite_frames = SubResource("SpriteFrames_8a14a")
-animation = &"explosion_idle"
-frame_progress = 0.9486604
+animation = &"barrier_idle"
+frame_progress = 0.43762508
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1857015505]
 shape = SubResource("RectangleShape2D_8a14a")

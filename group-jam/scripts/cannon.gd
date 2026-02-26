@@ -23,6 +23,7 @@ var pattern_node : Node2D
 @onready var bullet = preload("res://scenes/bullet.tscn")
 @onready var parry_bullet = preload("res://scenes/parry_bullet.tscn")
 
+
 func _ready():
 	instantiate_pattern()
 	apply_direction()

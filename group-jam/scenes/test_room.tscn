@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c0vtclm773y3u" path="res://2D/TestAssets/TileMapTester.png" id="1_im37l"]
 [ext_resource type="PackedScene" uid="uid://3i83m1sxh7ga" path="res://scenes/player.tscn" id="2_4adyp"]
 [ext_resource type="PackedScene" uid="uid://dr7v0dqryacqv" path="res://scenes/boss.tscn" id="3_h8avn"]
+[ext_resource type="Texture2D" uid="uid://dq4wthduu73mb" path="res://Assets/Logo3.png" id="5_503t6"]
 [ext_resource type="PackedScene" uid="uid://bqmd5grcrgoiy" path="res://scenes/cannon.tscn" id="6_mous7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqwjj"]
@@ -202,3 +203,7 @@ position = Vector2(296, -85)
 direction = "left"
 pattern = "three_spray"
 interval = 2.0
+
+[node name="Logo3" type="Sprite2D" parent="." unique_id=1060569278]
+position = Vector2(98, 129)
+texture = ExtResource("5_503t6")
