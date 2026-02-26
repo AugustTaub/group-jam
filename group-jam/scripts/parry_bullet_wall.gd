@@ -1,6 +1,6 @@
 extends Area2D
 
-signal isParriedWall(value: String)
+signal isParriedVal(value: int)
 
 @export var speed: float = 400.0
 var move_direction = Vector2(-1, 1)
@@ -15,9 +15,9 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "ParryHitbox":
-		print("parry")
+		print("parried Bullet")
 		isParried()   
-		
+	
 	if area.name == "EffectiveHitboxCompanion":
 		print("Effect Hit")
 		queue_free()
@@ -37,5 +37,5 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 
 func isParried():
 	print("parry")
-	isParriedWall.emit("wall")
+	isParriedVal.emit(1)
 	queue_free()
