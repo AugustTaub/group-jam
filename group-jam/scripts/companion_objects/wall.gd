@@ -13,8 +13,8 @@ var duration = 5.0
 # das muss bestenfalls noch geändert werden
 func _ready() -> void:
 	await get_tree().create_timer(duration).timeout
-	#anim.play("barrier_break")
-	animationPlayer.play("barrier_break")
+	anim.play("barrier_break")
+	#animationPlayer.play("barrier_break")
 	await anim.animation_finished
-	#get_parent().queue_free()
-	queue_free()
+	get_parent().queue_free()
+	#queue_free()

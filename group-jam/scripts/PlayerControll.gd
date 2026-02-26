@@ -41,7 +41,10 @@ func _physics_process(_delta):
 		animation.play("idle")
 		
 	if velocity.x != 0:
-		$Sprite2D.flip_h = velocity.x < 0
+		$PlayerAnimSprite.flip_h = velocity.x < 0
+		#TO-DO
+		# muss noch geflippt werden 
+		$DustParticle.flip_h = velocity.x < 0
 
 	move_and_slide()
 
@@ -49,7 +52,7 @@ func _physics_process(_delta):
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var my_random_number = rng.randi_range(0, 2)
-		SignalBus.create_conpanion.emit(my_random_number)
+		SignalBus.create_conpanion.emit(1)
 
 #TO-DO
 func knockback(source_velocity: Vector2):
