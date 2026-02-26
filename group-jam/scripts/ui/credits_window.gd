@@ -1,6 +1,5 @@
 extends custom_window
 
-@export var pause_window: custom_window
 @export var main_window: custom_window
 
 # Called when the node enters the scene tree for the first time.

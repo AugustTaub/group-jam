@@ -9,7 +9,7 @@ var player : Node
 var container : Node
 
 func _ready():
-	SignalBus.create_conpanion.connect(add_comp)
+	SignalBus.create_companion.connect(add_comp)
 	
 ##add
 #adds companion at end of line

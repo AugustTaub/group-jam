@@ -5,13 +5,15 @@ extends custom_window
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	appear()
+	get_tree().paused = true
 	
 	var drag_margin: MarginContainer = find_child("drag_margin")
 	drag_margin.gui_input.connect(_on_drag_margin_gui_input)
 	
 	var header: PanelContainer = find_child("header")
 	header.gui_input.connect(_on_header_gui_input)
+	
+	SignalBus.game_started.connect(func(): get_tree().paused = false)
 
 func appear():
 	show()
@@ -22,7 +24,6 @@ func appear():
 	
 	appeartween.tween_property(self,"scale",Vector2.ONE,0.2).set_trans(Tween.TRANS_BOUNCE)
 	
-	get_tree().paused = true
 
 func dissapear():
 	options_window.dissapear()
@@ -38,7 +39,6 @@ func dissapear():
 	
 	hide()
 	
-	get_tree().paused = false
 
 
 func _on_close_button_pressed():
@@ -57,6 +57,8 @@ func _on_start_button_pressed():
 	dissapear()
 	await get_tree().create_timer(0.2).timeout
 	get_parent().hide()
+	
+	SignalBus.game_started.emit()
 
 
 func _on_credits_button_pressed():

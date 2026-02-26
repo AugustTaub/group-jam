@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck1tlmbor66ck"
-path="res://.godot/imported/CannonSprite.png-0dc85707aa68eed3554e71aee3d8d881.ctex"
+uid="uid://kxq180lvm817"
+path="res://.godot/imported/EnemySprites_BossIdle.png-52226ac1e76f095eb648f301306919eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/CannonSprite.png"
-dest_files=["res://.godot/imported/CannonSprite.png-0dc85707aa68eed3554e71aee3d8d881.ctex"]
+source_file="res://2D/Sprites/EnemySprites_BossIdle.png"
+dest_files=["res://.godot/imported/EnemySprites_BossIdle.png-52226ac1e76f095eb648f301306919eb.ctex"]
 
 [params]
 

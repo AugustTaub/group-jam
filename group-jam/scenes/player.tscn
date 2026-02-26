@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://3i83m1sxh7ga"]
 
 [ext_resource type="Script" uid="uid://7ad5s5v4l6uw" path="res://scripts/PlayerControll.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://d0bj4dgo58aoe" path="res://Assets/Sprites/PlayerSprites.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://d0bj4dgo58aoe" path="res://2D/Sprites/PlayerSprites.png" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://cgu3qetft43v8" path="res://scenes/in_game_ui.tscn" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://conjvt7va7mji" path="res://scripts/audio_manager.gd" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://00rpwav51j20" path="res://audio_files/9jackjack8-energy-electrowave-game-beat-293187.mp3" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://bgg0dfqljulgc" path="res://audio_files/blup.mp3" id="6_tuyoq"]
 
 [sub_resource type="Animation" id="Animation_g2els"]
 length = 0.001
@@ -47,5 +51,22 @@ shape = SubResource("RectangleShape2D_qhqgy")
 debug_color = Color(0.36449513, 0.42864174, 0.07651729, 0.41960785)
 
 [node name="companion_container" type="Node" parent="." unique_id=2065979664]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=229894971]
+
+[node name="in_game_ui" parent="CanvasLayer" unique_id=1913189176 instance=ExtResource("3_qhqgy")]
+
+[node name="audio_manager" type="Node2D" parent="." unique_id=778916101]
+process_mode = 3
+script = ExtResource("4_dqkch")
+
+[node name="gameplay_music" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1315274869]
+stream = ExtResource("5_qlg0r")
+bus = &"Music"
+parameters/looping = true
+
+[node name="blup" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1182276231]
+stream = ExtResource("6_tuyoq")
+bus = &"SFX"
 
 [connection signal="body_entered" from="ParryHitbox" to="." method="_on_parry_hitbox_body_entered"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kxq180lvm817"
-path="res://.godot/imported/EnemySprites_BossIdle.png-3d33a09e1cc4ceedb880ab2253ac7cac.ctex"
+uid="uid://4gwpyftqrei0"
+path="res://.godot/imported/EnemySprite_BossEnd.png-9e968ee9467868b8a0770e81d57121a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/EnemySprites_BossIdle.png"
-dest_files=["res://.godot/imported/EnemySprites_BossIdle.png-3d33a09e1cc4ceedb880ab2253ac7cac.ctex"]
+source_file="res://2D/Sprites/EnemySprite_BossEnd.png"
+dest_files=["res://.godot/imported/EnemySprite_BossEnd.png-9e968ee9467868b8a0770e81d57121a3.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bqmd5grcrgoiy"]
 
-[ext_resource type="Script" uid="uid://26r0mhsf67wq" path="res://scripts/cannon.gd" id="1_xuqfy"]
-[ext_resource type="Texture2D" uid="uid://ck1tlmbor66ck" path="res://Assets/Sprites/CannonSprite.png" id="2_pxhkx"]
+[ext_resource type="Script" path="res://scripts/cannon.gd" id="1_xuqfy"]
+[ext_resource type="Texture2D" uid="uid://ck1tlmbor66ck" path="res://2D/Sprites/CannonSprite.png" id="2_pxhkx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjxeu"]
 atlas = ExtResource("2_pxhkx")

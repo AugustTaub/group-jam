@@ -3,6 +3,7 @@ extends custom_window
 @export var pause_window: custom_window
 @export var main_window: custom_window
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
@@ -45,3 +46,17 @@ func dissapear():
 
 func _on_close_button_pressed():
 	dissapear()
+
+
+func _on_music_slider_value_changed(value):
+	var value_in_db: float = (1-value) * -60
+	
+	AudioServer.set_bus_volume_db(1, value_in_db)
+
+
+func _on_vfx_slider_value_changed(value):
+	var value_in_db: float = (1-value) * -60
+	
+	AudioServer.set_bus_volume_db(2, value_in_db)
+	
+	SignalBus.play_audio.emit("blup")

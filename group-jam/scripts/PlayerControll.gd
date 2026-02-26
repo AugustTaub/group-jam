@@ -25,7 +25,7 @@ func _physics_process(_delta):
 
 	if Input.is_action_just_pressed("ui_accept"):
 		parry()
-		SignalBus.create_conpanion.emit(1)
+		SignalBus.create_companion.emit(1)
 
 #TO-DO
 func knockback(source_velocity: Vector2):

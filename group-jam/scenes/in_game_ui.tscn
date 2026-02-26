@@ -5,9 +5,27 @@
 [ext_resource type="Shader" uid="uid://domqjc5ceoru7" path="res://2D/shaders/ui_window_bg.tres" id="2_6qwj3"]
 [ext_resource type="FontFile" uid="uid://buovi3cs2wb7c" path="res://misc/Tiny5-Regular.ttf" id="2_a45jx"]
 [ext_resource type="Script" uid="uid://c1ptfre3fvdw1" path="res://scripts/ui/options_window.gd" id="3_a45jx"]
+[ext_resource type="Texture2D" uid="uid://tp2qpno1e654" path="res://2D/ui/progressbar_overlay.png" id="4_huati"]
 [ext_resource type="Texture2D" uid="uid://br7vx8mkqnl31" path="res://2D/ui/toggle_on.png" id="4_ria60"]
 [ext_resource type="Texture2D" uid="uid://bgli0pkwm40er" path="res://2D/ui/toggle_off.png" id="5_6qwj3"]
 [ext_resource type="Script" uid="uid://bchpwx05au8q5" path="res://scripts/ui/credits_window.gd" id="8_04xgm"]
+[ext_resource type="Script" uid="uid://j3wmhaxvm4m0" path="res://scripts/ui/progress_bar.gd" id="9_jlb72"]
+[ext_resource type="Texture2D" uid="uid://cwyqm6sv2ruv" path="res://2D/Sprites/PlayerSprite_head.png" id="9_qinws"]
+[ext_resource type="Script" uid="uid://wnv7uoncx4gk" path="res://scripts/ui/companion_display.gd" id="12_ve7rr"]
+[ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="13_luu0w"]
+[ext_resource type="Texture2D" uid="uid://dx423lteih8mq" path="res://2D/ui/down_arrow.png" id="14_luu0w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_huati"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huati"]
+bg_color = Color(0.8012729, 0.4358202, 0.82740146, 1)
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_yjjyl"]
+ProgressBar/font_sizes/font_size = 21
+ProgressBar/fonts/font = ExtResource("2_a45jx")
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_huati")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_huati")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a45jx"]
 
@@ -280,6 +298,30 @@ gradient = SubResource("Gradient_fqvwy")
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="Gradient" id="Gradient_mv4mu"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5090909)
+colors = PackedColorArray(0.11119685, 0.11119684, 0.11119684, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1m1a"]
+gradient = SubResource("Gradient_mv4mu")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_5gssk"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5318182, 0.68636364)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4t0bi"]
+gradient = SubResource("Gradient_5gssk")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="in_game_ui" type="Control" unique_id=1913189176]
 process_mode = 3
 layout_mode = 3
@@ -288,6 +330,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1192651337]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 7.0
+offset_right = 385.0
+offset_bottom = 36.0
+pivot_offset_ratio = Vector2(0.135, 0)
+theme = SubResource("Theme_yjjyl")
+value = 19.83
+script = ExtResource("9_jlb72")
+
+[node name="player_icon" type="TextureRect" parent="ProgressBar" unique_id=473160368]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -23.0
+offset_top = 15.0
+offset_right = 17.0
+offset_bottom = 68.333336
+texture = ExtResource("9_qinws")
+expand_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="ProgressBar" unique_id=214754301]
+modulate = Color(1, 1, 1, 0.5411765)
+layout_mode = 0
+offset_right = 359.0
+offset_bottom = 46.0
+texture = ExtResource("4_huati")
 
 [node name="main_menu_parent" type="Control" parent="." unique_id=186638233]
 layout_mode = 1
@@ -454,6 +524,7 @@ theme = SubResource("Theme_6qwj3")
 text = "QUIT GAME"
 
 [node name="pause_window" type="PanelContainer" parent="." unique_id=783327449 node_paths=PackedStringArray("options_window", "main_window")]
+visible = false
 layout_mode = 0
 offset_left = 762.0
 offset_top = 60.0
@@ -591,6 +662,7 @@ theme = SubResource("Theme_6qwj3")
 text = "TO MAIN MENU"
 
 [node name="options_window" type="PanelContainer" parent="." unique_id=2007045468 node_paths=PackedStringArray("pause_window", "main_window")]
+visible = false
 layout_mode = 0
 offset_left = 437.0
 offset_top = 49.0
@@ -685,14 +757,44 @@ layout_mode = 2
 mouse_filter = 2
 theme = SubResource("Theme_4t0bi")
 theme_override_font_sizes/normal_font_size = 22
-text = "Slider:"
+text = "Music-Volume:"
 fit_content = true
 scroll_active = false
 
-[node name="HSlider" type="HSlider" parent="options_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=886545500]
+[node name="music_slider" type="HSlider" parent="options_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=886545500]
 texture_filter = 1
 layout_mode = 2
 theme = SubResource("Theme_qinws")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MarginContainer3" type="MarginContainer" parent="options_window/drag_margin/VBoxContainer" unique_id=903937470]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options_window/drag_margin/VBoxContainer/MarginContainer3" unique_id=247232102]
+layout_mode = 2
+
+[node name="optiontitle" type="RichTextLabel" parent="options_window/drag_margin/VBoxContainer/MarginContainer3/VBoxContainer" unique_id=1812424908]
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_4t0bi")
+theme_override_font_sizes/normal_font_size = 22
+text = "SFX-Volume"
+fit_content = true
+scroll_active = false
+
+[node name="vfx_slider" type="HSlider" parent="options_window/drag_margin/VBoxContainer/MarginContainer3/VBoxContainer" unique_id=1533745502]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_qinws")
+max_value = 1.0
+step = 0.01
+value = 1.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="options_window/drag_margin/VBoxContainer" unique_id=1935792843]
 layout_direction = 3
@@ -719,7 +821,8 @@ scroll_active = false
 layout_mode = 2
 theme = SubResource("Theme_qinws")
 
-[node name="credits_window" type="PanelContainer" parent="." unique_id=1206245831]
+[node name="credits_window" type="PanelContainer" parent="." unique_id=1206245831 node_paths=PackedStringArray("main_window")]
+visible = false
 layout_mode = 0
 offset_left = 237.0
 offset_top = 233.0
@@ -727,6 +830,7 @@ offset_right = 940.0
 offset_bottom = 632.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_fqvwy")
 script = ExtResource("8_04xgm")
+main_window = NodePath("../main_menu_parent/main_menu_window")
 
 [node name="drag_margin" type="MarginContainer" parent="credits_window" unique_id=224707749]
 layout_mode = 2
@@ -981,6 +1085,128 @@ theme = SubResource("Theme_4t0bi")
 text = "NAME 6"
 scroll_active = false
 
+[node name="companion_display" type="Control" parent="." unique_id=576656353]
+visible = false
+anchors_preset = 0
+offset_left = 1089.0
+offset_top = 584.0
+offset_right = 1129.0
+offset_bottom = 624.0
+script = ExtResource("12_ve7rr")
+
+[node name="1" type="Control" parent="companion_display" unique_id=1360300381]
+anchors_preset = 0
+offset_left = -169.0
+offset_top = -32.0
+offset_right = -129.0
+offset_bottom = 8.0
+
+[node name="bg" type="TextureRect" parent="companion_display/1" unique_id=1299394229]
+texture_filter = 1
+layout_mode = 0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 86.0
+offset_bottom = 86.0
+texture = SubResource("GradientTexture2D_y1m1a")
+
+[node name="tex" type="TextureRect" parent="companion_display/1" unique_id=1427592726]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 143.00006
+offset_bottom = 147.6576
+scale = Vector2(0.37493914, 0.35350838)
+texture = ExtResource("13_luu0w")
+
+[node name="rim" type="TextureRect" parent="companion_display/1" unique_id=293444514]
+texture_filter = 1
+layout_mode = 0
+offset_right = 93.0
+offset_bottom = 93.0
+scale = Vector2(0.81599, 0.81599)
+texture = SubResource("GradientTexture2D_4t0bi")
+
+[node name="2" type="Control" parent="companion_display" unique_id=483580348]
+z_index = 2
+anchors_preset = 0
+offset_left = -122.0
+offset_top = -45.0
+offset_right = -82.0
+offset_bottom = -5.0
+scale = Vector2(1.2091846, 1.2091846)
+
+[node name="bg" type="TextureRect" parent="companion_display/2" unique_id=1845926044]
+texture_filter = 1
+layout_mode = 0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 86.0
+offset_bottom = 86.0
+texture = SubResource("GradientTexture2D_y1m1a")
+
+[node name="tex" type="TextureRect" parent="companion_display/2" unique_id=579969164]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 143.00006
+offset_bottom = 147.6576
+scale = Vector2(0.37493914, 0.35350838)
+texture = ExtResource("13_luu0w")
+
+[node name="rim" type="TextureRect" parent="companion_display/2" unique_id=658632640]
+texture_filter = 1
+layout_mode = 0
+offset_right = 93.0
+offset_bottom = 93.0
+scale = Vector2(0.81599, 0.81599)
+texture = SubResource("GradientTexture2D_4t0bi")
+
+[node name="3" type="Control" parent="companion_display" unique_id=1725212909]
+anchors_preset = 0
+offset_left = -59.0
+offset_top = -30.0
+offset_right = -19.0
+offset_bottom = 10.0
+
+[node name="bg" type="TextureRect" parent="companion_display/3" unique_id=1848989153]
+texture_filter = 1
+layout_mode = 0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 86.0
+offset_bottom = 86.0
+texture = SubResource("GradientTexture2D_y1m1a")
+
+[node name="tex" type="TextureRect" parent="companion_display/3" unique_id=1496810169]
+modulate = Color(0.6181667, 1, 0.20999998, 1)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 143.00006
+offset_bottom = 147.6576
+scale = Vector2(0.37493914, 0.35350838)
+texture = ExtResource("13_luu0w")
+
+[node name="rim" type="TextureRect" parent="companion_display/3" unique_id=2115331005]
+texture_filter = 1
+layout_mode = 0
+offset_right = 93.0
+offset_bottom = 93.0
+scale = Vector2(0.81599, 0.81599)
+texture = SubResource("GradientTexture2D_4t0bi")
+
+[node name="arrow" type="TextureRect" parent="companion_display" unique_id=1453883244]
+layout_mode = 0
+offset_left = -96.0
+offset_top = -67.0
+offset_right = -55.0
+offset_bottom = -41.0
+texture = ExtResource("14_luu0w")
+expand_mode = 2
+
+[connection signal="value_changed" from="ProgressBar" to="ProgressBar" method="_on_value_changed"]
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="main_menu_parent/main_menu_window" method="_on_close_button_pressed"]
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/MarginContainer4/start_button" to="main_menu_parent/main_menu_window" method="_on_start_button_pressed"]
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/MarginContainer/options_button" to="main_menu_parent/main_menu_window" method="_on_options_button_pressed"]
@@ -990,4 +1216,6 @@ scroll_active = false
 [connection signal="pressed" from="pause_window/drag_margin/VBoxContainer/MarginContainer/options_button" to="pause_window" method="_on_options_button_pressed"]
 [connection signal="pressed" from="pause_window/drag_margin/VBoxContainer/MarginContainer2/main_menu_button" to="pause_window" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="options_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="options_window" method="_on_close_button_pressed"]
+[connection signal="value_changed" from="options_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/music_slider" to="options_window" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="options_window/drag_margin/VBoxContainer/MarginContainer3/VBoxContainer/vfx_slider" to="options_window" method="_on_vfx_slider_value_changed"]
 [connection signal="pressed" from="credits_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="credits_window" method="_on_close_button_pressed"]
