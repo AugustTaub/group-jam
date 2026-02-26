@@ -52,7 +52,7 @@ func _physics_process(_delta):
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var my_random_number = rng.randi_range(0, 2)
-		SignalBus.create_conpanion.emit(1)
+		SignalBus.create_conpanion.emit(my_random_number)
 
 #TO-DO
 func knockback(source_velocity: Vector2):
