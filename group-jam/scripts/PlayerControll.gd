@@ -6,6 +6,7 @@ class_name PlayerController
 @onready var dust_anim_right  = find_child("dust_anim_right")
 @onready var parry_anim  = find_child("parry_anim")
 @onready var parry_hitbox  = find_child("ParryHitbox").get_child(0)
+@onready var hurtbox  = find_child("hurtbox")
 
 @export_range(0,2) var number_comp : int = 0
 @export var parry_length : float = 0.3
@@ -82,7 +83,7 @@ func _physics_process(_delta):
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var my_random_number = rng.randi_range(0, 2)
-		SignalBus.create_conpanion.emit(number_comp)
+		SignalBus.create_conpanion_by_id.emit(number_comp)
 
 #TO-DO
 func knockback(source_velocity: Vector2):
@@ -91,7 +92,7 @@ func knockback(source_velocity: Vector2):
 
 	velocity = iso_knockback.normalized() * knockback_power
 	move_and_slide()
-	
+
 func parry():
 	if not can_move: 
 		return 

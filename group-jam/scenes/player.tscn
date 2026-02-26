@@ -258,9 +258,10 @@ height = 20.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1508676161 groups=["Player"]]
 top_level = true
-position = Vector2(0, -13)
+y_sort_enabled = true
+position = Vector2(0, -9)
 script = ExtResource("1_g2els")
-number_comp = 1
+number_comp = 2
 knockback_power = 1000.0
 
 [node name="alex_anims" type="Node2D" parent="." unique_id=1796449004]
@@ -269,7 +270,7 @@ knockback_power = 1000.0
 sprite_frames = SubResource("SpriteFrames_qfm1y")
 animation = &"player_walk"
 autoplay = "player_idle"
-frame_progress = 0.09749761
+frame_progress = 0.8144491
 
 [node name="dust_anim_left" type="AnimatedSprite2D" parent="alex_anims" unique_id=1574832808]
 position = Vector2(-22, -1)
@@ -292,6 +293,7 @@ frame = 4
 frame_progress = 1.0
 
 [node name="WalkHitbox" type="CollisionShape2D" parent="." unique_id=1221488363 groups=["Bullet", "Player"]]
+visible = false
 position = Vector2(-1, 8)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_qlg0r")
