@@ -75,8 +75,8 @@ autoplay = "explode"
 frame = 6
 frame_progress = 1.0
 
-[node name="area" type="Area2D" parent="." unique_id=1247788656]
+[node name="EffectiveHitboxCompanion" type="Area2D" parent="." unique_id=1247788656 groups=["CompanionEffectBullet"]]
 
-[node name="shape" type="CollisionShape2D" parent="area" unique_id=329834413]
+[node name="shape" type="CollisionShape2D" parent="EffectiveHitboxCompanion" unique_id=329834413]
 position = Vector2(1, -7)
 shape = SubResource("CircleShape2D_2tb70")
