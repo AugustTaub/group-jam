@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://26r0mhsf67wq" path="res://scripts/cannon.gd" id="1_xuqfy"]
 [ext_resource type="Texture2D" uid="uid://ck1tlmbor66ck" path="res://Assets/Sprites/CannonSprite.png" id="2_pxhkx"]
+[ext_resource type="Texture2D" uid="uid://kxq180lvm817" path="res://Assets/Sprites/EnemySprites_BossIdle.png" id="3_yjxeu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjxeu"]
 atlas = ExtResource("2_pxhkx")
@@ -18,6 +19,18 @@ region = Rect2(64, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxhkx"]
 atlas = ExtResource("2_pxhkx")
 region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swbd8"]
+atlas = ExtResource("3_yjxeu")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibe8o"]
+atlas = ExtResource("3_yjxeu")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaj4g"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(0, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22shy"]
 atlas = ExtResource("2_pxhkx")
@@ -47,6 +60,18 @@ region = Rect2(160, 0, 32, 32)
 atlas = ExtResource("2_pxhkx")
 region = Rect2(192, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v3n0"]
+atlas = ExtResource("3_yjxeu")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkr3g"]
+atlas = ExtResource("3_yjxeu")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edsmq"]
+atlas = ExtResource("2_pxhkx")
+region = Rect2(0, 0, 56, 56)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_pxhkx"]
 animations = [{
 "frames": [{
@@ -63,7 +88,31 @@ animations = [{
 "texture": SubResource("AtlasTexture_pxhkx")
 }],
 "loop": false,
-"name": &"shoot",
+"name": &"shoot_down",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swbd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibe8o")
+}],
+"loop": false,
+"name": &"shoot_left",
+"speed": 6.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"shoot_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaj4g")
+}],
+"loop": false,
+"name": &"shoot_up",
 "speed": 6.0
 }, {
 "frames": [{
@@ -88,9 +137,33 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ediu4")
 }],
-"loop": true,
-"name": &"start",
+"loop": false,
+"name": &"start_down",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v3n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkr3g")
+}],
+"loop": false,
+"name": &"start_left",
+"speed": 6.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"start_right",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edsmq")
+}],
+"loop": false,
+"name": &"start_up",
+"speed": 6.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vda2x"]
@@ -140,12 +213,18 @@ animations = [{
 script = ExtResource("1_xuqfy")
 
 [node name="cannon_animation" type="AnimatedSprite2D" parent="." unique_id=909371777]
+position = Vector2(-2, 3)
+scale = Vector2(1.03125, 1)
 sprite_frames = SubResource("SpriteFrames_pxhkx")
-animation = &"shoot"
-frame = 3
-frame_progress = 1.0
+animation = &"shoot_up"
 
 [node name="blow_animation" type="AnimatedSprite2D" parent="." unique_id=1095960678]
-position = Vector2(-6, -7)
+position = Vector2(-7, -3)
 sprite_frames = SubResource("SpriteFrames_vda2x")
 animation = &"blow"
+frame = 4
+
+[node name="pattern_ancor" type="Node2D" parent="." unique_id=452076657]
+
+[node name="pattern_position" type="Node2D" parent="pattern_ancor" unique_id=762270676]
+position = Vector2(-5, 1)
