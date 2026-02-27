@@ -312,7 +312,7 @@ layer_0/tile_data = PackedInt32Array(393218, 0, 3, 327682, 0, 2, 262147, 0, 0, 1
 tile_set = SubResource("TileSet_6bnmr")
 format = 2
 
-[node name="Layer0" type="TileMapLayer" parent="TileMap3" unique_id=1861347786]
+[node name="Layer1" type="TileMapLayer" parent="TileMap3" unique_id=1861347786]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD7////AAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAD7/wAAAAAAAAAAAAD6////AAAAAAAAAAD4//3/AAAAAAAAAAD5//v/AAAAAAAAAAD6//n/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_6bnmr")
