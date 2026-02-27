@@ -2,12 +2,14 @@ extends Area2D
 
 
 @onready var anim_sprite = find_child("anim_sprite")
-
+#Bullet Types
 @export_enum("explosion","barrier","teleport") var type : String
+
+#Bullet Property
 @export var speed: float = 200.0
 @export var move_direction = Vector2(0, 0)
 
-#for those who come after
+#for those who come after 
 @export var knockback_duration: float = 0.3
 @export var knockback_force: float = 1.0
 
@@ -42,6 +44,6 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 
 #TODO bitte den parry fixen karl, ich habe keinen schmarm was da übergeben werden soll lol
 func isParried():
-	#print("hitted parry mit " + "Key " + key + "Type " + type)
-	SignalBus.added_companion.emit(0, type)
+	print("hitted parry mit " + type)
+	SignalBus.create_companion.emit(type)
 	queue_free()

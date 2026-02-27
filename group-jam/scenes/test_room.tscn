@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dr7v0dqryacqv" path="res://scenes/boss.tscn" id="3_h8avn"]
 [ext_resource type="Texture2D" uid="uid://dq4wthduu73mb" path="res://Assets/Logo3.png" id="5_503t6"]
 [ext_resource type="PackedScene" uid="uid://bqmd5grcrgoiy" path="res://scenes/cannon.tscn" id="6_mous7"]
+[ext_resource type="PackedScene" uid="uid://c1ck2pl7qlrna" path="res://scenes/big_bullet.tscn" id="6_sg3ht"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqwjj"]
 texture = ExtResource("1_im37l")
@@ -228,3 +229,9 @@ interval = 2.0
 [node name="Logo3" type="Sprite2D" parent="." unique_id=1060569278]
 position = Vector2(98, 129)
 texture = ExtResource("5_503t6")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=869778852]
+position = Vector2(401, -150)
+
+[node name="BigBullet" parent="." unique_id=1939860656 instance=ExtResource("6_sg3ht")]
+position = Vector2(400.99997, -149.99998)
