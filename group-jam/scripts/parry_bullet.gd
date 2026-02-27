@@ -39,8 +39,9 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 		var bullet_velocity = self.global_position.direction_to(move_direction).normalized()
 		body.knockback(bullet_velocity, knockback_duration, knockback_force)
 	queue_free()
-	
+
+#TODO bitte den parry fixen karl, ich habe keinen schmarm was da übergeben werden soll lol
 func isParried():
-	#print("hitted parry mit " + type)
-	SignalBus.create_conpanion_by_name.emit(type)
+	#print("hitted parry mit " + "Key " + key + "Type " + type)
+	SignalBus.added_companion.emit(0, type)
 	queue_free()

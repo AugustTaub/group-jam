@@ -14,7 +14,7 @@ var speed : float = speedVal
 
 var active_companion_slot: int = 0
 
-#für Parry The Platypus
+#für Parry The Platypus und knockback
 var can_move : bool = true:
 	set(value):
 		can_move = value
@@ -45,6 +45,7 @@ func _process(delta: float) -> void:
 	player_animation()
 
 ## PLAYER ANIMATION
+#TODO can_move mit einbinden bei idle 
 func player_animation():
 	var motion_vector = Input.get_vector("left", "right", "forward", "back")
 	if motion_vector:
@@ -59,6 +60,19 @@ func player_animation():
 		player_anim.play("player_idle")
 
 func _physics_process(delta):
+	# wenn jemand diesen Kommentar ließt schuldet er mir einen Döner
+	#BLOCK IST WICHTIG, NICHT LÖSCHEN VRO
+	if knockback_timer > 0.0:
+		knockback_timer -= delta
+		move_and_slide() 
+		
+		if knockback_timer <= 0.0:
+			can_move = true
+			gommemode = false
+			self.modulate.a = 1.0
+			hurtbox.get_child(0).set_deferred("disabled", false)
+		return
+	
 	if not can_move:
 		velocity = Vector2.ZERO 
 		move_and_slide()
@@ -80,8 +94,8 @@ func _physics_process(delta):
 		#$DustParticle.position.x = dustPosXreverse
 
 		
-	if velocity.x != 0:
-		player_anim.flip_h = velocity.x < 0
+#	if velocity.x != 0:
+#		player_anim.flip_h = velocity.x < 0
 		#$DustParticle.position.x = dustPosX
 		
 	move_and_slide()
