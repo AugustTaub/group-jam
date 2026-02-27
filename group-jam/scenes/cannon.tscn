@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bqmd5grcrgoiy"]
 
 [ext_resource type="Script" uid="uid://26r0mhsf67wq" path="res://scripts/cannon.gd" id="1_xuqfy"]
-[ext_resource type="Texture2D" uid="uid://ck1tlmbor66ck" path="res://Assets/Sprites/CannonSprite.png" id="2_pxhkx"]
-[ext_resource type="Texture2D" uid="uid://kxq180lvm817" path="res://Assets/Sprites/EnemySprites_BossIdle.png" id="3_yjxeu"]
+[ext_resource type="Texture2D" uid="uid://ck1tlmbor66ck" path="res://2D/Sprites/CannonSprite.png" id="2_pxhkx"]
+[ext_resource type="Texture2D" uid="uid://kxq180lvm817" path="res://2D/Sprites/EnemySprites_BossIdle.png" id="3_yjxeu"]
+[ext_resource type="Texture2D" uid="uid://dpgva4rjfyun6" path="res://2D/TestAssets/Unbenanntes_Projekt 43.png" id="4_jfr8q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjxeu"]
 atlas = ExtResource("2_pxhkx")
@@ -209,6 +210,15 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_jfr8q"]
+colors = PackedColorArray(0.56078434, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0285d"]
+gradient = SubResource("Gradient_jfr8q")
+fill = 1
+fill_from = Vector2(0.5, 0.49411765)
+fill_to = Vector2(0.85882354, 0.16470589)
+
 [node name="cannon" type="Node2D" unique_id=468590572]
 script = ExtResource("1_xuqfy")
 
@@ -228,3 +238,13 @@ frame = 4
 
 [node name="pattern_position" type="Node2D" parent="pattern_ancor" unique_id=762270676]
 position = Vector2(-5, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1507752011]
+position = Vector2(94, 67)
+energy = 1.94
+texture = ExtResource("4_jfr8q")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1885943114]
+rotation = 0.91072834
+scale = Vector2(0.4, 0.53)
+texture = SubResource("GradientTexture2D_0285d")
