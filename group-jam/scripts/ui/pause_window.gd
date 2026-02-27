@@ -40,7 +40,7 @@ func dissapear():
 
 func _process(delta):
 	
-	if Input.is_action_just_pressed("pause") and not main_window.visible:
+	if Input.is_action_just_pressed("pause_game") and not main_window.visible:
 		if not visible:
 			appear()
 		else:

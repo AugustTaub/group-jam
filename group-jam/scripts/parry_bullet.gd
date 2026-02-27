@@ -44,6 +44,6 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 
 #TODO bitte den parry fixen karl, ich habe keinen schmarm was da übergeben werden soll lol
 func isParried():
-	print("hitted parry mit " + type)
+	#print("hitted parry mit " + type)
 	SignalBus.create_companion.emit(type)
 	queue_free()

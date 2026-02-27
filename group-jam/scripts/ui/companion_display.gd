@@ -4,9 +4,9 @@ var anims_running: bool = false
 var queued_anim: bool = false
 signal anims_done
 
-var preloaded_companion_tex0: Texture2D = preload("res://2D/Sprites/projectile_explosion_single.png")
-var preloaded_companion_tex1: Texture2D = preload("res://2D/Sprites/projectile_gum_single.png")
-var preloaded_companion_tex2: Texture2D = preload("res://2D/Sprites/projectile_teleport_single.png")
+var preloaded_companion_tex0: Texture2D = preload("res://2D/Sprites/bomb_single_sprite.png")
+var preloaded_companion_tex1: Texture2D = preload("res://2D/Sprites/teleport_single_sprite.png")
+var preloaded_companion_tex2: Texture2D = preload("res://2D/Sprites/teleport_single_sprite.png")
 
 var active_display_index: int = 0
 

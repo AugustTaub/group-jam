@@ -822,6 +822,7 @@ layout_mode = 2
 theme = SubResource("Theme_qinws")
 
 [node name="credits_window" type="PanelContainer" parent="." unique_id=1206245831 node_paths=PackedStringArray("main_window")]
+visible = false
 layout_mode = 0
 offset_left = 237.0
 offset_top = 233.0
@@ -936,7 +937,7 @@ theme_override_constants/margin_top = 8
 layout_mode = 2
 mouse_filter = 2
 theme = SubResource("Theme_4t0bi")
-text = "Music by 9JackJack8 from Pixabay"
+text = "NAME 1"
 scroll_active = false
 
 [node name="entry2" type="PanelContainer" parent="credits_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1756371786]
@@ -1085,6 +1086,7 @@ text = "NAME 6"
 scroll_active = false
 
 [node name="companion_display" type="Control" parent="." unique_id=576656353]
+visible = false
 anchors_preset = 0
 offset_left = 1089.0
 offset_top = 584.0

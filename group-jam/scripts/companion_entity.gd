@@ -25,10 +25,6 @@ func select_sprite():
 	current_sprite.visible = true
 	
 
-func _process(delta: float) -> void:
-	return
-
-
 func death(area : Node2D):
 	if area.is_in_group("Bullet"):
 		area.queue_free()

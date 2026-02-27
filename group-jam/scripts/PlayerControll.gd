@@ -145,7 +145,7 @@ func knockback(direction: Vector2, duration: float, force: float):
 func parry():
 	if not can_move: 
 		return 
-		
+	
 	can_move = false 
 	$ParryHitbox/CollisionShape2D.set_deferred("disabled", false)
 	

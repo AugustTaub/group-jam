@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7hovk8sbf3wk"
-path="res://.godot/imported/projectile_gum_single.png-3b1d07d2b0359388573b559cda3ddd49.ctex"
+uid="uid://mwmpkmlbt35k"
+path="res://.godot/imported/barrier_single_sprite.png-bc58be17f1493900dc4d66aad613b6e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D/Sprites/projectile_gum_single.png"
-dest_files=["res://.godot/imported/projectile_gum_single.png-3b1d07d2b0359388573b559cda3ddd49.ctex"]
+source_file="res://2D/Sprites/barrier_single_sprite.png"
+dest_files=["res://.godot/imported/barrier_single_sprite.png-bc58be17f1493900dc4d66aad613b6e9.ctex"]
 
 [params]
 
