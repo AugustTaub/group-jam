@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://3i83m1sxh7ga"]
 
 [ext_resource type="Script" uid="uid://7ad5s5v4l6uw" path="res://scripts/PlayerControll.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://d0bj4dgo58aoe" path="res://Assets/Sprites/PlayerSprites.png" id="2_g2els"]
-[ext_resource type="Texture2D" uid="uid://cy6lr0mnnmfj1" path="res://Assets/Sprites/PlayerDustAnimation.png" id="3_dqkch"]
-[ext_resource type="Texture2D" uid="uid://bv5q81fq2bdcd" path="res://Assets/Sprites/parry_particle.png" id="4_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://d0bj4dgo58aoe" path="res://2D/Sprites/PlayerSprites.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://cy6lr0mnnmfj1" path="res://2D/Sprites/PlayerDustAnimation.png" id="3_dqkch"]
+[ext_resource type="Texture2D" uid="uid://bv5q81fq2bdcd" path="res://2D/Sprites/parry_particle.png" id="4_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -262,7 +262,6 @@ y_sort_enabled = true
 position = Vector2(0, -9)
 script = ExtResource("1_g2els")
 number_comp = 2
-knockback_power = 1000.0
 
 [node name="alex_anims" type="Node2D" parent="." unique_id=1796449004]
 

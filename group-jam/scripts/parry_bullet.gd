@@ -1,12 +1,15 @@
 extends Area2D
 
-signal isParriedVal(value: String)
 
 @onready var anim_sprite = find_child("anim_sprite")
 
 @export_enum("explosion","barrier","teleport") var type : String
 @export var speed: float = 200.0
 @export var move_direction = Vector2(0, 0)
+
+#for those who come after
+@export var knockback_duration: float = 0.3
+@export var knockback_force: float = 1.0
 
 func _process(delta: float) -> void:
 	var iso_velocity = Vector2(move_direction.x, move_direction.y)
@@ -29,16 +32,15 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		
 # TO-DO
-# bis jetzt simpler Knockback, der ist aber arsch und 
-# für tests gedacht, guter muss noch implementiert werden
+# zu 90 % gefixt, nur noch perma stun problem muss angeschaut werden
+#fixed
 func _on_body_entered(body: CharacterBody2D) -> void:
-	#print(type, " hit")
 	if body.has_method("knockback"):
-		var bullet_velocity = move_direction.normalized() * speed
-		body.knockback(bullet_velocity)
+		var bullet_velocity = self.global_position.direction_to(move_direction).normalized()
+		body.knockback(bullet_velocity, knockback_duration, knockback_force)
 	queue_free()
 	
 func isParried():
-	print("parry")
-	isParriedVal.emit(1)
+	#print("hitted parry mit " + type)
+	SignalBus.create_conpanion_by_name.emit(type)
 	queue_free()

@@ -13,7 +13,7 @@ class_name PlayerController
 @export var speedVal : float = 200.0
 var speed : float = speedVal
 
-#für Parry The Platypus
+#für Parry The Platypus und Knockback II
 var can_move : bool = true:
 	set(value):
 		can_move = value
@@ -23,12 +23,14 @@ var can_move : bool = true:
 			speed = speedVal
 
 @export var knockback_power : float = 500.0
+var knockback_timer : float = 0.0
+var gommemode: bool = false
 
 
-
+#Suffering
 #var dustPosX = -20
 ##var dustPosY = -3
-#var dustPosXreverse = 2000
+#var dustPosXreverse = 2000d
 
 func _ready():
 	SignalBus.teleport_player.connect(teleport)
@@ -54,6 +56,18 @@ func player_animation():
 		player_anim.play("player_idle")
 
 func _physics_process(_delta):
+	# wenn jemand diesen Kommentar ließt schuldet er mir einen Döner
+	if knockback_timer > 0.0:
+		knockback_timer -= _delta
+		move_and_slide() 
+		
+		if knockback_timer <= 0.0:
+			can_move = true
+			gommemode = false
+			self.modulate.a = 1.0
+			hurtbox.get_child(0).set_deferred("disabled", false)
+		return
+	
 	if not can_move:
 		velocity = Vector2.ZERO 
 		move_and_slide()
@@ -64,18 +78,10 @@ func _physics_process(_delta):
 	
 	if iso_velocity.length() == 0:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
-		#animation.play("idle")
-		#$DustParticle.self_modulate = 0
 	else:	
 		velocity = iso_velocity.normalized() * speed
-		#animation.play("Running_new")
 		SignalBus.player_move.emit()
-		#$DustParticle.position.x = dustPosXreverse
 
-		
-#	if velocity.x != 0:
-#		$PlayerRun.flip_h = velocity.x < 0
-		#$DustParticle.position.x = dustPosX
 		
 	move_and_slide()
 			
@@ -86,12 +92,25 @@ func _physics_process(_delta):
 		SignalBus.create_conpanion_by_id.emit(number_comp)
 
 #TO-DO
-func knockback(source_velocity: Vector2):
-	var knockback_direction = (source_velocity - velocity).normalized()
-	var iso_knockback = Vector2(knockback_direction.x, knockback_direction.y * 0.5)
+# Fix für knockback wenn mult bullets hitten --> perma stun prblem wenn dur zu lang
+#fixed
+func knockback(direction: Vector2, duration: float, force: float):
+	if gommemode:
+		return
+	
+	gommemode = true
+	
+	#FUNCTION: Bitte umänder falls ne nötig, ist bis jetzt für player feedback, maybe ne blink animation wenn zeit ist
+	self.modulate.a = 0.5
+	var iso_direction = Vector2(direction.x, direction.y * 0.5).normalized()
+	velocity = iso_direction * (knockback_power * force)
+	
+	knockback_timer = duration
+	can_move = false
+	
+	hurtbox.get_child(0).set_deferred("disabled", true)
+	parry_hitbox.set_deferred("disabled", true)
 
-	velocity = iso_knockback.normalized() * knockback_power
-	move_and_slide()
 
 func parry():
 	if not can_move: 
@@ -101,11 +120,6 @@ func parry():
 	parry_hitbox.disabled = false
 	await get_tree().create_timer(parry_length).timeout
 	parry_hitbox.disabled = true
-#	$ParryHitbox/CollisionShape2D.set_deferred("disabled", false)
-	
-#	animation.play("parry")
-#	await animation.animation_finished
-#	$ParryHitbox/CollisionShape2D.set_deferred("disabled", true)
 	
 	can_move = true 
 
