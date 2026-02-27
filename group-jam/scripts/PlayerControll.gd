@@ -27,7 +27,6 @@ var can_move : bool = true:
 var knockback_timer : float = 0.0
 var gommemode: bool = false
 
-@onready var animation = $AnimationPlayer
 #@onready var dust_offset: float = $DustParticle.position.x
 #var dust_flip: float = dust_offset + 15
 
@@ -91,7 +90,7 @@ func _physics_process(delta):
 		player_anim.play("player_walk")
 		SignalBus.player_move.emit()
 		#$DustParticle.position.x = dustPosXreverse
-
+		
 		
 	if velocity.x != 0:
 		player_anim.flip_h = velocity.x < 0
@@ -99,11 +98,11 @@ func _physics_process(delta):
 		
 	move_and_slide()
 			
-	if Input.is_action_just_pressed("ui_accept"):
-		var rng = RandomNumberGenerator.new()
-		rng.randomize()
-		var my_random_number = rng.randi_range(0, 2)
-		SignalBus.create_companion.emit(my_random_number)
+	#if Input.is_action_just_pressed("ui_accept"):
+	#	var rng = RandomNumberGenerator.new()
+	#	rng.randomize()
+	#	var my_random_number = rng.randi_range(0, 2)
+	#	SignalBus.create_companion.emit(my_random_number)
 
 func companions_follow(delta):
 	var i: int = 0

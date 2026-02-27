@@ -6,6 +6,7 @@ var can_shoot : bool = false
 @export_category("direction and pattern")
 @export_enum("down","left","right","up") var direction : String = "down"
 @export_enum("single_straight", "three_spray", "five_spray") var pattern : String = "single_straight"
+@export var delay : float = 0.0
 
 @export_category("bullet_parameter")
 @export_range(0,100) var shots_per_parry : int = 1.0 # amount of bullets fired before 1 parryable bullet fires
@@ -30,6 +31,7 @@ func _ready():
 	blow_anim.play("blow") # important because of selected startframe only first animation doesnt play
 	cannon_anim.play("start_" + direction)
 	await cannon_anim.animation_finished
+	await get_tree().create_timer(delay).timeout
 	can_shoot = true
 		
 func _process(delta: float) -> void:

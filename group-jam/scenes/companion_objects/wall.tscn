@@ -62,6 +62,10 @@ region = Rect2(64, 0, 64, 64)
 atlas = ExtResource("1_5h711")
 region = Rect2(0, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rxun"]
+atlas = ExtResource("1_5h711")
+region = Rect2(192, 192, 96, 96)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1y173"]
 atlas = ExtResource("1_5h711")
 region = Rect2(64, 0, 64, 64)
@@ -158,10 +162,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4tm8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rxun")
 }],
 "loop": false,
 "name": &"barrier_break",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -231,6 +238,7 @@ frame = 12
 frame_progress = 1.0
 
 [node name="WallSprite" type="Sprite2D" parent="." unique_id=1840258732]
+visible = false
 texture = SubResource("CompressedTexture2D_1y173")
 hframes = 6
 vframes = 6

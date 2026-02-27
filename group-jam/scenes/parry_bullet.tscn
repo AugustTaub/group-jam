@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="1_3ebxt"]
 [ext_resource type="Script" uid="uid://dvn44yewhelf3" path="res://scripts/parry_bullet.gd" id="1_puhhl"]
-[ext_resource type="Texture2D" uid="uid://b8ixmgtksxmy1" path="res://2D/Sprites/Unbenanntes_Projekt_42.png" id="2_puhhl"]
+[ext_resource type="Texture2D" uid="uid://bru8qu1t7wlmn" path="res://2D/Sprites/parry_bullet.png" id="2_puhhl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4va5"]
 atlas = ExtResource("2_puhhl")
@@ -73,8 +73,7 @@ script = ExtResource("1_puhhl")
 [node name="anim_sprite" type="AnimatedSprite2D" parent="." unique_id=2139605471]
 position = Vector2(-1, -2)
 sprite_frames = SubResource("SpriteFrames_8a14a")
-animation = &"teleport_idle"
-frame_progress = 0.94547826
+animation = &"barrier_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1857015505]
 shape = SubResource("RectangleShape2D_8a14a")

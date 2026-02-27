@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var sprites = find_child("sprites")
+@onready var hitbox = find_child("hitbox")
 
 var speed = 200.0
 
@@ -13,6 +14,8 @@ var current_sprite = null
 var not_active = true
 
 func _ready():
+	hitbox.area_entered.connect(barrier_hit)
+	hitbox.body_entered.connect(barrier_hitted)
 	start_position = self.global_position
 	move_direction = Vector2(target_position)
 	select_sprite()
@@ -31,10 +34,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		hit_target()
 	
+	place_sprite(delta)
+	
 	move_and_slide()
 
 func hit_target():
-	if self.global_position.distance_to(target_position) < speed/15:
+	if self.global_position.distance_to(target_position) < speed/11:
 		if not_active == true:
 			apply_ability_effect(ability_type)
 			not_active = false
@@ -64,3 +69,25 @@ func cast_teleport():
 	await current_sprite.animation_finished
 	SignalBus.teleport_player.emit(self.global_position)
 	self.queue_free()
+
+func barrier_hit(area : Area2D):
+	if area.is_in_group("world_collision"):
+		print("area_entered")
+		apply_ability_effect(ability_type)
+
+func barrier_hitted(body : Node2D):
+	if body.is_in_group("world_collision"):
+		print("body_entered")
+		apply_ability_effect(ability_type)
+
+func place_sprite(delta : float):
+	var max_distance = abs(target_position.x - start_position.x)
+	var distance = abs(target_position.x - self.global_position.x)
+	if distance > max_distance/2:
+		var sprite_direction = -1
+		var iso_velocity = Vector2(sprite_direction,sprite_direction * 0.5)
+		sprites.global_position.y += sprites.global_position.direction_to( iso_velocity).y * speed * 2 * delta
+	elif distance < max_distance/2:
+		var sprite_direction = 1
+		var iso_velocity = Vector2(sprite_direction,sprite_direction * 0.5)
+		sprites.global_position.y += sprites.global_position.direction_to( iso_velocity).y * speed * 2 * delta
