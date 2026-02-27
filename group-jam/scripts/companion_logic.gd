@@ -9,7 +9,8 @@ var player : Node
 var container : Node
 
 func _ready():
-	SignalBus.create_companion.connect(add_comp)
+	SignalBus.create_companion_by_id.connect(add_comp_by_id)
+	SignalBus.create_companion_by_name.connect(add_comp_by_name)
 	
 	prepare_companion_dict()
 
@@ -21,8 +22,15 @@ func prepare_companion_dict():
 
 
 ##add
+func add_comp_by_name(type):
+	var id_type = -1
+	match(type):
+		"explosion": id_type = 0
+		"barrier": id_type = 1
+		"teleport": id_type = 2
+	add_comp_by_id(id_type)
 #adds companion at end of line
-func add_comp(type):
+func add_comp_by_id(type):
 	
 	var new_key: int = 21332123
 	for key in companion_dict.keys():

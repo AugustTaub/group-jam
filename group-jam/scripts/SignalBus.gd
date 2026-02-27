@@ -1,7 +1,8 @@
 extends Node
 
 signal player_move()
-signal create_companion(type : int)
+signal create_companion_by_id(type : int)
+signal create_companion_by_name(type : String)
 signal teleport_player(pos : Vector2)
 
 signal game_started

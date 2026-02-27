@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhnatmpeenma4"
-path="res://.godot/imported/teleport_single_sprite.png-dd2a580da252a719307225f4c2031784.ctex"
+uid="uid://b8bqbb0bpmluc"
+path="res://.godot/imported/single_barrier_bullet.png-a3e6b1216c9c688ce14ad13969091024.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D/Sprites/teleport_single_sprite.png"
-dest_files=["res://.godot/imported/teleport_single_sprite.png-dd2a580da252a719307225f4c2031784.ctex"]
+source_file="res://2D/Sprites/single_barrier_bullet.png"
+dest_files=["res://.godot/imported/single_barrier_bullet.png-a3e6b1216c9c688ce14ad13969091024.ctex"]
 
 [params]
 

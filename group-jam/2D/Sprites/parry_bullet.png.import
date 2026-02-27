@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8ixmgtksxmy1"
-path="res://.godot/imported/Unbenanntes_Projekt_42.png-adee1b6b452b26a25e979cbf6ff37272.ctex"
+uid="uid://bru8qu1t7wlmn"
+path="res://.godot/imported/parry_bullet.png-707e4d75960998a196272e8da37bdfec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D/Sprites/Unbenanntes_Projekt_42.png"
-dest_files=["res://.godot/imported/Unbenanntes_Projekt_42.png-adee1b6b452b26a25e979cbf6ff37272.ctex"]
+source_file="res://2D/Sprites/parry_bullet.png"
+dest_files=["res://.godot/imported/parry_bullet.png-707e4d75960998a196272e8da37bdfec.ctex"]
 
 [params]
 

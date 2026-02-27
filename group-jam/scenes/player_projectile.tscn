@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://lr7gwqndvddp"]
 
 [ext_resource type="Script" uid="uid://dc4c154b0cghw" path="res://scripts/player_projectile.gd" id="1_oxij3"]
-[ext_resource type="Texture2D" uid="uid://bprkstu7lvxuf" path="res://Assets/Sprites/projectile_teleport.png" id="2_oxij3"]
-[ext_resource type="Texture2D" uid="uid://gmdf1wbmmo57" path="res://Assets/Sprites/projectile_explosion.png" id="2_yflvu"]
-[ext_resource type="Texture2D" uid="uid://wbavbyjffq6x" path="res://Assets/Sprites/projectile_gum.png" id="3_fdlie"]
+[ext_resource type="Texture2D" uid="uid://bprkstu7lvxuf" path="res://2D/Sprites/projectile_teleport.png" id="2_oxij3"]
+[ext_resource type="Texture2D" uid="uid://gmdf1wbmmo57" path="res://2D/Sprites/projectile_explosion.png" id="2_yflvu"]
+[ext_resource type="Texture2D" uid="uid://wbavbyjffq6x" path="res://2D/Sprites/projectile_gum.png" id="3_fdlie"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdlie"]
 atlas = ExtResource("2_yflvu")
@@ -213,3 +213,7 @@ autoplay = "barrier_idle"
 sprite_frames = SubResource("SpriteFrames_oxij3")
 animation = &"teleport_idle"
 autoplay = "teleport_idle"
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1941325051]
+
+[node name="collision" type="CollisionShape2D" parent="hitbox" unique_id=596188886]
