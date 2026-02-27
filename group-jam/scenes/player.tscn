@@ -714,17 +714,22 @@ debug_color = Color(0.36449513, 0.42864174, 0.07651729, 0.41960785)
 [node name="companion_container" type="Node" parent="." unique_id=2065979664]
 
 [node name="audio_manager" type="Node2D" parent="." unique_id=2064134002]
+process_mode = 3
 script = ExtResource("4_dqkch")
 
 [node name="gameplay_music" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=696361850]
 stream = ExtResource("5_qlg0r")
+volume_db = -11.687
+bus = &"Music"
 parameters/looping = true
 
 [node name="blup" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1420179552]
 stream = ExtResource("6_tuyoq")
+bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1222923892]
 
 [node name="in_game_ui" parent="CanvasLayer" unique_id=1913189176 instance=ExtResource("9_ur7pv")]
+mouse_filter = 1
 
 [connection signal="body_entered" from="ParryHitbox" to="." method="_on_parry_hitbox_body_entered"]

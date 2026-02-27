@@ -822,7 +822,6 @@ layout_mode = 2
 theme = SubResource("Theme_qinws")
 
 [node name="credits_window" type="PanelContainer" parent="." unique_id=1206245831 node_paths=PackedStringArray("main_window")]
-visible = false
 layout_mode = 0
 offset_left = 237.0
 offset_top = 233.0
@@ -937,7 +936,7 @@ theme_override_constants/margin_top = 8
 layout_mode = 2
 mouse_filter = 2
 theme = SubResource("Theme_4t0bi")
-text = "NAME 1"
+text = "Music by 9JackJack8 from Pixabay"
 scroll_active = false
 
 [node name="entry2" type="PanelContainer" parent="credits_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1756371786]
@@ -1086,7 +1085,6 @@ text = "NAME 6"
 scroll_active = false
 
 [node name="companion_display" type="Control" parent="." unique_id=576656353]
-visible = false
 anchors_preset = 0
 offset_left = 1089.0
 offset_top = 584.0
@@ -1094,14 +1092,14 @@ offset_right = 1129.0
 offset_bottom = 624.0
 script = ExtResource("12_ve7rr")
 
-[node name="1" type="Control" parent="companion_display" unique_id=1360300381]
+[node name="2" type="Control" parent="companion_display" unique_id=1360300381]
 anchors_preset = 0
 offset_left = -169.0
 offset_top = -32.0
 offset_right = -129.0
 offset_bottom = 8.0
 
-[node name="bg" type="TextureRect" parent="companion_display/1" unique_id=1299394229]
+[node name="bg" type="TextureRect" parent="companion_display/2" unique_id=1299394229]
 texture_filter = 1
 layout_mode = 0
 offset_left = -7.0
@@ -1110,8 +1108,8 @@ offset_right = 86.0
 offset_bottom = 86.0
 texture = SubResource("GradientTexture2D_y1m1a")
 
-[node name="tex" type="TextureRect" parent="companion_display/1" unique_id=1427592726]
-modulate = Color(1, 0, 0, 1)
+[node name="tex" type="TextureRect" parent="companion_display/2" unique_id=1427592726]
+visible = false
 layout_mode = 0
 offset_left = 15.0
 offset_top = 14.0
@@ -1120,7 +1118,7 @@ offset_bottom = 147.6576
 scale = Vector2(0.37493914, 0.35350838)
 texture = ExtResource("13_luu0w")
 
-[node name="rim" type="TextureRect" parent="companion_display/1" unique_id=293444514]
+[node name="rim" type="TextureRect" parent="companion_display/2" unique_id=293444514]
 texture_filter = 1
 layout_mode = 0
 offset_right = 93.0
@@ -1128,7 +1126,7 @@ offset_bottom = 93.0
 scale = Vector2(0.81599, 0.81599)
 texture = SubResource("GradientTexture2D_4t0bi")
 
-[node name="2" type="Control" parent="companion_display" unique_id=483580348]
+[node name="0" type="Control" parent="companion_display" unique_id=483580348]
 z_index = 2
 anchors_preset = 0
 offset_left = -122.0
@@ -1137,7 +1135,7 @@ offset_right = -82.0
 offset_bottom = -5.0
 scale = Vector2(1.2091846, 1.2091846)
 
-[node name="bg" type="TextureRect" parent="companion_display/2" unique_id=1845926044]
+[node name="bg" type="TextureRect" parent="companion_display/0" unique_id=1845926044]
 texture_filter = 1
 layout_mode = 0
 offset_left = -7.0
@@ -1146,7 +1144,8 @@ offset_right = 86.0
 offset_bottom = 86.0
 texture = SubResource("GradientTexture2D_y1m1a")
 
-[node name="tex" type="TextureRect" parent="companion_display/2" unique_id=579969164]
+[node name="tex" type="TextureRect" parent="companion_display/0" unique_id=579969164]
+visible = false
 layout_mode = 0
 offset_left = 15.0
 offset_top = 14.0
@@ -1155,7 +1154,7 @@ offset_bottom = 147.6576
 scale = Vector2(0.37493914, 0.35350838)
 texture = ExtResource("13_luu0w")
 
-[node name="rim" type="TextureRect" parent="companion_display/2" unique_id=658632640]
+[node name="rim" type="TextureRect" parent="companion_display/0" unique_id=658632640]
 texture_filter = 1
 layout_mode = 0
 offset_right = 93.0
@@ -1163,14 +1162,14 @@ offset_bottom = 93.0
 scale = Vector2(0.81599, 0.81599)
 texture = SubResource("GradientTexture2D_4t0bi")
 
-[node name="3" type="Control" parent="companion_display" unique_id=1725212909]
+[node name="1" type="Control" parent="companion_display" unique_id=1725212909]
 anchors_preset = 0
 offset_left = -59.0
 offset_top = -30.0
 offset_right = -19.0
 offset_bottom = 10.0
 
-[node name="bg" type="TextureRect" parent="companion_display/3" unique_id=1848989153]
+[node name="bg" type="TextureRect" parent="companion_display/1" unique_id=1848989153]
 texture_filter = 1
 layout_mode = 0
 offset_left = -7.0
@@ -1179,8 +1178,8 @@ offset_right = 86.0
 offset_bottom = 86.0
 texture = SubResource("GradientTexture2D_y1m1a")
 
-[node name="tex" type="TextureRect" parent="companion_display/3" unique_id=1496810169]
-modulate = Color(0.6181667, 1, 0.20999998, 1)
+[node name="tex" type="TextureRect" parent="companion_display/1" unique_id=1496810169]
+visible = false
 layout_mode = 0
 offset_left = 15.0
 offset_top = 14.0
@@ -1189,7 +1188,7 @@ offset_bottom = 147.6576
 scale = Vector2(0.37493914, 0.35350838)
 texture = ExtResource("13_luu0w")
 
-[node name="rim" type="TextureRect" parent="companion_display/3" unique_id=2115331005]
+[node name="rim" type="TextureRect" parent="companion_display/1" unique_id=2115331005]
 texture_filter = 1
 layout_mode = 0
 offset_right = 93.0

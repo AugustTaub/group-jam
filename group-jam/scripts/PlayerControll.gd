@@ -10,6 +10,8 @@ class_name PlayerController
 @export var speedVal : float = 200.0
 var speed : float = speedVal
 
+var active_companion_slot: int = 0
+
 #für Parry The Platypus
 var can_move : bool = true:
 	set(value):
@@ -52,11 +54,13 @@ func player_animation():
 	else:
 		player_anim.play("player_idle")
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if not can_move:
 		velocity = Vector2.ZERO 
 		move_and_slide()
 		return
+	
+	companions_follow(delta)
 	
 	var input_direction = Input.get_vector("left", "right", "forward", "back")
 	var iso_velocity = Vector2(input_direction.x, input_direction.y * 0.5)
@@ -82,7 +86,25 @@ func _physics_process(_delta):
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var my_random_number = rng.randi_range(0, 2)
-		SignalBus.create_companion.emit(number_comp)
+		SignalBus.create_companion.emit(my_random_number)
+
+func companions_follow(delta):
+	var i: int = 0
+	for child: Companion in $companion_container.get_children():
+		var target_node: Node2D
+		if i == 0:
+			target_node = self 
+		else:
+			target_node = $companion_container.get_children()[i-1]
+		
+		var dist: float = child.global_position.distance_to(target_node.global_position)
+		
+		if dist >= 30:
+			var dir: Vector2 = child.global_position.direction_to(target_node.global_position)
+			child.global_position +=  dir * delta * child.SPEED
+		
+		i += 1
+
 
 #TO-DO
 func knockback(source_velocity: Vector2):
@@ -114,23 +136,31 @@ var ability_type_list : Array = [0,1,2]
 var ability_type : int = ability_type_list[0]
 
 func switch_ability():
-	if ability_type > ability_type_list.size() -2:
-		ability_type = -1
-	ability_type = ability_type_list[ability_type + 1]
-	print("current ability: ",ability_type)
+	active_companion_slot += 1
+	if active_companion_slot >= CompanionLogic.max_companions:
+		active_companion_slot = 0
 	
+	print("active_companion_slot",active_companion_slot)
+	SignalBus.switch_companion_pressed.emit()
+
 #creates projectile, that applies effect on landing	
 func cast_ability():
-	if CompanionLogic.has_comp(ability_type):
-		CompanionLogic.remove_comp(ability_type)
+	print(CompanionLogic.companion_dict[active_companion_slot])
+	if CompanionLogic.companion_dict[active_companion_slot] != null:
 		
+		var selected_comp: Companion =  CompanionLogic.companion_dict[active_companion_slot]
 		var new_ability_proj = ability_proj.instantiate()
 		new_ability_proj.global_position = self.global_position
-		new_ability_proj.ability_type = self.ability_type
+		new_ability_proj.ability_type = selected_comp.type
 		new_ability_proj.target_position = get_global_mouse_position()
 		get_parent().add_child(new_ability_proj)
 		
+		CompanionLogic.remove_comp(active_companion_slot)
 		print("cast ability: ",ability_type)
+		
+		switch_ability()
+
+
 
 #inputlistener for ability cast and switch
 @onready var ability_proj = preload("res://scenes/player_projectile.tscn")
