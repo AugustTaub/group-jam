@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6u8bnk5oebli"]
 
 [ext_resource type="Script" uid="uid://6n1a0loshbmt" path="res://scripts/companion_objects/wall.gd" id="1_1y173"]
-[ext_resource type="Texture2D" uid="uid://wbavbyjffq6x" path="res://Assets/Sprites/projectile_gum.png" id="1_5h711"]
+[ext_resource type="Texture2D" uid="uid://wbavbyjffq6x" path="res://2D/Sprites/projectile_gum.png" id="1_5h711"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4h4ix"]
 size = Vector2(32, 13)
@@ -211,6 +211,9 @@ animations = [{
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1y173"]
 load_path = "res://.godot/imported/projectile_gum.png-218d91a11ec015e6ff33e76b88047170.ctex"
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_1y173"]
+points = PackedVector2Array(16, 6.5, 16, -8.5, 0, -12.5, -16, -8.5, -16, 6.5, 0, 13.5)
+
 [node name="wall" type="Node2D" unique_id=1551078996]
 script = ExtResource("1_1y173")
 
@@ -224,11 +227,10 @@ shape = SubResource("RectangleShape2D_4h4ix")
 sprite_frames = SubResource("SpriteFrames_jjto0")
 animation = &"barrier_build"
 autoplay = "barrier_build"
-frame = 11
-frame_progress = 0.010247307
+frame = 12
+frame_progress = 1.0
 
 [node name="WallSprite" type="Sprite2D" parent="." unique_id=1840258732]
-visible = false
 texture = SubResource("CompressedTexture2D_1y173")
 hframes = 6
 vframes = 6
@@ -236,5 +238,5 @@ vframes = 6
 [node name="EffectiveHitboxCompanion" type="Area2D" parent="." unique_id=647136209 groups=["CompanionEffectBullet"]]
 
 [node name="collision" type="CollisionShape2D" parent="EffectiveHitboxCompanion" unique_id=1688066107 groups=["CompanionEffectBullet"]]
-position = Vector2(0, 12.5)
-shape = SubResource("RectangleShape2D_4h4ix")
+position = Vector2(0, 13)
+shape = SubResource("ConvexPolygonShape2D_1y173")
