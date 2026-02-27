@@ -202,7 +202,7 @@ position = Vector2(409, -190)
 pattern = "five_spray"
 shots_per_parry = 5
 interval = 3.0
-parry_type = "explosion"
+parry_type = "barrier"
 
 [node name="cannon4" parent="." unique_id=1000005637 instance=ExtResource("6_mous7")]
 position = Vector2(497, -142)
