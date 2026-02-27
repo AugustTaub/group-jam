@@ -5,6 +5,8 @@ class_name PlayerController
 @onready var dust_anim_left  = find_child("dust_anim_left")
 @onready var dust_anim_right  = find_child("dust_anim_right")
 @onready var parry_anim  = find_child("parry_anim")
+@onready var parry_hitbox  = find_child("ParryHitbox").get_child(0)
+@onready var hurtbox  = find_child("hurtbox")
 
 @export_range(0,2) var number_comp : int = 0
 @export var speedVal : float = 200.0
@@ -22,6 +24,8 @@ var can_move : bool = true:
 			speed = speedVal
 
 @export var knockback_power : float = 500.0
+var knockback_timer : float = 0.0
+var gommemode: bool = false
 
 @onready var animation = $AnimationPlayer
 #@onready var dust_offset: float = $DustParticle.position.x
@@ -67,17 +71,17 @@ func _physics_process(delta):
 	
 	if iso_velocity.length() == 0:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
-		animation.play("idle")
+		player_anim.play("player_idle")
 		#$DustParticle.self_modulate = 0
 	else:	
 		velocity = iso_velocity.normalized() * speed
-		animation.play("Running_new")
+		player_anim.play("player_walk")
 		SignalBus.player_move.emit()
 		#$DustParticle.position.x = dustPosXreverse
 
 		
 	if velocity.x != 0:
-		$PlayerRun.flip_h = velocity.x < 0
+		player_anim.flip_h = velocity.x < 0
 		#$DustParticle.position.x = dustPosX
 		
 	move_and_slide()
@@ -107,13 +111,23 @@ func companions_follow(delta):
 
 
 #TO-DO
-func knockback(source_velocity: Vector2):
-	var knockback_direction = (source_velocity - velocity).normalized()
-	var iso_knockback = Vector2(knockback_direction.x, knockback_direction.y * 0.5)
-
-	velocity = iso_knockback.normalized() * knockback_power
-	move_and_slide()
+func knockback(direction: Vector2, duration: float, force: float):
+	if gommemode:
+		return
 	
+	gommemode = true
+	
+	#FUNCTION: Bitte umänder falls ne nötig, ist bis jetzt für player feedback, maybe ne blink animation wenn zeit ist
+	self.modulate.a = 0.5
+	var iso_direction = Vector2(direction.x, direction.y * 0.5).normalized()
+	velocity = iso_direction * (knockback_power * force)
+	
+	knockback_timer = duration
+	can_move = false
+	
+	hurtbox.get_child(0).set_deferred("disabled", true)
+	parry_hitbox.set_deferred("disabled", true)
+
 func parry():
 	if not can_move: 
 		return 
@@ -121,8 +135,8 @@ func parry():
 	can_move = false 
 	$ParryHitbox/CollisionShape2D.set_deferred("disabled", false)
 	
-	animation.play("parry")
-	await animation.animation_finished
+	parry_anim.play("player_parry")
+	await parry_anim.animation_finished
 	$ParryHitbox/CollisionShape2D.set_deferred("disabled", true)
 	
 	can_move = true 
