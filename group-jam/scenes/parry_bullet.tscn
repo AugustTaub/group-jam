@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c1i7kf11tfbjp"]
 
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="1_3ebxt"]
-[ext_resource type="Script" path="res://scripts/parry_bullet.gd" id="1_puhhl"]
+[ext_resource type="Script" uid="uid://dvn44yewhelf3" path="res://scripts/parry_bullet.gd" id="1_puhhl"]
 [ext_resource type="Texture2D" uid="uid://b8ixmgtksxmy1" path="res://2D/Sprites/Unbenanntes_Projekt_42.png" id="2_puhhl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4va5"]
@@ -67,16 +67,25 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a14a"]
 size = Vector2(12, 12)
 
+[sub_resource type="Gradient" id="Gradient_puhhl"]
+colors = PackedColorArray(1, 0, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4va5"]
+gradient = SubResource("Gradient_puhhl")
+fill = 1
+fill_from = Vector2(0.51086956, 0.48913044)
+fill_to = Vector2(0.9326087, 0.060869563)
+
 [node name="parry_bullet" type="Area2D" unique_id=387785815]
 script = ExtResource("1_puhhl")
 
 [node name="anim_sprite" type="AnimatedSprite2D" parent="." unique_id=2139605471]
 position = Vector2(-1, -2)
 sprite_frames = SubResource("SpriteFrames_8a14a")
-animation = &"explosion_idle"
-frame_progress = 0.9486604
+animation = &"teleport_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1857015505]
+visible = false
 shape = SubResource("RectangleShape2D_8a14a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=87109185]
@@ -84,3 +93,9 @@ visible = false
 modulate = Color(18.892157, 0, 0, 1)
 scale = Vector2(0.10546872, 0.10546872)
 texture = ExtResource("1_3ebxt")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1814629468]
+position = Vector2(0, -1)
+scale = Vector2(0.54, 0.54)
+energy = 2.49
+texture = SubResource("GradientTexture2D_g4va5")

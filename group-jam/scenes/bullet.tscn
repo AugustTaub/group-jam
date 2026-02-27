@@ -2,24 +2,57 @@
 
 [ext_resource type="Script" uid="uid://dvq6d7jhulx33" path="res://scripts/bullet.gd" id="1_y25gk"]
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="2_l5glv"]
+[ext_resource type="Texture2D" uid="uid://r1cj3opnva2u" path="res://Assets/bullets.png" id="3_l5glv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eoqba"]
 size = Vector2(12, 12)
 
+[sub_resource type="Gradient" id="Gradient_eoqba"]
+offsets = PackedFloat32Array(0.3554217, 0.62650603, 1)
+colors = PackedColorArray(0.6862745, 1, 1, 1, 0.42745098, 1, 1, 0.8784314, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qncy5"]
+gradient = SubResource("Gradient_eoqba")
+fill = 1
+fill_from = Vector2(0.50869566, 0.49130434)
+fill_to = Vector2(0.87608695, 0.13043478)
+
 [node name="Bullet" type="Area2D" unique_id=1939860656 groups=["Bullet"]]
 script = ExtResource("1_y25gk")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=597940893]
+visible = false
+offset_left = -19.0
+offset_top = -20.0
+offset_right = 21.0
+offset_bottom = 20.0
+color = Color(0.4509804, 0.4509804, 0.4509804, 0.40784314)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=92397145]
+visible = false
 shape = SubResource("RectangleShape2D_eoqba")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1572522385]
+visible = false
 modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.10546872, 0.10546872)
 texture = ExtResource("2_l5glv")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1214099308]
+visible = false
 
 [node name="shape" type="CollisionShape2D" parent="hitbox" unique_id=498526088]
 shape = SubResource("RectangleShape2D_eoqba")
+disabled = true
+
+[node name="Bullets" type="Sprite2D" parent="." unique_id=1457333955]
+scale = Vector2(0.77, 0.77)
+texture = ExtResource("3_l5glv")
+hframes = 3
+
+[node name="PointLight2D" type="PointLight2D" parent="Bullets" unique_id=1851742785]
+scale = Vector2(0.35, 0.35)
+texture = SubResource("GradientTexture2D_qncy5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

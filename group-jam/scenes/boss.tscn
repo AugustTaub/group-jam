@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dr7v0dqryacqv"]
 
 [ext_resource type="Script" uid="uid://cilhiu3cpjoam" path="res://scripts/boss_logic.gd" id="1_neq0i"]
-[ext_resource type="Texture2D" uid="uid://kxq180lvm817" path="res://Assets/Sprites/EnemySprites_BossIdle.png" id="2_qnbj4"]
-[ext_resource type="Texture2D" uid="uid://4gwpyftqrei0" path="res://Assets/Sprites/EnemySprite_BossEnd.png" id="3_r3bxh"]
-[ext_resource type="Texture2D" uid="uid://dexkkm8lf6vf8" path="res://Assets/Sprites/EnemySprite_boss_arms.png" id="4_qnbj4"]
+[ext_resource type="Texture2D" uid="uid://kxq180lvm817" path="res://2D/Sprites/EnemySprites_BossIdle.png" id="2_qnbj4"]
+[ext_resource type="Texture2D" uid="uid://4gwpyftqrei0" path="res://2D/Sprites/EnemySprite_BossEnd.png" id="3_r3bxh"]
+[ext_resource type="Texture2D" uid="uid://dexkkm8lf6vf8" path="res://2D/Sprites/EnemySprite_boss_arms.png" id="4_qnbj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqpjq"]
 atlas = ExtResource("2_qnbj4")
@@ -204,16 +204,25 @@ height = 38.0
 radius = 13.0
 height = 46.0
 
+[sub_resource type="Gradient" id="Gradient_qnbj4"]
+colors = PackedColorArray(1, 0.4741193, 0.9874739, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r3bxh"]
+gradient = SubResource("Gradient_qnbj4")
+fill = 1
+fill_from = Vector2(0.5521739, 0.51086956)
+fill_to = Vector2(0.8673913, 0.069565214)
+
 [node name="Boss" type="Node2D" unique_id=1666674495]
 script = ExtResource("1_neq0i")
 
 [node name="boss_animation" type="AnimatedSprite2D" parent="." unique_id=658980174]
+light_mask = 0
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_nk50o")
-animation = &"boss_on"
+animation = &"boss_idle_converted"
 autoplay = "boss_idle"
-frame = 2
-frame_progress = 1.0
+frame_progress = 0.54676217
 
 [node name="tentacle_animation" type="AnimatedSprite2D" parent="." unique_id=710469563]
 position = Vector2(1, -32)
@@ -233,3 +242,10 @@ position = Vector2(0, -37)
 position = Vector2(2, -4)
 shape = SubResource("CapsuleShape2D_dlmty")
 debug_color = Color(0, 0.6509804, 0.38431373, 0.1254902)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=859234739]
+visible = false
+position = Vector2(-4, -26.000004)
+scale = Vector2(1, 0.734375)
+energy = 2.57
+texture = SubResource("GradientTexture2D_r3bxh")

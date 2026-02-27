@@ -634,10 +634,28 @@ height = 20.0
 radius = 9.0
 height = 24.0
 
+[sub_resource type="Gradient" id="Gradient_ur7pv"]
+offsets = PackedFloat32Array(0.20783132, 1)
+colors = PackedColorArray(1, 0.5647059, 0.9882353, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y4r1p"]
+gradient = SubResource("Gradient_ur7pv")
+fill = 1
+fill_from = Vector2(0.49565217, 0.48043478)
+fill_to = Vector2(0.9195652, 0.07608695)
+
 [node name="Player" type="CharacterBody2D" unique_id=1508676161 groups=["Player"]]
 position = Vector2(0, -13)
 script = ExtResource("1_g2els")
 knockback_power = 1000.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=963413126]
+visible = false
+offset_left = -40.0
+offset_top = -38.0
+offset_right = 39.0
+offset_bottom = 39.0
+color = Color(0.4509804, 0.4509804, 0.4509804, 0.40784314)
 
 [node name="alex_anims" type="Node2D" parent="." unique_id=1796449004]
 
@@ -700,7 +718,8 @@ position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_qhqgy")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=878384511]
-zoom = Vector2(1.82, 1.82)
+position = Vector2(45, -25)
+zoom = Vector2(3.16, 3.16)
 
 [node name="ParryHitbox" type="Area2D" parent="." unique_id=230190237]
 position = Vector2(0, 8)
@@ -720,16 +739,19 @@ script = ExtResource("4_dqkch")
 [node name="gameplay_music" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=696361850]
 stream = ExtResource("5_qlg0r")
 volume_db = -11.687
-bus = &"Music"
 parameters/looping = true
 
 [node name="blup" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1420179552]
 stream = ExtResource("6_tuyoq")
-bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1222923892]
 
 [node name="in_game_ui" parent="CanvasLayer" unique_id=1913189176 instance=ExtResource("9_ur7pv")]
 mouse_filter = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=888486520]
+position = Vector2(-1, 9)
+scale = Vector2(1, 0.69)
+texture = SubResource("GradientTexture2D_y4r1p")
 
 [connection signal="body_entered" from="ParryHitbox" to="." method="_on_parry_hitbox_body_entered"]
