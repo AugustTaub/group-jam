@@ -59,6 +59,19 @@ func player_animation():
 		player_anim.play("player_idle")
 
 func _physics_process(delta):
+	
+	if knockback_timer > 0.0:
+		knockback_timer -= delta
+		move_and_slide() 
+		
+		if knockback_timer <= 0.0:
+			can_move = true
+			gommemode = false
+			self.modulate.a = 1.0
+			hurtbox.get_child(0).set_deferred("disabled", false)
+		return
+		
+	
 	if not can_move:
 		velocity = Vector2.ZERO 
 		move_and_slide()
@@ -131,7 +144,7 @@ func knockback(direction: Vector2, duration: float, force: float):
 func parry():
 	if not can_move: 
 		return 
-		
+	
 	can_move = false 
 	$ParryHitbox/CollisionShape2D.set_deferred("disabled", false)
 	

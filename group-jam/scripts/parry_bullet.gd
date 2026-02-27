@@ -42,5 +42,5 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 	
 func isParried():
 	#print("hitted parry mit " + type)
-	SignalBus.create_conpanion_by_name.emit(type)
+	SignalBus.create_companion.emit(type)
 	queue_free()
