@@ -68,7 +68,8 @@ func isParried():
 	
 	in_freeze = true
 	set_process(false) 
-	set_deferred("monitoring", false)
+	hitbox.get_child(0).set_deferred("disabled", true)
+
 	
 	#TODO aus irgendeinem grund kann es sein das der character 
 	#im freeze state bleibt. ich habe keine ahnung wieso oder warum
