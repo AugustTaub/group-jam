@@ -333,7 +333,7 @@ debug_color = Color(0.36449513, 0.42864174, 0.07651729, 0.41960785)
 position = Vector2(0, 8)
 collision_layer = 7
 
-[node name="collision" type="CollisionShape2D" parent="hurtbox" unique_id=1150933128 groups=["Bullet", "Player"]]
+[node name="collision" type="CollisionShape2D" parent="hurtbox" unique_id=1150933128]
 position = Vector2(-1, -10)
 shape = SubResource("CapsuleShape2D_qhqgy")
 debug_color = Color(0.87248534, 0.00047322153, 0.8449739, 0.41960785)

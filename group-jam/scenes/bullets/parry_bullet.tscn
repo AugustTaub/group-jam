@@ -1,34 +1,34 @@
-[gd_scene format=3 uid="uid://c1i7kf11tfbjp"]
+[gd_scene format=3 uid="uid://bogqq4408bsw5"]
 
-[ext_resource type="Script" uid="uid://dvn44yewhelf3" path="res://scripts/parry_bullet.gd" id="1_puhhl"]
-[ext_resource type="Texture2D" uid="uid://bru8qu1t7wlmn" path="res://2D/Sprites/parry_bullet.png" id="2_g4va5"]
-[ext_resource type="Texture2D" uid="uid://bv5q81fq2bdcd" path="res://2D/Sprites/parry_particle.png" id="3_g4va5"]
+[ext_resource type="Script" uid="uid://ndqr0pwpmwvm" path="res://scripts/parry_bullet_script.gd" id="1_p4dlw"]
+[ext_resource type="Texture2D" uid="uid://bru8qu1t7wlmn" path="res://2D/Sprites/parry_bullet.png" id="2_p4dlw"]
+[ext_resource type="Texture2D" uid="uid://bv5q81fq2bdcd" path="res://2D/Sprites/parry_particle.png" id="3_gu03s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xeqg1"]
-atlas = ExtResource("2_g4va5")
+atlas = ExtResource("2_p4dlw")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5tuf"]
-atlas = ExtResource("2_g4va5")
+atlas = ExtResource("2_p4dlw")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_adu4x"]
-atlas = ExtResource("2_g4va5")
+atlas = ExtResource("2_p4dlw")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_arx3x"]
-atlas = ExtResource("2_g4va5")
+atlas = ExtResource("2_p4dlw")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3iy4b"]
-atlas = ExtResource("2_g4va5")
+atlas = ExtResource("2_p4dlw")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o0pxb"]
-atlas = ExtResource("2_g4va5")
+atlas = ExtResource("2_p4dlw")
 region = Rect2(64, 64, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8a14a"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtlmh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -67,33 +67,33 @@ animations = [{
 [sub_resource type="Gradient" id="Gradient_puhhl"]
 colors = PackedColorArray(1, 0, 1, 1, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4va5"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aj0fm"]
 gradient = SubResource("Gradient_puhhl")
 fill = 1
 fill_from = Vector2(0.51086956, 0.48913044)
 fill_to = Vector2(0.9326087, 0.060869563)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
-atlas = ExtResource("3_g4va5")
+atlas = ExtResource("3_gu03s")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dt7fs"]
-atlas = ExtResource("3_g4va5")
+atlas = ExtResource("3_gu03s")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqfne"]
-atlas = ExtResource("3_g4va5")
+atlas = ExtResource("3_gu03s")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
-atlas = ExtResource("3_g4va5")
+atlas = ExtResource("3_gu03s")
 region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
-atlas = ExtResource("3_g4va5")
+atlas = ExtResource("3_gu03s")
 region = Rect2(64, 64, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xeqg1"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ck4ri"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -116,32 +116,35 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8a14a"]
-size = Vector2(13, 11)
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4dlw"]
+radius = 8.0
 
-[node name="parry_bullet" type="Area2D" unique_id=387785815]
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("1_puhhl")
+[node name="parry_bullet" type="CharacterBody2D" unique_id=306601767 groups=["Bullet"]]
+script = ExtResource("1_p4dlw")
 
-[node name="anim_sprite" type="AnimatedSprite2D" parent="." unique_id=2139605471]
+[node name="anim_sprite" type="AnimatedSprite2D" parent="." unique_id=850944374]
 position = Vector2(-1, -2)
-sprite_frames = SubResource("SpriteFrames_8a14a")
+sprite_frames = SubResource("SpriteFrames_dtlmh")
 animation = &"teleport_idle"
 
-[node name="PointLight2D" type="PointLight2D" parent="anim_sprite" unique_id=1814629468]
+[node name="PointLight2D" type="PointLight2D" parent="anim_sprite" unique_id=1056689006]
 position = Vector2(1, 1)
 scale = Vector2(0.54, 0.54)
 energy = 2.49
-texture = SubResource("GradientTexture2D_g4va5")
+texture = SubResource("GradientTexture2D_aj0fm")
 
-[node name="parry_anim" type="AnimatedSprite2D" parent="." unique_id=1383889739]
+[node name="parry_anim" type="AnimatedSprite2D" parent="." unique_id=765851858]
+visible = false
 position = Vector2(1, -21)
-sprite_frames = SubResource("SpriteFrames_xeqg1")
+sprite_frames = SubResource("SpriteFrames_ck4ri")
 animation = &"player_parry"
-frame = 4
-frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1857015505]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1219479376]
+visible = false
 position = Vector2(0.5, -1.5)
-shape = SubResource("RectangleShape2D_8a14a")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=284889794]
+
+[node name="collision" type="CollisionShape2D" parent="hitbox" unique_id=210262092]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_p4dlw")
