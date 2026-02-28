@@ -109,7 +109,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a14a"]
-size = Vector2(12, 12)
+size = Vector2(6, 5)
 
 [node name="parry_bullet" type="Area2D" unique_id=387785815]
 script = ExtResource("1_puhhl")
@@ -127,6 +127,7 @@ frame = 4
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1857015505]
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_8a14a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=87109185]

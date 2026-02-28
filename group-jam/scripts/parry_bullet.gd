@@ -44,10 +44,9 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		
 
-func _on_body_entered(body: CharacterBody2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 	if in_freeze:
 		return
-	
 	in_freeze = true
 	Engine.time_scale = 1.0
 	
