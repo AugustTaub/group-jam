@@ -256,12 +256,12 @@ radius = 1.9999999
 height = 3.9999998
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
-radius = 9.0
-height = 28.0
+radius = 18.0
+height = 44.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 6.0
-height = 24.0
+height = 22.0
 
 [sub_resource type="Theme" id="Theme_d2wvv"]
 RichTextLabel/colors/default_color = Color(1, 1, 1, 0.85882354)
@@ -326,7 +326,7 @@ zoom = Vector2(2.2, 2.2)
 position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParryHitbox" unique_id=775375219]
-position = Vector2(0, -9)
+position = Vector2(-1, -9)
 shape = SubResource("CapsuleShape2D_dqkch")
 disabled = true
 debug_color = Color(0.36449513, 0.42864174, 0.07651729, 0.41960785)
