@@ -185,6 +185,7 @@ func knockback(direction: Vector2, duration: float, force: float):
 	hurtbox.get_child(0).set_deferred("disabled", true)
 	parry_hitbox.set_deferred("disabled", true)
 
+
 func parry():
 	if not can_parry: 
 		return 
