@@ -171,4 +171,4 @@ shots_per_parry = 2
 interval = 2.0
 
 [node name="Player" parent="." unique_id=1508676161 instance=ExtResource("4_4d2jd")]
-position = Vector2(409, 615)
+position = Vector2(918, 736)
