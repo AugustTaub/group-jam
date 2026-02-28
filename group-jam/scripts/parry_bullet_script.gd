@@ -43,6 +43,7 @@ func collide_area(area: Area2D) -> void:
 	#	return
 	if area.name == "ParryHitbox":
 		isParried()   
+		return
 	#if area.name == "EffectiveHitboxCompanion":
 	#	queue_free()
 		
@@ -61,8 +62,10 @@ func collide_body(body: Node2D) -> void:
 	
 	
 func isParried():
+	print("is Parried")
 	if in_freeze:
 		return
+	
 	in_freeze = true
 	set_process(false) 
 	set_deferred("monitoring", false)
