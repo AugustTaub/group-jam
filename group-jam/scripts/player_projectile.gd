@@ -91,3 +91,8 @@ func place_sprite(delta : float):
 		var sprite_direction = 1
 		var iso_velocity = Vector2(sprite_direction,sprite_direction * 0.5)
 		sprites.global_position.y += sprites.global_position.direction_to( iso_velocity).y * speed * 2 * delta
+
+func collide(body : Node2D):
+	if body.is_in_group("world_collision"):
+		print("hy")
+		queue_free()
