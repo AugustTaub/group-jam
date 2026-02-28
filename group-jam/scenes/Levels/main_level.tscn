@@ -1,8 +1,20 @@
 [gd_scene format=3 uid="uid://c4vddx3y74pdp"]
 
 [ext_resource type="PackedScene" uid="uid://bbo8li54yq4bd" path="res://scenes/zone_2.tscn" id="1_5fd2q"]
+[ext_resource type="PackedScene" uid="uid://dbx7e5nfe38u6" path="res://scenes/Levels/zone_3.tscn" id="2_rdmyl"]
+[ext_resource type="PackedScene" uid="uid://s43ekqyqrfgd" path="res://scenes/zone_1.tscn" id="3_aqlcq"]
+[ext_resource type="PackedScene" uid="uid://3i83m1sxh7ga" path="res://scenes/player.tscn" id="4_csk5y"]
 
 [node name="Node2D" type="Node2D" unique_id=356752225]
 
+[node name="Zone_3" parent="." unique_id=1166785838 instance=ExtResource("2_rdmyl")]
+position = Vector2(1630, -1013)
+
 [node name="zone2" parent="." unique_id=1170203481 instance=ExtResource("1_5fd2q")]
 position = Vector2(-371, -317)
+
+[node name="level_build_scene" parent="." unique_id=2131921601 instance=ExtResource("3_aqlcq")]
+position = Vector2(-1922, 59)
+
+[node name="Player" parent="." unique_id=1508676161 instance=ExtResource("4_csk5y")]
+position = Vector2(-1228, 793)
