@@ -27,7 +27,6 @@ var can_move : bool = true:
 var knockback_timer : float = 0.0
 var gommemode: bool = false
 
-@onready var animation = $AnimationPlayer
 
 @export var parry_window: float = 0.3
 @export var parry_delay: float = 0.5
