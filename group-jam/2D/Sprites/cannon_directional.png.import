@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck1tlmbor66ck"
-path="res://.godot/imported/CannonSprite.png-e66aa40866d71c310afd1d56df8796d8.ctex"
+uid="uid://3pgtr1m0qfd7"
+path="res://.godot/imported/cannon_directional.png-44a29e664710ed17f7c05af4701dd6e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D/Sprites/CannonSprite.png"
-dest_files=["res://.godot/imported/CannonSprite.png-e66aa40866d71c310afd1d56df8796d8.ctex"]
+source_file="res://2D/Sprites/cannon_directional.png"
+dest_files=["res://.godot/imported/cannon_directional.png-44a29e664710ed17f7c05af4701dd6e3.ctex"]
 
 [params]
 
