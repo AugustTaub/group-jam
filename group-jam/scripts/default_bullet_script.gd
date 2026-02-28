@@ -17,7 +17,7 @@ func _ready() -> void:
 	hitbox.area_entered.connect(colliding_area)
 	
 	await get_tree().create_timer(invincible).timeout
-	self.set_collision_mask_value(1,true)
+	hitbox.set_collision_mask_value(1,true)
 	
 func _physics_process(delta: float) -> void:
 	velocity = move_direction.normalized() * speed * speed_mult
