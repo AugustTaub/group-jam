@@ -26,7 +26,7 @@ func _ready():
 	hitbox.body_entered.connect(collide_body)
 	anim_sprite.play(type + "_idle")
 	await get_tree().create_timer(invincible).timeout
-	self.set_collision_mask_value(1,true)
+	hitbox.set_collision_mask_value(1,true)
 	self.look_at(move_direction)
 
 func _process(delta: float) -> void:
