@@ -14,7 +14,7 @@ var speed : float = speedVal
 
 var active_companion_slot: int = 0
 
-#für Parry The Platypus
+#für Parry The Platypus und knockback
 var can_move : bool = true:
 	set(value):
 		can_move = value
@@ -26,6 +26,12 @@ var can_move : bool = true:
 @export var knockback_power : float = 500.0
 var knockback_timer : float = 0.0
 var gommemode: bool = false
+
+@onready var animation = $AnimationPlayer
+
+@export var parry_window: float = 0.3
+@export var parry_delay: float = 0.5
+var can_parry: bool = true
 
 #@onready var dust_offset: float = $DustParticle.position.x
 #var dust_flip: float = dust_offset + 15
@@ -44,6 +50,7 @@ func _process(delta: float) -> void:
 	player_animation()
 
 ## PLAYER ANIMATION
+#TODO can_move mit einbinden bei idle 
 func player_animation():
 	var motion_vector = Input.get_vector("left", "right", "forward", "back")
 	if motion_vector:
@@ -58,7 +65,8 @@ func player_animation():
 		player_anim.play("player_idle")
 
 func _physics_process(delta):
-	
+	# wenn jemand diesen Kommentar ließt schuldet er mir einen Döner
+	#BLOCK IST WICHTIG, NICHT LÖSCHEN VRO
 	if knockback_timer > 0.0:
 		knockback_timer -= delta
 		move_and_slide() 
@@ -69,7 +77,6 @@ func _physics_process(delta):
 			self.modulate.a = 1.0
 			hurtbox.get_child(0).set_deferred("disabled", false)
 		return
-		
 	
 	if not can_move:
 		velocity = Vector2.ZERO 
@@ -92,8 +99,8 @@ func _physics_process(delta):
 		#$DustParticle.position.x = dustPosXreverse
 		
 		
-	if velocity.x != 0:
-		player_anim.flip_h = velocity.x < 0
+#	if velocity.x != 0:
+#		player_anim.flip_h = velocity.x < 0
 		#$DustParticle.position.x = dustPosX
 		
 	move_and_slide()
@@ -127,6 +134,8 @@ func knockback(direction: Vector2, duration: float, force: float):
 	if gommemode:
 		return
 	
+	Engine.time_scale = 1.0
+	
 	gommemode = true
 	
 	#FUNCTION: Bitte umänder falls ne nötig, ist bis jetzt für player feedback, maybe ne blink animation wenn zeit ist
@@ -141,17 +150,21 @@ func knockback(direction: Vector2, duration: float, force: float):
 	parry_hitbox.set_deferred("disabled", true)
 
 func parry():
-	if not can_move: 
+	if not can_move or not can_parry: 
 		return 
 	
-	can_move = false 
+	can_move = false
+	can_parry = false 
+	
 	$ParryHitbox/CollisionShape2D.set_deferred("disabled", false)
-	
-	parry_anim.play("player_parry")
-	await parry_anim.animation_finished
+	await get_tree().create_timer(parry_window).timeout
+	#parry_anim.play("player_parry")
+	#await parry_anim.animation_finished
 	$ParryHitbox/CollisionShape2D.set_deferred("disabled", true)
+	can_move = true
 	
-	can_move = true 
+	await get_tree().create_timer(parry_delay).timeout
+	can_parry = true
 
 ## ability use logic
 #ability_type_list contains all types of companions
@@ -201,7 +214,7 @@ func _input(event: InputEvent) -> void:
 		
 	if Input.is_action_just_pressed("parry_v"):
 		print("parry_button")
-		parry_anim.play("player_parry")
+		#parry_anim.play("player_parry")
 		parry()
 		
 func teleport(pos : Vector2):

@@ -2,40 +2,41 @@
 
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="1_3ebxt"]
 [ext_resource type="Script" uid="uid://dvn44yewhelf3" path="res://scripts/parry_bullet.gd" id="1_puhhl"]
-[ext_resource type="Texture2D" uid="uid://bru8qu1t7wlmn" path="res://2D/Sprites/parry_bullet.png" id="2_puhhl"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g4va5"]
-atlas = ExtResource("2_puhhl")
-region = Rect2(0, 32, 32, 32)
+[ext_resource type="Texture2D" uid="uid://bru8qu1t7wlmn" path="res://2D/Sprites/parry_bullet.png" id="2_g4va5"]
+[ext_resource type="Texture2D" uid="uid://bv5q81fq2bdcd" path="res://2D/Sprites/parry_particle.png" id="3_g4va5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xeqg1"]
-atlas = ExtResource("2_puhhl")
-region = Rect2(64, 32, 32, 32)
+atlas = ExtResource("2_g4va5")
+region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5tuf"]
-atlas = ExtResource("2_puhhl")
-region = Rect2(0, 0, 32, 32)
+atlas = ExtResource("2_g4va5")
+region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_adu4x"]
-atlas = ExtResource("2_puhhl")
-region = Rect2(64, 0, 32, 32)
+atlas = ExtResource("2_g4va5")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_arx3x"]
-atlas = ExtResource("2_puhhl")
-region = Rect2(0, 64, 32, 32)
+atlas = ExtResource("2_g4va5")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3iy4b"]
-atlas = ExtResource("2_puhhl")
+atlas = ExtResource("2_g4va5")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0pxb"]
+atlas = ExtResource("2_g4va5")
 region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8a14a"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g4va5")
+"texture": SubResource("AtlasTexture_xeqg1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xeqg1")
+"texture": SubResource("AtlasTexture_g5tuf")
 }],
 "loop": true,
 "name": &"barrier_idle",
@@ -43,10 +44,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g5tuf")
+"texture": SubResource("AtlasTexture_adu4x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_adu4x")
+"texture": SubResource("AtlasTexture_arx3x")
 }],
 "loop": true,
 "name": &"explosion_idle",
@@ -54,13 +55,56 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_arx3x")
+"texture": SubResource("AtlasTexture_3iy4b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3iy4b")
+"texture": SubResource("AtlasTexture_o0pxb")
 }],
 "loop": true,
 "name": &"teleport_idle",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
+atlas = ExtResource("3_g4va5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt7fs"]
+atlas = ExtResource("3_g4va5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqfne"]
+atlas = ExtResource("3_g4va5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
+atlas = ExtResource("3_g4va5")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
+atlas = ExtResource("3_g4va5")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xeqg1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf23h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt7fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqfne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnwbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl8cc")
+}],
+"loop": false,
+"name": &"player_parry",
 "speed": 6.0
 }]
 
@@ -73,7 +117,14 @@ script = ExtResource("1_puhhl")
 [node name="anim_sprite" type="AnimatedSprite2D" parent="." unique_id=2139605471]
 position = Vector2(-1, -2)
 sprite_frames = SubResource("SpriteFrames_8a14a")
-animation = &"barrier_idle"
+animation = &"teleport_idle"
+
+[node name="parry_anim" type="AnimatedSprite2D" parent="." unique_id=1383889739]
+position = Vector2(1, -21)
+sprite_frames = SubResource("SpriteFrames_xeqg1")
+animation = &"player_parry"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1857015505]
 shape = SubResource("RectangleShape2D_8a14a")
