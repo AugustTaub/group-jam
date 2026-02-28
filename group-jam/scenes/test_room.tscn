@@ -206,8 +206,16 @@ interval = 3.0
 parry_type = "barrier"
 
 [node name="cannon5" parent="." unique_id=1397073264 instance=ExtResource("6_mous7")]
-position = Vector2(360, -151)
+position = Vector2(329, -132)
 direction = "up"
+pattern = "five_spray"
+shots_per_parry = 5
+interval = 3.0
+parry_type = "barrier"
+
+[node name="cannon7" parent="." unique_id=150292798 instance=ExtResource("6_mous7")]
+position = Vector2(385, -79)
+direction = "right"
 pattern = "five_spray"
 shots_per_parry = 5
 interval = 3.0

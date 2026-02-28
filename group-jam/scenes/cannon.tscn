@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://26r0mhsf67wq" path="res://scripts/cannon.gd" id="1_xuqfy"]
 [ext_resource type="Texture2D" uid="uid://ck1tlmbor66ck" path="res://2D/Sprites/CannonSprite.png" id="2_pxhkx"]
 [ext_resource type="Texture2D" uid="uid://kxq180lvm817" path="res://2D/Sprites/EnemySprites_BossIdle.png" id="3_yjxeu"]
+[ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="4_jfr8q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjxeu"]
 atlas = ExtResource("2_pxhkx")
@@ -27,6 +28,10 @@ region = Rect2(0, 0, 96, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibe8o"]
 atlas = ExtResource("3_yjxeu")
 region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8lec"]
+atlas = ExtResource("4_jfr8q")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yaj4g"]
 atlas = ExtResource("2_pxhkx")
@@ -68,6 +73,10 @@ region = Rect2(0, 0, 96, 64)
 atlas = ExtResource("3_yjxeu")
 region = Rect2(96, 0, 96, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsoy7"]
+atlas = ExtResource("4_jfr8q")
+region = Rect2(64, 32, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_edsmq"]
 atlas = ExtResource("2_pxhkx")
 region = Rect2(0, 0, 56, 56)
@@ -102,7 +111,10 @@ animations = [{
 "name": &"shoot_left",
 "speed": 6.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8lec")
+}],
 "loop": false,
 "name": &"shoot_right",
 "speed": 5.0
@@ -152,7 +164,10 @@ animations = [{
 "name": &"start_left",
 "speed": 6.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsoy7")
+}],
 "loop": false,
 "name": &"start_right",
 "speed": 5.0
@@ -213,13 +228,11 @@ animations = [{
 script = ExtResource("1_xuqfy")
 
 [node name="cannon_animation" type="AnimatedSprite2D" parent="." unique_id=909371777]
-position = Vector2(-2, 3)
 scale = Vector2(1.03125, 1)
 sprite_frames = SubResource("SpriteFrames_pxhkx")
-animation = &"shoot_down"
+animation = &"start_right"
 
 [node name="blow_animation" type="AnimatedSprite2D" parent="." unique_id=1095960678]
-position = Vector2(-7, -3)
 sprite_frames = SubResource("SpriteFrames_vda2x")
 animation = &"blow"
 frame = 4
@@ -227,4 +240,4 @@ frame = 4
 [node name="pattern_ancor" type="Node2D" parent="." unique_id=452076657]
 
 [node name="pattern_position" type="Node2D" parent="pattern_ancor" unique_id=762270676]
-position = Vector2(-5, 1)
+position = Vector2(0, 5)

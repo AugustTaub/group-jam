@@ -9,17 +9,12 @@ size = Vector2(4, 4)
 [node name="Bullet" type="Area2D" unique_id=1939860656 groups=["Bullet"]]
 script = ExtResource("1_y25gk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=92397145]
-shape = SubResource("RectangleShape2D_eoqba")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1572522385]
 modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.10546872, 0.10546872)
 texture = ExtResource("2_l5glv")
 
-[node name="hitbox" type="Area2D" parent="." unique_id=1214099308]
-
-[node name="shape" type="CollisionShape2D" parent="hitbox" unique_id=498526088]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=92397145]
 shape = SubResource("RectangleShape2D_eoqba")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
