@@ -85,8 +85,9 @@ position = Vector2(1409, 403)
 [node name="cannon17" parent="one_cannon_hole" unique_id=468590572 instance=ExtResource("3_yexht")]
 position = Vector2(12, 10)
 direction = "right"
-interval = 0.5
+interval = 0.3
 parry_type = "explosion"
+speed_multiplier = 0.51
 
 [node name="big_room" type="Node2D" parent="." unique_id=486125277]
 

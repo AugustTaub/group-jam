@@ -255,9 +255,8 @@ animations = [{
 radius = 1.9999999
 height = 3.9999998
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
-radius = 18.0
-height = 44.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_d2wvv"]
+radius = 21.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 6.0
@@ -311,7 +310,7 @@ frame = 4
 frame_progress = 1.0
 
 [node name="WalkHitbox" type="CollisionShape2D" parent="." unique_id=1221488363 groups=["Bullet", "Player"]]
-position = Vector2(-1, 12)
+position = Vector2(0, 12)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_qlg0r")
 
@@ -323,7 +322,7 @@ position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParryHitbox" unique_id=775375219]
 position = Vector2(-1, -9)
-shape = SubResource("CapsuleShape2D_dqkch")
+shape = SubResource("CircleShape2D_d2wvv")
 disabled = true
 debug_color = Color(0.36449513, 0.42864174, 0.07651729, 0.41960785)
 
@@ -333,7 +332,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="collision" type="CollisionShape2D" parent="hurtbox" unique_id=1150933128]
-position = Vector2(-1, -10)
+position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_qhqgy")
 debug_color = Color(0.87248534, 0.00047322153, 0.8449739, 0.41960785)
 
