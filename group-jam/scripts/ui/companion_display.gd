@@ -8,7 +8,7 @@ var preloaded_companion_tex0: Texture2D = preload("res://2D/Sprites/single_bomb_
 var preloaded_companion_tex1: Texture2D = preload("res://2D/Sprites/single_barrier_bullet.png")
 var preloaded_companion_tex2: Texture2D = preload("res://2D/Sprites/single_teleport_bullet.png")
 
-var active_display_index: int = 0
+var active_display_index: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,7 +47,7 @@ func _process(delta):
 	#if Input.is_action_just_pressed("switch_ability_mouse_right"):
 		#cycle_display()
 
-func cycle_display():
+func cycle_display(_active_slot_i: int = 1):
 	
 	if anims_running: 
 		queued_anim = true

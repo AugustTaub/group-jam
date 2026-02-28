@@ -220,7 +220,7 @@ shots_per_parry = 5
 interval = 3.0
 parry_type = "explosion"
 
-[node name="cannon5" parent="." unique_id=1491708695 groups=["world_collision"] instance=ExtResource("6_mous7")]
+[node name="cannon6" parent="." unique_id=1491708695 groups=["world_collision"] instance=ExtResource("6_mous7")]
 position = Vector2(462, -151)
 pattern = "five_spray"
 delay = 1.5

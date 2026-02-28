@@ -42,6 +42,8 @@ var can_parry: bool = true
 
 func _ready():
 	SignalBus.teleport_player.connect(teleport)
+	SignalBus.parried_bullet.connect(func():$parry_VFX.trigger_hit_vfx())
+	
 	CompanionLogic.player = self
 	CompanionLogic.container = self.find_child("companion_container")
 
@@ -67,11 +69,25 @@ func player_animation():
 func _physics_process(delta):
 	# wenn jemand diesen Kommentar ließt schuldet er mir einen Döner
 	#BLOCK IST WICHTIG, NICHT LÖSCHEN VRO
+	# VRO ich lösche nicht absichtlich zeug. das war der merge und das passiert öfter desto mehr zeug du in die process func rein haust und nicht in eigene Funktionen
 	if knockback_timer > 0.0:
 		knockback_timer -= delta
 		move_and_slide() 
 		
+		#anim
+		$alex_anims.skew += delta * 16
+		if $alex_anims.skew > 90:
+			$alex_anims.skew = -90
+		
+		
 		if knockback_timer <= 0.0:
+			#revert anim
+			var tween = create_tween()
+			tween.tween_property($alex_anims,"skew",0,0.15)
+			dust_anim_left.show()
+			dust_anim_right.show()
+			
+			
 			can_move = true
 			gommemode = false
 			self.modulate.a = 1.0
@@ -121,11 +137,19 @@ func companions_follow(delta):
 			target_node = $companion_container.get_children()[i-1]
 		
 		var dist: float = child.global_position.distance_to(target_node.global_position)
+		var player_dist: float = child.global_position.distance_to(global_position)
 		
 		if dist >= 30:
 			var dir: Vector2 = child.global_position.direction_to(target_node.global_position)
-			child.global_position +=  dir * delta * child.SPEED
-		
+			child.global_position +=  dir * delta * child.SPEED * 1.2
+		elif player_dist < 35:
+			var dir: Vector2
+			if player_dist < 25:
+				dir = global_position.direction_to(child.global_position)
+			else:
+				dir = child.global_position.direction_to(global_position).rotated(deg_to_rad(90))
+			
+			child.global_position +=  dir * delta * child.SPEED/2
 		i += 1
 
 
@@ -135,6 +159,9 @@ func knockback(direction: Vector2, duration: float, force: float):
 		return
 	
 	Engine.time_scale = 1.0
+	
+	dust_anim_left.hide()
+	dust_anim_right.hide()
 	
 	gommemode = true
 	
@@ -150,11 +177,18 @@ func knockback(direction: Vector2, duration: float, force: float):
 	parry_hitbox.set_deferred("disabled", true)
 
 func parry():
-	if not can_move or not can_parry: 
+	if not can_parry: 
 		return 
 	
-	can_move = false
+	$parry_VFX.trigger_normal_vfx()
+	
 	can_parry = false 
+	
+	#slow down anstatt movement stop
+	var tween = create_tween()
+	speed = speedVal*0.01
+	tween.tween_property(self,"speed",speedVal,parry_window*1.3).set_trans(Tween.TRANS_BOUNCE)
+	
 	
 	$ParryHitbox/CollisionShape2D.set_deferred("disabled", false)
 	await get_tree().create_timer(parry_window).timeout
@@ -180,7 +214,7 @@ func switch_ability():
 		active_companion_slot = 0
 	
 	print("active_companion_slot",active_companion_slot)
-	SignalBus.switch_companion_pressed.emit()
+	SignalBus.switch_companion_pressed.emit(active_companion_slot)
 
 #creates projectile, that applies effect on landing	
 func cast_ability():

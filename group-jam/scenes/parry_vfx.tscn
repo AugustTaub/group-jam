@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://cdh7tprk6ui2x"]
+
+[ext_resource type="Script" uid="uid://bugfybfksxwc8" path="res://scripts/parry_vfx.gd" id="1_nuete"]
+[ext_resource type="Texture2D" uid="uid://c1tmvie154rb8" path="res://2D/Sprites/x_particle.png" id="2_08ngs"]
+[ext_resource type="Texture2D" uid="uid://dgv3vxb6ks6fr" path="res://2D/Sprites/o_particle.png" id="3_6n6m8"]
+
+[sub_resource type="Gradient" id="Gradient_nuete"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.37272727, 0.48636365, 0.74545455)
+colors = PackedColorArray(1, 1, 1, 0, 0.99999994, 0.3173285, 0.905616, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pjdx5"]
+gradient = SubResource("Gradient_nuete")
+width = 26
+height = 26
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_hu7kh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nuete"]
+curve = SubResource("Curve_hu7kh")
+
+[sub_resource type="Curve" id="Curve_pjdx5"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0.024752483, 0.60674167), 0.0, 0.0, 0, 0, Vector2(0.99999994, 2.1573033), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_08ngs"]
+curve = SubResource("Curve_pjdx5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6n6m8"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_08ngs")
+alpha_curve = SubResource("CurveTexture_nuete")
+turbulence_noise_strength = 3.84
+
+[sub_resource type="Gradient" id="Gradient_hu7kh"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.45454547, 0.55454546, 0.67727274)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nuete"]
+gradient = SubResource("Gradient_hu7kh")
+width = 24
+height = 24
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_uxw7g"]
+_data = [Vector2(0, 0.764045), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dkpnd"]
+curve = SubResource("Curve_uxw7g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_35j3x"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 54.16
+initial_velocity_max = 129.15
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_dkpnd")
+
+[node name="parry_VFX" type="Node2D" unique_id=128708271]
+process_mode = 3
+script = ExtResource("1_nuete")
+
+[node name="hit_particles" type="GPUParticles2D" parent="." unique_id=1776600383]
+process_mode = 3
+emitting = false
+amount = 6
+texture = SubResource("GradientTexture2D_pjdx5")
+lifetime = 0.3
+one_shot = true
+preprocess = 0.2
+explosiveness = 0.3
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_6n6m8")
+
+[node name="normal_particles" type="GPUParticles2D" parent="." unique_id=1333421305]
+process_mode = 3
+scale = Vector2(0.9974782, 1.0073425)
+emitting = false
+amount = 6
+texture = SubResource("GradientTexture2D_nuete")
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.3
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_6n6m8")
+
+[node name="x_particles" type="GPUParticles2D" parent="." unique_id=877999019]
+emitting = false
+texture = ExtResource("2_08ngs")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.88
+process_material = SubResource("ParticleProcessMaterial_35j3x")
+
+[node name="o_particles" type="GPUParticles2D" parent="." unique_id=889999571]
+emitting = false
+texture = ExtResource("3_6n6m8")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.88
+process_material = SubResource("ParticleProcessMaterial_35j3x")

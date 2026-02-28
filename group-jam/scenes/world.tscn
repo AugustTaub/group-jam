@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dkvam8g7iiiji"]
 
-[ext_resource type="PackedScene" uid="uid://dr7v0dqryacqv" path="res://scenes/boss.tscn" id="1_4wyf3"]
+[ext_resource type="PackedScene" path="res://scenes/boss.tscn" id="1_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://86x4yti8bjus" path="res://Assets/Tiles/SpritesheetEnviTiles.png" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://bqmd5grcrgoiy" path="res://scenes/cannon.tscn" id="2_k0juu"]
 [ext_resource type="PackedScene" uid="uid://3i83m1sxh7ga" path="res://scenes/player.tscn" id="3_71j4m"]

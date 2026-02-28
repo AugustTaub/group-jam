@@ -77,6 +77,7 @@ func isParried():
 	parry_anim.visible = true 
 	
 	SignalBus.create_companion_by_name.emit(type)
+	SignalBus.parried_bullet.emit()
 	
 	parry_anim.play("player_parry")
 	await parry_anim.animation_finished

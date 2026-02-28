@@ -49,14 +49,18 @@ func _on_close_button_pressed():
 
 
 func _on_music_slider_value_changed(value):
-	var value_in_db: float = (1-value) * -60
+	var value_in_db: float = (1-value) * -15
 	
 	AudioServer.set_bus_volume_db(1, value_in_db)
 
 
 func _on_vfx_slider_value_changed(value):
-	var value_in_db: float = (1-value) * -60
+	var value_in_db: float = (1-value) * -15
 	
 	AudioServer.set_bus_volume_db(2, value_in_db)
 	
 	SignalBus.play_audio.emit("blup")
+
+
+func _on_music_toggle_toggled(toggled_on):
+	AudioServer.set_bus_mute(1,toggled_on)
