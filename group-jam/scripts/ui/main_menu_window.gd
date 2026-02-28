@@ -7,6 +7,8 @@ extends custom_window
 func _ready():
 	get_tree().paused = true
 	
+	get_parent().show()
+	
 	var drag_margin: MarginContainer = find_child("drag_margin")
 	drag_margin.gui_input.connect(_on_drag_margin_gui_input)
 	

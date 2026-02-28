@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://scripts/audio_manager.gd" id="6_smehm"]
 [ext_resource type="AudioStream" uid="uid://00rpwav51j20" path="res://audio_files/9jackjack8-energy-electrowave-game-beat-293187.mp3" id="7_ur7pv"]
 [ext_resource type="AudioStream" uid="uid://bgg0dfqljulgc" path="res://audio_files/blup.mp3" id="8_y4r1p"]
+[ext_resource type="PackedScene" uid="uid://cdh7tprk6ui2x" path="res://scenes/parry_vfx.tscn" id="9_ur7pv"]
+[ext_resource type="FontFile" uid="uid://buovi3cs2wb7c" path="res://misc/Tiny5-Regular.ttf" id="10_y4r1p"]
+[ext_resource type="Script" uid="uid://csg62y8kcifcd" path="res://scripts/notification_text.gd" id="11_d2wvv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -260,14 +263,26 @@ height = 28.0
 radius = 6.0
 height = 24.0
 
+[sub_resource type="Theme" id="Theme_d2wvv"]
+RichTextLabel/colors/default_color = Color(1, 1, 1, 0.85882354)
+RichTextLabel/colors/font_outline_color = Color(0.76, 0.21279998, 0.58672, 0.40392157)
+RichTextLabel/constants/outline_size = 8
+RichTextLabel/font_sizes/normal_font_size = 8
+RichTextLabel/fonts/normal_font = ExtResource("10_y4r1p")
+
 [node name="Player" type="CharacterBody2D" unique_id=1508676161 groups=["Player"]]
 top_level = true
 y_sort_enabled = true
 position = Vector2(0, -9)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_g2els")
 number_comp = 2
+
+[node name="parry_VFX" parent="." unique_id=128708271 instance=ExtResource("9_ur7pv")]
+
+[node name="companion_container" type="Node2D" parent="." unique_id=839554688]
+top_level = true
 
 [node name="alex_anims" type="Node2D" parent="." unique_id=1796449004]
 
@@ -318,27 +333,38 @@ debug_color = Color(0.36449513, 0.42864174, 0.07651729, 0.41960785)
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=683468552]
 position = Vector2(0, 8)
+collision_layer = 7
 
-[node name="collision" type="CollisionShape2D" parent="hurtbox" unique_id=1150933128 groups=["Bullet", "Player"]]
+[node name="collision" type="CollisionShape2D" parent="hurtbox" unique_id=1150933128]
 position = Vector2(-1, -10)
 shape = SubResource("CapsuleShape2D_qhqgy")
 debug_color = Color(0.87248534, 0.00047322153, 0.8449739, 0.41960785)
-
-[node name="companion_container" type="Node" parent="." unique_id=2065979664]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1532940292]
 
 [node name="in_game_ui" parent="CanvasLayer" unique_id=1913189176 instance=ExtResource("5_qlg0r")]
 
 [node name="audio_manager" type="Node2D" parent="." unique_id=1723057523]
+process_mode = 3
 script = ExtResource("6_smehm")
 
 [node name="gameplay_music" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=2003695358]
 stream = ExtResource("7_ur7pv")
-volume_db = -4.657
+volume_db = -10.866
 
 [node name="blup" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=688715307]
 stream = ExtResource("8_y4r1p")
+
+[node name="notification_text" type="RichTextLabel" parent="." unique_id=175903801]
+offset_left = -81.0
+offset_top = -33.0
+offset_right = 80.0
+offset_bottom = -15.0
+theme = SubResource("Theme_d2wvv")
+text = "!notification!"
+scroll_active = false
+horizontal_alignment = 1
+script = ExtResource("11_d2wvv")
 
 [connection signal="body_entered" from="ParryHitbox" to="." method="_on_parry_hitbox_body_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_parry_hitbox_body_entered"]

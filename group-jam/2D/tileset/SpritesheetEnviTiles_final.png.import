@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck1tlmbor66ck"
-path="res://.godot/imported/CannonSprite.png-e66aa40866d71c310afd1d56df8796d8.ctex"
+uid="uid://lrpd0a4lw3uv"
+path="res://.godot/imported/SpritesheetEnviTiles_final.png-e9f7b0fd73ff6ec4c27673e60a498c2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D/Sprites/CannonSprite.png"
-dest_files=["res://.godot/imported/CannonSprite.png-e66aa40866d71c310afd1d56df8796d8.ctex"]
+source_file="res://2D/tileset/SpritesheetEnviTiles_final.png"
+dest_files=["res://.godot/imported/SpritesheetEnviTiles_final.png-e9f7b0fd73ff6ec4c27673e60a498c2c.ctex"]
 
 [params]
 

@@ -10,8 +10,9 @@ extends Area2D
 
 #Bullet Property
 @export var speed: float = 200.0
+@export var speed_mult: float = 1
 @export var move_direction = Vector2(0, 0)
-
+@export var invincible = 0.5
 #for those who come after 
 @export var knockback_duration: float = 0.3
 @export var knockback_force: float = 1.0
@@ -19,16 +20,17 @@ extends Area2D
 #freeze frame checker
 var in_freeze: bool = false
 
-
-func _process(delta: float) -> void:
-	var iso_velocity = Vector2(move_direction.x, move_direction.y)
-	self.global_position += self.global_position.direction_to( iso_velocity) * speed * delta
-	look_at(-move_direction)
-
-func _ready() -> void:
+func _ready():
 	area_entered.connect(_on_area_entered)
 	body_entered.connect(_on_body_entered)
 	anim_sprite.play(type + "_idle")
+	await get_tree().create_timer(invincible).timeout
+	self.set_collision_mask_value(1,true)
+
+func _process(delta: float) -> void:
+	var iso_velocity = Vector2(move_direction.x, move_direction.y)
+	self.global_position += self.global_position.direction_to( iso_velocity) * speed * speed_mult * delta
+	look_at(-move_direction)
 
 func _on_area_entered(area: Area2D) -> void:
 	if in_freeze:
@@ -44,10 +46,9 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		
 
-func _on_body_entered(body: CharacterBody2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 	if in_freeze:
 		return
-	
 	in_freeze = true
 	Engine.time_scale = 1.0
 	
@@ -77,6 +78,7 @@ func isParried():
 	parry_anim.visible = true 
 	
 	SignalBus.create_companion_by_name.emit(type)
+	SignalBus.parried_bullet.emit()
 	
 	parry_anim.play("player_parry")
 	await parry_anim.animation_finished

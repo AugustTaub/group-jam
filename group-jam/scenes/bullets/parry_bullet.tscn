@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://bogqq4408bsw5"]
+
+[ext_resource type="Script" uid="uid://ndqr0pwpmwvm" path="res://scripts/parry_bullet_script.gd" id="1_p4dlw"]
+[ext_resource type="Texture2D" uid="uid://bru8qu1t7wlmn" path="res://2D/Sprites/parry_bullet.png" id="2_p4dlw"]
+[ext_resource type="Texture2D" uid="uid://bv5q81fq2bdcd" path="res://2D/Sprites/parry_particle.png" id="3_gu03s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeqg1"]
+atlas = ExtResource("2_p4dlw")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5tuf"]
+atlas = ExtResource("2_p4dlw")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adu4x"]
+atlas = ExtResource("2_p4dlw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arx3x"]
+atlas = ExtResource("2_p4dlw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iy4b"]
+atlas = ExtResource("2_p4dlw")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0pxb"]
+atlas = ExtResource("2_p4dlw")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtlmh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeqg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5tuf")
+}],
+"loop": true,
+"name": &"barrier_idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adu4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arx3x")
+}],
+"loop": true,
+"name": &"explosion_idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iy4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0pxb")
+}],
+"loop": true,
+"name": &"teleport_idle",
+"speed": 6.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_puhhl"]
+colors = PackedColorArray(1, 0, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aj0fm"]
+gradient = SubResource("Gradient_puhhl")
+fill = 1
+fill_from = Vector2(0.51086956, 0.48913044)
+fill_to = Vector2(0.9326087, 0.060869563)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
+atlas = ExtResource("3_gu03s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt7fs"]
+atlas = ExtResource("3_gu03s")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqfne"]
+atlas = ExtResource("3_gu03s")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
+atlas = ExtResource("3_gu03s")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
+atlas = ExtResource("3_gu03s")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ck4ri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf23h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt7fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqfne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnwbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl8cc")
+}],
+"loop": false,
+"name": &"player_parry",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4dlw"]
+radius = 8.0
+
+[node name="parry_bullet" type="CharacterBody2D" unique_id=306601767 groups=["Bullet"]]
+script = ExtResource("1_p4dlw")
+
+[node name="anim_sprite" type="AnimatedSprite2D" parent="." unique_id=850944374]
+position = Vector2(-1, -2)
+sprite_frames = SubResource("SpriteFrames_dtlmh")
+animation = &"teleport_idle"
+
+[node name="PointLight2D" type="PointLight2D" parent="anim_sprite" unique_id=1056689006]
+position = Vector2(1, 1)
+scale = Vector2(0.54, 0.54)
+energy = 2.49
+texture = SubResource("GradientTexture2D_aj0fm")
+
+[node name="parry_anim" type="AnimatedSprite2D" parent="." unique_id=765851858]
+visible = false
+position = Vector2(1, -21)
+sprite_frames = SubResource("SpriteFrames_ck4ri")
+animation = &"player_parry"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1219479376]
+visible = false
+position = Vector2(0.5, -1.5)
+
+[node name="hitbox" type="Area2D" parent="." unique_id=284889794]
+
+[node name="collision" type="CollisionShape2D" parent="hitbox" unique_id=210262092]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_p4dlw")

@@ -360,6 +360,7 @@ offset_bottom = 46.0
 texture = ExtResource("4_huati")
 
 [node name="main_menu_parent" type="Control" parent="." unique_id=186638233]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -765,7 +766,7 @@ scroll_active = false
 texture_filter = 1
 layout_mode = 2
 theme = SubResource("Theme_qinws")
-max_value = 1.0
+max_value = 2.0
 step = 0.01
 value = 1.0
 
@@ -792,7 +793,7 @@ scroll_active = false
 texture_filter = 1
 layout_mode = 2
 theme = SubResource("Theme_qinws")
-max_value = 1.0
+max_value = 2.0
 step = 0.01
 value = 1.0
 
@@ -813,11 +814,11 @@ layout_mode = 2
 mouse_filter = 2
 theme = SubResource("Theme_4t0bi")
 theme_override_font_sizes/normal_font_size = 22
-text = "Toggle:"
+text = "Mute Music:"
 fit_content = true
 scroll_active = false
 
-[node name="CheckButton" type="CheckButton" parent="options_window/drag_margin/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=341807292]
+[node name="music_toggle" type="CheckButton" parent="options_window/drag_margin/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=341807292]
 layout_mode = 2
 theme = SubResource("Theme_qinws")
 
@@ -1219,4 +1220,5 @@ expand_mode = 2
 [connection signal="pressed" from="options_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="options_window" method="_on_close_button_pressed"]
 [connection signal="value_changed" from="options_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/music_slider" to="options_window" method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="options_window/drag_margin/VBoxContainer/MarginContainer3/VBoxContainer/vfx_slider" to="options_window" method="_on_vfx_slider_value_changed"]
+[connection signal="toggled" from="options_window/drag_margin/VBoxContainer/MarginContainer2/VBoxContainer/music_toggle" to="options_window" method="_on_music_toggle_toggled"]
 [connection signal="pressed" from="credits_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="credits_window" method="_on_close_button_pressed"]

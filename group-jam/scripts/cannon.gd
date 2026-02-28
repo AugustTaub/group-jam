@@ -1,10 +1,13 @@
+#@tool
 extends Node2D
-
 @export var enabled : bool = true
 var can_shoot : bool = false
 
 @export_category("direction and pattern")
-@export_enum("down","left","right","up") var direction : String = "down"
+@export_enum("down","left","right","up") var direction : String = "down" #:
+	#set(new_direction):
+	#	new_direction = direction
+	#	set_animation(new_direction)
 @export_enum("single_straight", "three_spray", "five_spray", "180_cover") var pattern : String = "single_straight"
 @export var delay : float = 0.0
 
@@ -13,7 +16,9 @@ var can_shoot : bool = false
 var current_shot : int = 1
 @export var interval : float = 1.0
 @export_enum("random","explosion","barrier","teleport") var parry_type : String = "random"
-	
+@export var speed_multiplier: float = 1
+
+
 @onready var cannon_anim = find_child("cannon_animation")
 @onready var blow_anim = find_child("blow_animation")
 	
@@ -21,15 +26,16 @@ var current_shot : int = 1
 @onready var pattern_position = find_child("pattern_position")
 var pattern_node : Node2D
 	
-@onready var bullet = preload("res://scenes/bullet.tscn")
-@onready var parry_bullet = preload("res://scenes/parry_bullet.tscn")
+@onready var bullet = preload("res://scenes/bullets/default_bullet.tscn")
+@onready var parry_bullet = preload("res://scenes/bullets/parry_bullet.tscn")
 
 
 func _ready():
 	instantiate_pattern()
 	apply_direction()
+	set_animation(direction)
 	blow_anim.play("blow") # important because of selected startframe only first animation doesnt play
-	cannon_anim.play("start_" + direction)
+	cannon_anim.play("start")
 	await cannon_anim.animation_finished
 	await get_tree().create_timer(delay).timeout
 	can_shoot = true
@@ -44,7 +50,7 @@ func _process(delta: float) -> void:
 
 #play anim and shoot bullet
 func shoot():
-	cannon_anim.play("shoot_" + direction)
+	cannon_anim.play("shoot")
 	fill_pattern()
 	blow_anim.play("blow")
 	await cannon_anim.animation_finished
@@ -69,13 +75,14 @@ func create_bullet(bullet_type : String, target : Vector2):
 		new_bullet = parry_bullet.instantiate()
 		new_bullet.type = type
 	new_bullet.move_direction = target
+	new_bullet.speed_mult = speed_multiplier
 	self.add_child(new_bullet)
 	
 #gott bewahre, dass es funktioniert "\_(-_-)_/"
 func fill_pattern():
 	for vector in pattern_node.get_children():
 		var target = vector.get_child(0)
-		var new_target =  (target.global_position - self.global_position)  * 1000
+		var new_target =  (target.global_position - self.global_position)
 		if shots_per_parry == current_shot:	
 			create_bullet("parry",new_target)
 			current_shot = 0
@@ -86,12 +93,12 @@ func fill_pattern():
 #sets new direction for vectors of bullets based on rotation selected
 func apply_direction():
 	var pattern_rotation : int = 0
+	var tile_offset = 60
 	match(direction):
-		"down": pattern_rotation = 45 + 10
-		"left": pattern_rotation = 135 + 10
-		"right": pattern_rotation = -135 - 10
-		"up": pattern_rotation = 225 + 10
-		
+		"down": pattern_rotation = 0 + tile_offset
+		"left": pattern_rotation = 90  + tile_offset / 2
+		"right": pattern_rotation = 270 + tile_offset / 2
+		"up": pattern_rotation = 180 + tile_offset
 	pattern_ancor.rotation_degrees = pattern_rotation
 	blow_anim.global_position = pattern_position.global_position
 
@@ -109,5 +116,9 @@ func instantiate_pattern():
 	pattern_node = new_pattern
 	
 
-#TODO
-# mehr default bullets
+func set_animation(new_direction : String):
+	cannon_anim = find_child("cannon_animation_" + new_direction)
+	var animations = find_child("animations")
+	for sprite in animations.get_children():
+		sprite.visible = false
+	cannon_anim.visible = true

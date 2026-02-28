@@ -22,4 +22,6 @@ func select_sprite():
 			current_sprite = sprite
 	current_sprite.visible = true
 	
-		
+
+func set_leg_flip(is_flipped: bool):
+	$leg_sprite.flip_h = is_flipped
