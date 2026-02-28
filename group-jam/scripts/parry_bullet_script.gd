@@ -42,7 +42,8 @@ func collide_area(area: Area2D) -> void:
 	#if in_freeze:
 	#	return
 	if area.name == "ParryHitbox":
-		isParried()   
+		isParried() 
+		return 
 	#if area.name == "EffectiveHitboxCompanion":
 	#	queue_free()
 		
