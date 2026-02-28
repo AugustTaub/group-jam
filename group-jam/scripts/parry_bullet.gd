@@ -33,11 +33,12 @@ func _process(delta: float) -> void:
 	look_at(-move_direction)
 
 func _on_area_entered(area: Area2D) -> void:
+	
 	if in_freeze:
 		return
 	
 	if area.name == "ParryHitbox":
-		#print("parried Bullet")
+		print("parried Bullet")
 		isParried()   
 		
 	if area.name == "EffectiveHitboxCompanion":
@@ -47,6 +48,7 @@ func _on_area_entered(area: Area2D) -> void:
 		
 
 func _on_body_entered(body: Node2D) -> void:
+	print("PARRIED")
 	if in_freeze:
 		return
 	in_freeze = true
@@ -58,6 +60,7 @@ func _on_body_entered(body: Node2D) -> void:
 	queue_free()
 
 func isParried():
+	
 	if in_freeze:
 		return
 	in_freeze = true
