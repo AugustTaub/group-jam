@@ -1,6 +1,5 @@
 #@tool
 extends Node2D
-
 @export var enabled : bool = true
 var can_shoot : bool = false
 

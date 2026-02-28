@@ -635,9 +635,7 @@ frame_progress = 1.0
 [node name="cannon_animation_up" type="AnimatedSprite2D" parent="animations" unique_id=570674333]
 visible = false
 sprite_frames = SubResource("SpriteFrames_0285d")
-animation = &"shoot"
-frame = 3
-frame_progress = 1.0
+animation = &"start"
 
 [node name="cannon_animation_right" type="AnimatedSprite2D" parent="animations" unique_id=1003928436]
 visible = false

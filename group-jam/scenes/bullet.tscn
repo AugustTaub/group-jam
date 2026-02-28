@@ -18,6 +18,8 @@ fill_from = Vector2(0.50869566, 0.49130434)
 fill_to = Vector2(0.87608695, 0.13043478)
 
 [node name="Bullet" type="Area2D" unique_id=1939860656 groups=["Bullet"]]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_y25gk")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=597940893]
