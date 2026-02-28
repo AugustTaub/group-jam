@@ -671,11 +671,6 @@ frame = 4
 
 [node name="pattern_position" type="Node2D" parent="pattern_ancor" unique_id=762270676]
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1507752011]
-position = Vector2(94, 67)
-energy = 1.94
-texture = ExtResource("4_jfr8q")
-
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1885943114]
 rotation = 0.91072834
 scale = Vector2(0.4, 0.53)
