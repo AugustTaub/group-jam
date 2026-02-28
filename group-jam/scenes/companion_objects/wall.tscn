@@ -222,6 +222,7 @@ load_path = "res://.godot/imported/projectile_gum.png-218d91a11ec015e6ff33e76b88
 points = PackedVector2Array(16, 6.5, 16, -8.5, 0, -12.5, -16, -8.5, -16, 6.5, 0, 13.5)
 
 [node name="wall" type="Node2D" unique_id=1551078996]
+y_sort_enabled = true
 script = ExtResource("1_1y173")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=802513008]
