@@ -111,6 +111,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a14a"]
 size = Vector2(6, 5)
 
+[sub_resource type="Gradient" id="Gradient_puhhl"]
+colors = PackedColorArray(1, 0, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4va5"]
+gradient = SubResource("Gradient_puhhl")
+fill = 1
+fill_from = Vector2(0.51086956, 0.48913044)
+fill_to = Vector2(0.9326087, 0.060869563)
+
 [node name="parry_bullet" type="Area2D" unique_id=387785815]
 script = ExtResource("1_puhhl")
 
@@ -135,3 +144,9 @@ visible = false
 modulate = Color(18.892157, 0, 0, 1)
 scale = Vector2(0.10546872, 0.10546872)
 texture = ExtResource("1_3ebxt")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1814629468]
+position = Vector2(0, -1)
+scale = Vector2(0.54, 0.54)
+energy = 2.49
+texture = SubResource("GradientTexture2D_g4va5")

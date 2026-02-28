@@ -348,11 +348,9 @@ script = ExtResource("6_smehm")
 [node name="gameplay_music" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=2003695358]
 stream = ExtResource("7_ur7pv")
 volume_db = -10.866
-bus = &"Music"
 
 [node name="blup" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=688715307]
 stream = ExtResource("8_y4r1p")
-bus = &"SFX"
 
 [node name="notification_text" type="RichTextLabel" parent="." unique_id=175903801]
 offset_left = -81.0
