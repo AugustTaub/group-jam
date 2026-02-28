@@ -5,7 +5,7 @@ var can_shoot : bool = false
 
 @export_category("direction and pattern")
 @export_enum("down","left","right","up") var direction : String = "down"
-@export_enum("single_straight", "three_spray", "five_spray") var pattern : String = "single_straight"
+@export_enum("single_straight", "three_spray", "five_spray", "180_cover") var pattern : String = "single_straight"
 @export var delay : float = 0.0
 
 @export_category("bullet_parameter")
@@ -13,14 +13,14 @@ var can_shoot : bool = false
 var current_shot : int = 1
 @export var interval : float = 1.0
 @export_enum("random","explosion","barrier","teleport") var parry_type : String = "random"
-
+	
 @onready var cannon_anim = find_child("cannon_animation")
 @onready var blow_anim = find_child("blow_animation")
 	
 @onready var pattern_ancor = find_child("pattern_ancor")
 @onready var pattern_position = find_child("pattern_position")
 var pattern_node : Node2D
-
+	
 @onready var bullet = preload("res://scenes/bullet.tscn")
 @onready var parry_bullet = preload("res://scenes/parry_bullet.tscn")
 
@@ -102,6 +102,7 @@ func instantiate_pattern():
 		"single_straight": pattern_type = preload("res://scenes/patterns/pattern_single_straight.tscn")
 		"three_spray": pattern_type = preload("res://scenes/patterns/pattern_three_spray.tscn")
 		"five_spray": pattern_type = preload("res://scenes/patterns/pattern_five_spray.tscn")
+		"180_cover": pattern_type = preload("res://scenes/patterns/pattern_180_cover.tscn")
 	
 	var new_pattern = pattern_type.instantiate()
 	pattern_position.add_child(new_pattern)
