@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dr7v0dqryacqv"]
 
 [ext_resource type="Script" uid="uid://cilhiu3cpjoam" path="res://scripts/boss_logic.gd" id="1_neq0i"]
-[ext_resource type="Texture2D" uid="uid://kxq180lvm817" path="res://Assets/Sprites/EnemySprites_BossIdle.png" id="2_qnbj4"]
-[ext_resource type="Texture2D" uid="uid://4gwpyftqrei0" path="res://Assets/Sprites/EnemySprite_BossEnd.png" id="3_r3bxh"]
-[ext_resource type="Texture2D" uid="uid://dexkkm8lf6vf8" path="res://Assets/Sprites/EnemySprite_boss_arms.png" id="4_qnbj4"]
+[ext_resource type="Texture2D" uid="uid://kxq180lvm817" path="res://2D/Sprites/EnemySprites_BossIdle.png" id="2_qnbj4"]
+[ext_resource type="Texture2D" uid="uid://4gwpyftqrei0" path="res://2D/Sprites/EnemySprite_BossEnd.png" id="3_r3bxh"]
+[ext_resource type="Texture2D" uid="uid://dexkkm8lf6vf8" path="res://2D/Sprites/EnemySprite_boss_arms.png" id="4_qnbj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqpjq"]
 atlas = ExtResource("2_qnbj4")
@@ -216,6 +216,7 @@ frame = 2
 frame_progress = 1.0
 
 [node name="tentacle_animation" type="AnimatedSprite2D" parent="." unique_id=710469563]
+z_index = 1
 position = Vector2(1, -32)
 sprite_frames = SubResource("SpriteFrames_e1yhm")
 animation = &"boss_hug"
