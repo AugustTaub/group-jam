@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://8t6c4cumvig4" path="res://misc/tileset/wall_tiles.tres" id="2_7dojk"]
 [ext_resource type="PackedScene" uid="uid://bqmd5grcrgoiy" path="res://scenes/cannon.tscn" id="3_yexht"]
 
-[node name="level_build_scene" type="Node2D" unique_id=1170203481]
+[node name="zone_1" type="Node2D" unique_id=1170203481]
 y_sort_enabled = true
 
 [node name="floor_new" type="TileMapLayer" parent="." unique_id=768490875]
