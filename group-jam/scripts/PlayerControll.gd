@@ -176,8 +176,10 @@ func knockback(direction: Vector2, duration: float, force: float):
 	
 	#FUNCTION: Bitte umänder falls ne nötig, ist bis jetzt für player feedback, maybe ne blink animation wenn zeit ist
 	self.modulate.a = 0.5
-	var iso_direction = Vector2(direction.x, direction.y * 0.5).normalized()
-	velocity = iso_direction * (knockback_power * force)
+	var iso_direction: Vector2 = Vector2(direction.x, direction.y * 0.5).normalized()
+	var world_back_dir: Vector2 = Vector2(-1,1).normalized()
+	var mixed_dir: Vector2 = (iso_direction*0.5 + world_back_dir*0.5).normalized()
+	velocity = mixed_dir * (knockback_power * force)
 	
 	knockback_timer = duration
 	can_move = false
