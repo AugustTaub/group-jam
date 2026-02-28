@@ -628,24 +628,32 @@ script = ExtResource("1_xuqfy")
 [node name="cannon_animation_down" type="AnimatedSprite2D" parent="animations" unique_id=677614153]
 visible = false
 sprite_frames = SubResource("SpriteFrames_jfr8q")
-animation = &"start"
+animation = &"shoot"
+frame = 3
+frame_progress = 1.0
 
-[node name="cannon_animation_left" type="AnimatedSprite2D" parent="animations" unique_id=570674333]
+[node name="cannon_animation_up" type="AnimatedSprite2D" parent="animations" unique_id=570674333]
 visible = false
 sprite_frames = SubResource("SpriteFrames_0285d")
-animation = &"start"
+animation = &"shoot"
+frame = 3
+frame_progress = 1.0
 
 [node name="cannon_animation_right" type="AnimatedSprite2D" parent="animations" unique_id=1003928436]
 visible = false
 rotation = -0.41445372
 sprite_frames = SubResource("SpriteFrames_22shy")
-animation = &"start"
+animation = &"shoot"
+frame = 3
+frame_progress = 1.0
 flip_h = true
 
-[node name="cannon_animation_up" type="AnimatedSprite2D" parent="animations" unique_id=1620284863]
-rotation = 0.96964216
+[node name="cannon_animation_left" type="AnimatedSprite2D" parent="animations" unique_id=1620284863]
+visible = false
 sprite_frames = SubResource("SpriteFrames_8ssa1")
 animation = &"shoot"
+frame = 3
+frame_progress = 1.0
 flip_h = true
 
 [node name="cannon_animation" type="AnimatedSprite2D" parent="." unique_id=909371777]
@@ -664,7 +672,6 @@ frame = 4
 [node name="pattern_ancor" type="Node2D" parent="." unique_id=452076657]
 
 [node name="pattern_position" type="Node2D" parent="pattern_ancor" unique_id=762270676]
-position = Vector2(-5, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1507752011]
 position = Vector2(94, 67)

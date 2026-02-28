@@ -95,10 +95,10 @@ func fill_pattern():
 func apply_direction():
 	var pattern_rotation : int = 0
 	match(direction):
-		"down": pattern_rotation = 45 + 10
-		"left": pattern_rotation = 65
-		"right": pattern_rotation = 360 -135 + 10
-		"up": pattern_rotation = 360 - 225 + 39
+		"down": pattern_rotation = 50
+		"left": pattern_rotation = 115
+		"right": pattern_rotation = 295
+		"up": pattern_rotation = -120
 		
 	pattern_ancor.rotation_degrees = pattern_rotation
 	blow_anim.global_position = pattern_position.global_position
