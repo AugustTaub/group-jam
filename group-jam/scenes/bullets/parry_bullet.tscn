@@ -146,8 +146,8 @@ visible = false
 position = Vector2(0.5, -1.5)
 
 [node name="hitbox" type="Area2D" parent="." unique_id=284889794]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 12
+collision_mask = 12
 
 [node name="collision" type="CollisionShape2D" parent="hitbox" unique_id=210262092]
 position = Vector2(0, -1)
