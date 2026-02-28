@@ -4,13 +4,13 @@ extends Area2D
 @onready var anim_sprite = find_child("anim_sprite")
 @onready var parry_anim  = find_child("parry_anim")
 
-
 #Bullet Types
 @export_enum("explosion","barrier","teleport") var type : String
 
 #Bullet Property
 @export var speed: float = 200.0
 @export var move_direction = Vector2(0, 0)
+@export var invincibility_time : float = 0.5
 
 #for those who come after 
 @export var knockback_duration: float = 0.3
@@ -18,17 +18,19 @@ extends Area2D
 
 #freeze frame checker
 var in_freeze: bool = false
-
-
-func _process(delta: float) -> void:
-	var iso_velocity = Vector2(move_direction.x, move_direction.y)
-	self.global_position += self.global_position.direction_to( iso_velocity) * speed * delta
-	look_at(-move_direction)
-
+	
+	
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	body_entered.connect(_on_body_entered)
 	anim_sprite.play(type + "_idle")
+	await get_tree().create_timer(invincibility_time).timeout
+	end_invincibility()
+	
+func _process(delta: float) -> void:
+	var iso_velocity = Vector2(move_direction.x, move_direction.y)
+	self.global_position += self.global_position.direction_to( iso_velocity) * speed * delta
+	look_at(-move_direction)
 
 func _on_area_entered(area: Area2D) -> void:
 	if in_freeze:
@@ -82,3 +84,6 @@ func isParried():
 	await parry_anim.animation_finished
 	
 	queue_free()
+	
+func end_invincibility():
+	self.set_collision_mask_value(1,true)

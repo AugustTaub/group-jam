@@ -137,12 +137,13 @@ tile_set = SubResource("TileSet_aaf0k")
 [node name="cannon" parent="." unique_id=468590572 instance=ExtResource("1_ex3ea")]
 position = Vector2(431, 305)
 pattern = "five_spray"
+shots_per_parry = 5
 
 [node name="cannon2" parent="." unique_id=833947201 instance=ExtResource("1_ex3ea")]
 position = Vector2(254.00003, 320.00003)
 rotation = 1.1717551
-direction = "left"
-shots_per_parry = 5
+direction = "right"
+shots_per_parry = 0
 interval = 2.0
 parry_type = "barrier"
 
