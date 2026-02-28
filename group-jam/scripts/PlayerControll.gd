@@ -46,6 +46,7 @@ func _ready():
 	
 	CompanionLogic.player = self
 	CompanionLogic.container = self.find_child("companion_container")
+	
 
 
 func _process(delta: float) -> void:

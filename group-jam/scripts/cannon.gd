@@ -1,10 +1,14 @@
+#@tool
 extends Node2D
 
 @export var enabled : bool = true
 var can_shoot : bool = false
 
 @export_category("direction and pattern")
-@export_enum("down","left","right","up") var direction : String = "down"
+@export_enum("down","left","right","up") var direction : String = "down" #:
+	#set(new_direction):
+	#	new_direction = direction
+	#	set_animation(new_direction)
 @export_enum("single_straight", "three_spray", "five_spray", "180_cover") var pattern : String = "single_straight"
 @export var delay : float = 0.0
 
@@ -30,8 +34,9 @@ var pattern_node : Node2D
 func _ready():
 	instantiate_pattern()
 	apply_direction()
+	set_animation(direction)
 	blow_anim.play("blow") # important because of selected startframe only first animation doesnt play
-	cannon_anim.play("start_" + direction)
+	cannon_anim.play("start")
 	await cannon_anim.animation_finished
 	await get_tree().create_timer(delay).timeout
 	can_shoot = true
@@ -46,7 +51,7 @@ func _process(delta: float) -> void:
 
 #play anim and shoot bullet
 func shoot():
-	cannon_anim.play("shoot_" + direction)
+	cannon_anim.play("shoot")
 	fill_pattern()
 	blow_anim.play("blow")
 	await cannon_anim.animation_finished
@@ -90,10 +95,10 @@ func fill_pattern():
 func apply_direction():
 	var pattern_rotation : int = 0
 	match(direction):
-		"down": pattern_rotation = 45 
-		"left": pattern_rotation = 135 
-		"right": pattern_rotation = -45
-		"up": pattern_rotation = 225 
+		"down": pattern_rotation = 45 + 10
+		"left": pattern_rotation = 65
+		"right": pattern_rotation = 360 -135 + 10
+		"up": pattern_rotation = 360 - 225 + 39
 		
 	pattern_ancor.rotation_degrees = pattern_rotation
 	blow_anim.global_position = pattern_position.global_position
@@ -112,5 +117,9 @@ func instantiate_pattern():
 	pattern_node = new_pattern
 	
 
-#TODO
-# mehr default bullets
+func set_animation(new_direction : String):
+	cannon_anim = find_child("cannon_animation_" + new_direction)
+	var animations = find_child("animations")
+	for sprite in animations.get_children():
+		sprite.visible = false
+	cannon_anim.visible = true
