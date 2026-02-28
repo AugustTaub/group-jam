@@ -252,6 +252,7 @@ parry_type = "barrier"
 [node name="cannon3" parent="." unique_id=1670404864 instance=ExtResource("2_hadne")]
 position = Vector2(769, 206)
 direction = "up"
+pattern = "five_spray"
 interval = 0.1
 parry_type = "barrier"
 
