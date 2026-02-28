@@ -51,6 +51,62 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_htaqe")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xfds8"]
+texture = ExtResource("4_xfds8")
+texture_region_size = Vector2i(32, 32)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 7)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -20, 0, -12, 0, 8, 16, 0)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, 7)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -20, 0, -12, 0, 8, 16, 0)
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, 7)
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -20, 0, -12, 0, 8, -16, 0)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, 7)
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -26, 16, -18, 16, 0, 0, -8)
+4:1/0 = 0
+4:1/0/texture_origin = Vector2i(0, 7)
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0, 0, -8, 0, -26, -16, -18)
+4:2/0 = 0
+4:2/0/texture_origin = Vector2i(0, 7)
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -20, 12, -12, 12, 8, -4, 0)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, 7)
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -20, 0, -12, 0, 8, 16, 0)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, 7)
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -20, 0, -12, 0, 8, -16, 0)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 7)
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -20, 0, -12, 0, 8, 16, 0)
+5:2/0 = 0
+5:2/0/texture_origin = Vector2i(0, 7)
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -16, 16, -8, 16, 8, 0, 0)
+6:2/0 = 0
+6:2/0/texture_origin = Vector2i(0, 7)
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -14, 0, -6, 16, -14, 16, 0, 0, 8, -16, 0)
+7:2/0 = 0
+7:2/0/texture_origin = Vector2i(0, 7)
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0, 0, -8, 16, 0, 0, 8)
+8:1/0 = 0
+8:1/0/texture_origin = Vector2i(0, 7)
+9:1/0 = 0
+9:1/0/texture_origin = Vector2i(0, 7)
+10:1/0 = 0
+10:1/0/texture_origin = Vector2i(0, 7)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 7)
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -20, 0, -12, 0, 8, -16, 0)
+
+[sub_resource type="TileSet" id="TileSet_htaqe"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(32, 16)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_xfds8")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nvf4k"]
 texture = ExtResource("1_emelb")
 texture_region_size = Vector2i(32, 32)
@@ -87,6 +143,10 @@ y_sort_enabled = true
 [node name="floor_new" type="TileMapLayer" parent="." unique_id=768490875]
 tile_map_data = PackedByteArray("AAAvABsAAAAGAAEAAAAvABoAAAAAAAAAAAAvABkAAAAGAAAAAAAvABgAAAAAAAAAAAAvABcAAAAAAAAAAAAvABYAAAAAAAAAAAAvABUAAAAAAAAAAAAwABYAAAACAAAAAAAxABYAAAAAAAAAAAAyABYAAAAAAAAAAAAzABYAAAAAAAAAAAA0ABYAAAAAAAAAAAAyABUAAAAAAAAAAAAxABUAAAACAAAAAAAwABUAAAAAAAAAAAAzABUAAAAAAAAAAAA0ABUAAAAAAAAAAAA1ABYAAAAAAAAAAAA1ABcAAAAEAAAAAAA1ABgAAAAAAAAAAAA1ABUAAAAAAAAAAAA1ABkAAAAAAAAAAAA1ABoAAAAAAAAAAAA1ABsAAAACAAAAAAA1ABwAAAAAAAAAAAA0ABwAAAAAAAAAAAAzABwAAAAAAAAAAAAyABwAAAAAAAAAAAAxABwAAAAAAAAAAAAwABwAAAAFAAEAADAvABwAAAAHAAEAAAAwABkAAAAAAAAAAAAwABgAAAAAAAAAAAAwABcAAAACAAAAAAAwABoAAAAAAAAAAAAwABsAAAAHAAAAAAAxABkAAAAAAAAAAAAxABgAAAAAAAAAAAAxABcAAAAIAAAAAAAxABoAAAAAAAAAAAAxABsAAAAAAAAAAAAyABkAAAADAAMAAAAyABgAAAAAAAAAAAAyABcAAAAKAAAAAAAyABoAAAAAAAAAAAAyABsAAAACAAMAAAAzABcAAAAJAAAAAAAzABgAAAAAAAAAAAAzABkAAAAAAAAAAAAzABoAAAAAAAAAAAAzABsAAAAAAAAAAAA0ABcAAAAAAAAAAAA0ABgAAAAAAAAAAAA0ABkAAAAAAAMAAAA0ABoAAAAAAAAAAAA0ABsAAAABAAMAAAA2ABwAAAAAAAAAAAA2ABsAAAAAAAAAAAA2ABoAAAAAAAAAAAA2ABkAAAAAAAAAAAA2ABgAAAAAAAAAAAA2ABcAAAAAAAAAAAA2ABYAAAAAAAAAAAA2ABUAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_nvf4k")
+
+[node name="wall_new" type="TileMapLayer" parent="." unique_id=835267346]
+tile_map_data = PackedByteArray("AAAxABIAAAAAAAEAAAAxABEAAAAAAAEAAAAxABAAAAAAAAEAAAAxAA8AAAAAAAEAAAAxAA4AAAAAAAEAAAAxAA0AAAAAAAEAAAAxAAwAAAABAAEAAAAxAAsAAAABAAEAAAAxAAoAAAABAAEAAAAyAAkAAAACAAEAAAAzAAkAAAACAAEAAAA0AAkAAAACAAEAAAA4AAkAAAAGAAIAAAA3AAgAAAAHAAIAAAA1AAgAAAACAAEAAAA1AAkAAAACAAEAAAA2AAkAAAACAAIAAAA3AAkAAAAAAAIAAAA9AAsAAAAHAAIAAAA+AAoAAAAHAAIAAAA/AAoAAAAHAAIAAABAAAoAAAAHAAIAAABBAAsAAAAHAAIAAABBAAwAAAAHAAIAAABBAA0AAAAHAAIAAABAAA4AAAAHAAIAAAA/AA4AAAAHAAIAAAA+AA4AAAAHAAIAAAA9AA0AAAAHAAIAAAA9AAwAAAAHAAIAAAA9AAoAAAAHAAIAAAA9AA4AAAAHAAIAAAA+AAYAAAAGAAIAAAA/AAYAAAAGAAIAAABAAAYAAAAGAAIAAABBAAcAAAAHAAIAAAA9AAcAAAAHAAIAAAAyABIAAAAAAAEAABAzABIAAAAAAAEAABA0ABIAAAAAAAEAABA1ABIAAAAAAAEAABA2ABIAAAAAAAEAABA3AB4AAAADAAEAAAA2AB4AAAADAAEAAAA1AB4AAAADAAEAAAA0AB4AAAADAAEAAAAzAB4AAAADAAEAAAAyAB4AAAADAAEAAAAxAB4AAAADAAEAAAAwAB4AAAADAAEAAAA4AB0AAAAEAAEAAAA4ABwAAAAEAAEAAAA4ABsAAAAEAAEAAAA4ABoAAAAEAAEAAAA4ABkAAAAEAAEAAAA4ABgAAAAEAAEAAAA4ABcAAAAEAAEAAAA4ABYAAAAEAAEAAAA=")
+tile_set = SubResource("TileSet_htaqe")
 
 [node name="walls" type="TileMapLayer" parent="." unique_id=1429715971 groups=["world_collision"]]
 y_sort_enabled = true

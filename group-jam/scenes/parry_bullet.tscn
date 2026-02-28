@@ -109,7 +109,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a14a"]
-size = Vector2(6, 5)
+size = Vector2(13, 11)
 
 [sub_resource type="Gradient" id="Gradient_puhhl"]
 colors = PackedColorArray(1, 0, 1, 1, 0, 0, 0, 0)
@@ -138,7 +138,7 @@ frame = 4
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1857015505]
-position = Vector2(0, -1.5)
+position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_8a14a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=87109185]
