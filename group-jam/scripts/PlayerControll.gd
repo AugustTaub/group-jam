@@ -139,17 +139,26 @@ func companions_follow(delta):
 		var dist: float = child.global_position.distance_to(target_node.global_position)
 		var player_dist: float = child.global_position.distance_to(global_position)
 		
+		var speed_mult: float = 1
+		var dir: Vector2 = Vector2.ZERO
+		
 		if dist >= 30:
-			var dir: Vector2 = child.global_position.direction_to(target_node.global_position)
-			child.global_position +=  dir * delta * child.SPEED * 1.2
+			dir = child.global_position.direction_to(target_node.global_position)
+			speed_mult = 1
 		elif player_dist < 35:
-			var dir: Vector2
+			speed_mult = 0.5
 			if player_dist < 25:
 				dir = global_position.direction_to(child.global_position)
 			else:
 				dir = child.global_position.direction_to(global_position).rotated(deg_to_rad(90))
-			
-			child.global_position +=  dir * delta * child.SPEED/2
+		
+		if child.has_method("set_leg_flip"):
+			if dir.x < 0:
+				child.set_leg_flip(true)
+			else:
+				child.set_leg_flip(false)
+		
+		child.global_position +=  dir * delta * child.SPEED * speed_mult
 		i += 1
 
 

@@ -281,6 +281,9 @@ number_comp = 2
 
 [node name="parry_VFX" parent="." unique_id=128708271 instance=ExtResource("9_ur7pv")]
 
+[node name="companion_container" type="Node2D" parent="." unique_id=839554688]
+top_level = true
+
 [node name="alex_anims" type="Node2D" parent="." unique_id=1796449004]
 
 [node name="player_anim" type="AnimatedSprite2D" parent="alex_anims" unique_id=1519474849]
@@ -333,8 +336,6 @@ position = Vector2(0, 8)
 position = Vector2(-1, -10)
 shape = SubResource("CapsuleShape2D_qhqgy")
 debug_color = Color(0.87248534, 0.00047322153, 0.8449739, 0.41960785)
-
-[node name="companion_container" type="Node" parent="." unique_id=2065979664]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1532940292]
 
