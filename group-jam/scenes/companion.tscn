@@ -144,7 +144,7 @@ position = Vector2(0, 8)
 scale = Vector2(0.86541516, 0.86541516)
 sprite_frames = SubResource("SpriteFrames_rhru3")
 autoplay = "default"
-frame_progress = 0.19128911
+frame_progress = 0.7281553
 
 [node name="sprites" type="Node2D" parent="." unique_id=508543827]
 

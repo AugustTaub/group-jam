@@ -360,6 +360,7 @@ offset_bottom = 46.0
 texture = ExtResource("4_huati")
 
 [node name="main_menu_parent" type="Control" parent="." unique_id=186638233]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
