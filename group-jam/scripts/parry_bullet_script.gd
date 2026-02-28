@@ -40,10 +40,13 @@ func collide_area(area: Area2D) -> void:
 	#Engine.time_scale = 1.0
 	
 	#if in_freeze:
-	#	return
+	#	return 
+	
+	
+	
 	if area.name == "ParryHitbox":
-		isParried() 
-		return 
+		isParried()  
+		return
 	#if area.name == "EffectiveHitboxCompanion":
 	#	queue_free()
 		
