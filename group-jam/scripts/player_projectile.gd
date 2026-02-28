@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		hit_target()
 	
-	place_sprite(delta)
+	#place_sprite(delta)
 	
 	move_and_slide()
 

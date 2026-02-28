@@ -10,6 +10,7 @@ extends Area2D
 
 #Bullet Property
 @export var speed: float = 200.0
+@export var speed_mult: float = 1
 @export var move_direction = Vector2(0, 0)
 
 #for those who come after 
@@ -22,7 +23,7 @@ var in_freeze: bool = false
 
 func _process(delta: float) -> void:
 	var iso_velocity = Vector2(move_direction.x, move_direction.y)
-	self.global_position += self.global_position.direction_to( iso_velocity) * speed * delta
+	self.global_position += self.global_position.direction_to( iso_velocity) * speed * speed_mult * delta
 	look_at(-move_direction)
 
 func _ready() -> void:

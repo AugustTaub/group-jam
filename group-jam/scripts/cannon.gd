@@ -13,7 +13,9 @@ var can_shoot : bool = false
 var current_shot : int = 1
 @export var interval : float = 1.0
 @export_enum("random","explosion","barrier","teleport") var parry_type : String = "random"
-	
+@export var speed_multiplier: float = 1
+
+
 @onready var cannon_anim = find_child("cannon_animation")
 @onready var blow_anim = find_child("blow_animation")
 	
@@ -69,6 +71,7 @@ func create_bullet(bullet_type : String, target : Vector2):
 		new_bullet = parry_bullet.instantiate()
 		new_bullet.type = type
 	new_bullet.move_direction = target
+	new_bullet.speed_mult = speed_multiplier
 	self.add_child(new_bullet)
 	
 #gott bewahre, dass es funktioniert "\_(-_-)_/"
