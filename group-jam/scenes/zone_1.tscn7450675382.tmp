@@ -1,11 +1,11 @@
-[gd_scene format=4 uid="uid://bj6e1srhrvb3n"]
+[gd_scene format=4 uid="uid://s43ekqyqrfgd"]
 
-[ext_resource type="PackedScene" uid="uid://bqmd5grcrgoiy" path="res://scenes/cannon.tscn" id="1_ex3ea"]
-[ext_resource type="PackedScene" uid="uid://3i83m1sxh7ga" path="res://scenes/player.tscn" id="2_emelb"]
-[ext_resource type="Texture2D" uid="uid://lrpd0a4lw3uv" path="res://2D/tileset/SpritesheetEnviTiles_final.png" id="4_xfds8"]
+[ext_resource type="Texture2D" uid="uid://lrpd0a4lw3uv" path="res://2D/tileset/SpritesheetEnviTiles_final.png" id="1_id7sw"]
+[ext_resource type="PackedScene" uid="uid://bqmd5grcrgoiy" path="res://scenes/cannon.tscn" id="3_yexht"]
+[ext_resource type="PackedScene" uid="uid://3i83m1sxh7ga" path="res://scenes/player.tscn" id="4_4d2jd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_htaqe"]
-texture = ExtResource("4_xfds8")
+texture = ExtResource("1_id7sw")
 texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
 3:0/0/texture_origin = Vector2i(0, 7)
@@ -55,7 +55,7 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_htaqe")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xfds8"]
-texture = ExtResource("4_xfds8")
+texture = ExtResource("1_id7sw")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 0:1/0/texture_origin = Vector2i(0, 7)
@@ -118,38 +118,31 @@ tile_map_data = PackedByteArray("AAAvABsAAAAGAAEAAAAvABoAAAAAAAAAAAAvABkAAAAGAAA
 tile_set = SubResource("TileSet_nvf4k")
 
 [node name="wall_new" type="TileMapLayer" parent="." unique_id=835267346]
-tile_map_data = PackedByteArray("AAAxABIAAAAAAAEAAAAxABEAAAAAAAEAAAAxABAAAAAAAAEAAAAxAA8AAAAAAAEAAAAxAA4AAAAAAAEAAAAxAA0AAAAAAAEAAAAxAAwAAAABAAEAAAAxAAsAAAABAAEAAAAxAAoAAAABAAEAAAAyAAkAAAACAAEAAAAzAAkAAAACAAEAAAA0AAkAAAACAAEAAAA4AAkAAAAGAAIAAAA3AAgAAAAHAAIAAAA1AAgAAAACAAEAAAA1AAkAAAACAAEAAAA2AAkAAAACAAIAAAA3AAkAAAAAAAIAAAA9AAsAAAAHAAIAAAA+AAoAAAAHAAIAAAA/AAoAAAAHAAIAAABAAAoAAAAHAAIAAABBAAsAAAAHAAIAAABBAAwAAAAHAAIAAABBAA0AAAAHAAIAAABAAA4AAAAHAAIAAAA/AA4AAAAHAAIAAAA+AA4AAAAHAAIAAAA9AA0AAAAHAAIAAAA9AAwAAAAHAAIAAAA9AAoAAAAHAAIAAAA9AA4AAAAHAAIAAAA+AAYAAAAGAAIAAAA/AAYAAAAGAAIAAABAAAYAAAAGAAIAAABBAAcAAAAHAAIAAAA9AAcAAAAHAAIAAAAyABIAAAAAAAEAABAzABIAAAAAAAEAABA0ABIAAAAAAAEAABA1ABIAAAAAAAEAABA2ABIAAAAAAAEAABA3AB4AAAADAAEAAAA2AB4AAAADAAEAAAA1AB4AAAADAAEAAAA0AB4AAAADAAEAAAAzAB4AAAADAAEAAAAyAB4AAAADAAEAAAAxAB4AAAADAAEAAAAwAB4AAAADAAEAAAA4AB0AAAAEAAEAAAA4ABwAAAAEAAEAAAA4ABsAAAAEAAEAAAA4ABoAAAAEAAEAAAA4ABkAAAAEAAEAAAA4ABgAAAAEAAEAAAA4ABcAAAAEAAEAAAA4ABYAAAAEAAEAAAA=")
+tile_map_data = PackedByteArray("AAA3AB4AAAADAAEAAAA2AB4AAAADAAEAAAA1AB4AAAADAAEAAAA0AB4AAAADAAEAAAAzAB4AAAADAAEAAAAyAB4AAAADAAEAAAAxAB4AAAADAAEAAAAwAB4AAAADAAEAAAA4AB0AAAAEAAEAAAA4ABwAAAAEAAEAAAA4ABsAAAAEAAEAAAA4ABoAAAAEAAEAAAA4ABkAAAAEAAEAAAA4ABgAAAAEAAEAAAA4ABcAAAAEAAEAAAA4ABYAAAAEAAEAAAA=")
 tile_set = SubResource("TileSet_htaqe")
 
-[node name="cannon" parent="." unique_id=468590572 instance=ExtResource("1_ex3ea")]
-position = Vector2(431, 305)
-pattern = "five_spray"
-
-[node name="cannon2" parent="." unique_id=833947201 instance=ExtResource("1_ex3ea")]
-position = Vector2(254.00003, 320.00003)
-rotation = 1.1717551
+[node name="cannon4" parent="." unique_id=846341436 instance=ExtResource("3_yexht")]
+position = Vector2(552, 606)
 direction = "left"
-shots_per_parry = 5
+shots_per_parry = 2
 interval = 2.0
-parry_type = "barrier"
 
-[node name="cannon3" parent="." unique_id=717004083 instance=ExtResource("1_ex3ea")]
-position = Vector2(423, 379)
-rotation = 1.1717551
-direction = "left"
-pattern = "180_cover"
-shots_per_parry = 5
+[node name="cannon6" parent="." unique_id=468590572 instance=ExtResource("3_yexht")]
+position = Vector2(512, 576)
+direction = "right"
+shots_per_parry = 2
 interval = 2.0
-parry_type = "barrier"
 
-[node name="cannon4" parent="." unique_id=846341436 instance=ExtResource("1_ex3ea")]
-position = Vector2(263, 412.00003)
-rotation = 1.1717551
+[node name="cannon7" parent="." unique_id=299145105 instance=ExtResource("3_yexht")]
+position = Vector2(551, 583.99994)
 direction = "up"
-pattern = "five_spray"
-shots_per_parry = 5
+shots_per_parry = 2
 interval = 2.0
-parry_type = "barrier"
 
-[node name="Player" parent="." unique_id=1508676161 instance=ExtResource("2_emelb")]
-position = Vector2(320, 363)
+[node name="cannon5" parent="." unique_id=1907290231 instance=ExtResource("3_yexht")]
+position = Vector2(515, 604)
+shots_per_parry = 2
+interval = 2.0
+
+[node name="Player" parent="." unique_id=1508676161 instance=ExtResource("4_4d2jd")]
+position = Vector2(409, 615)

@@ -26,8 +26,8 @@ var current_shot : int = 1
 @onready var pattern_position = find_child("pattern_position")
 var pattern_node : Node2D
 	
-@onready var bullet = preload("res://scenes/bullet.tscn")
-@onready var parry_bullet = preload("res://scenes/parry_bullet.tscn")
+@onready var bullet = preload("res://scenes/bullets/default_bullet.tscn")
+@onready var parry_bullet = preload("res://scenes/bullets/parry_bullet.tscn")
 
 
 func _ready():
@@ -82,7 +82,7 @@ func create_bullet(bullet_type : String, target : Vector2):
 func fill_pattern():
 	for vector in pattern_node.get_children():
 		var target = vector.get_child(0)
-		var new_target =  (target.global_position - self.global_position)  * 1000
+		var new_target =  (target.global_position - self.global_position)
 		if shots_per_parry == current_shot:	
 			create_bullet("parry",new_target)
 			current_shot = 0
@@ -93,12 +93,12 @@ func fill_pattern():
 #sets new direction for vectors of bullets based on rotation selected
 func apply_direction():
 	var pattern_rotation : int = 0
+	var tile_offset = 60
 	match(direction):
-		"down": pattern_rotation = 50
-		"left": pattern_rotation = 115
-		"right": pattern_rotation = 295
-		"up": pattern_rotation = -120
-		
+		"down": pattern_rotation = 0 + tile_offset
+		"left": pattern_rotation = 90  + tile_offset / 2
+		"right": pattern_rotation = 270 + tile_offset / 2
+		"up": pattern_rotation = 180 + tile_offset
 	pattern_ancor.rotation_degrees = pattern_rotation
 	blow_anim.global_position = pattern_position.global_position
 
