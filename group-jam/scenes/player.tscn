@@ -274,8 +274,8 @@ RichTextLabel/fonts/normal_font = ExtResource("10_y4r1p")
 top_level = true
 y_sort_enabled = true
 position = Vector2(0, -9)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_g2els")
 number_comp = 2
 
