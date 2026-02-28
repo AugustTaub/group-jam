@@ -362,5 +362,9 @@ scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("11_d2wvv")
 
+[node name="cast_cooldown" type="Timer" parent="." unique_id=605054546]
+wait_time = 0.05
+
 [connection signal="body_entered" from="ParryHitbox" to="." method="_on_parry_hitbox_body_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_parry_hitbox_body_entered"]
+[connection signal="timeout" from="cast_cooldown" to="." method="_on_cast_cooldown_timeout"]

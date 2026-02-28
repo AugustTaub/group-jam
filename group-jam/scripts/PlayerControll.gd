@@ -32,6 +32,8 @@ var gommemode: bool = false
 @export var parry_delay: float = 0.5
 var can_parry: bool = true
 
+var can_cast: bool = true
+
 #@onready var dust_offset: float = $DustParticle.position.x
 #var dust_flip: float = dust_offset + 15
 
@@ -71,8 +73,11 @@ func _physics_process(delta):
 	#BLOCK IST WICHTIG, NICHT LÖSCHEN VRO
 	# VRO ich lösche nicht absichtlich zeug. das war der merge und das passiert öfter desto mehr zeug du in die process func rein haust und nicht in eigene Funktionen
 	if knockback_timer > 0.0:
+		
+		Engine.time_scale = 1.0
+		
 		knockback_timer -= delta
-		move_and_slide() 
+		move_and_slide()
 		
 		#anim
 		$alex_anims.skew += delta * 16
@@ -230,6 +235,9 @@ func switch_ability():
 
 #creates projectile, that applies effect on landing	
 func cast_ability():
+	
+	if not can_cast: return
+	
 	print(CompanionLogic.companion_dict[active_companion_slot])
 	if CompanionLogic.companion_dict[active_companion_slot] != null:
 		
@@ -242,6 +250,9 @@ func cast_ability():
 		
 		CompanionLogic.remove_comp(active_companion_slot)
 		print("cast ability: ",ability_type)
+		
+		$cast_cooldown.start()
+		can_cast = false
 		
 		switch_ability()
 
@@ -265,3 +276,7 @@ func _input(event: InputEvent) -> void:
 		
 func teleport(pos : Vector2):
 	self.global_position = pos
+
+
+func _on_cast_cooldown_timeout():
+	can_cast = true
