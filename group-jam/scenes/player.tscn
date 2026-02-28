@@ -276,12 +276,14 @@ autoplay = "player_idle"
 frame_progress = 0.8144491
 
 [node name="dust_anim_left" type="AnimatedSprite2D" parent="alex_anims" unique_id=1574832808]
+self_modulate = Color(1, 1, 1, 0.47058824)
 position = Vector2(-22, -1)
 sprite_frames = SubResource("SpriteFrames_pf23h")
 animation = &"player_dust"
 frame = 10
 
 [node name="dust_anim_right" type="AnimatedSprite2D" parent="alex_anims" unique_id=834159096]
+self_modulate = Color(1, 1, 1, 0.47058824)
 position = Vector2(22, -1)
 sprite_frames = SubResource("SpriteFrames_pf23h")
 animation = &"player_dust"
