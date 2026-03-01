@@ -275,7 +275,23 @@ func _input(event: InputEvent) -> void:
 		parry()
 		
 func teleport(pos : Vector2):
-	self.global_position = pos
+	var tilemap_layer = get_parent().find_child("floor_new")
+	
+	if not tilemap_layer:
+		print("nicht floor_new")
+		return
+	
+	var local_pos = tilemap_layer.to_local(pos)
+	var tile_pos = tilemap_layer.local_to_map(local_pos)
+	var tile_data = tilemap_layer.get_cell_tile_data(tile_pos)
+	
+	if tile_data:
+		if tile_data.get_collision_polygons_count(1) > 0:
+			self.global_position = pos
+			return
+	
+	else:
+		print("404 no tile found")
 
 
 func _on_cast_cooldown_timeout():
