@@ -56,7 +56,8 @@ func _ready():
 	
 	SignalBus.entered_new_zone.connect(_on_entered_new_zone)
 	
-	game_start_anim()
+	if not OS.has_feature("editor"):
+		game_start_anim()
 
 func game_start_anim():
 	await get_tree().create_timer(0.05).timeout
@@ -81,7 +82,7 @@ func _process(delta: float) -> void:
 #TODO can_move mit einbinden bei idle 
 func player_animation():
 	var motion_vector = Input.get_vector("left", "right", "forward", "back")
-	if motion_vector:
+	if motion_vector and can_move:
 		player_anim.play("player_walk")
 		if motion_vector.x < 0:
 			player_anim.flip_h = true
@@ -139,8 +140,9 @@ func _physics_process(delta):
 		#$DustParticle.self_modulate = 0
 	else:	
 		velocity = iso_velocity.normalized() * speed
-		player_anim.play("player_walk")
-		SignalBus.player_move.emit()
+		if can_move:
+			player_anim.play("player_walk")
+			SignalBus.player_move.emit()
 		
 		if step_sound_cooldown > 0.45:
 			SignalBus.play_audio.emit("step")
@@ -240,7 +242,7 @@ func parry():
 	#parry_anim.play("player_parry")
 	#await parry_anim.animation_finished
 	$ParryHitbox/CollisionShape2D.set_deferred("disabled", true)
-	can_move = true
+	#can_move = true
 	
 	await get_tree().create_timer(parry_delay).timeout
 	can_parry = true
@@ -340,4 +342,6 @@ func _on_cast_cooldown_timeout():
 	can_cast = true
 	
 func stop_moving():
+	player_anim.stop()
+	player_anim.play("player_idle")
 	can_move = false

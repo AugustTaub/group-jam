@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://kxq180lvm817" path="res://2D/Sprites/EnemySprites_BossIdle.png" id="2_qnbj4"]
 [ext_resource type="Texture2D" uid="uid://4gwpyftqrei0" path="res://2D/Sprites/EnemySprite_BossEnd.png" id="3_r3bxh"]
 [ext_resource type="Texture2D" uid="uid://dexkkm8lf6vf8" path="res://2D/Sprites/EnemySprite_boss_arms.png" id="4_qnbj4"]
+[ext_resource type="Texture2D" uid="uid://c1tmvie154rb8" path="res://2D/Sprites/x_particle.png" id="5_r3bxh"]
 
 [sub_resource type="Gradient" id="Gradient_07ygo"]
 offsets = PackedFloat32Array(0, 0.37272727, 1)
@@ -211,8 +212,8 @@ radius = 19.0
 height = 56.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dlmty"]
-radius = 22.0
-height = 62.0
+radius = 7.0
+height = 14.0
 
 [sub_resource type="Gradient" id="Gradient_qnbj4"]
 offsets = PackedFloat32Array(0, 0.53521127, 1)
@@ -235,6 +236,7 @@ scale = Vector2(0.39062583, 0.30809253)
 texture = SubResource("GradientTexture2D_qnbj4")
 
 [node name="boss_animation" type="AnimatedSprite2D" parent="." unique_id=658980174]
+y_sort_enabled = true
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_nk50o")
 animation = &"boss_on"
@@ -252,11 +254,13 @@ animation = &"boss_hug"
 position = Vector2(2, -33)
 shape = SubResource("CapsuleShape2D_neq0i")
 
-[node name="hurtbox" type="Area2D" parent="." unique_id=435404300]
-position = Vector2(0, -37)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1516591664]
+position = Vector2(-2, -3)
+texture = ExtResource("5_r3bxh")
 
-[node name="shape" type="CollisionShape2D" parent="hurtbox" unique_id=927959395]
-position = Vector2(2, 3)
+[node name="hurtbox" type="Area2D" parent="Sprite2D" unique_id=435404300]
+
+[node name="shape" type="CollisionShape2D" parent="Sprite2D/hurtbox" unique_id=927959395]
 shape = SubResource("CapsuleShape2D_dlmty")
 debug_color = Color(0, 0.6509804, 0.38431373, 0.1254902)
 
