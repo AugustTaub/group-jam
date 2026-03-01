@@ -3,6 +3,7 @@ extends Area2D
 @export var zone_floor_tilemap: TileMapLayer
 
 func _ready():
+	#GlobalVarsTester.zone_ground_tilelayer_arr.append(zone_floor_tilemap)
 	GlobalVars.zone_ground_tilelayer_arr.append(zone_floor_tilemap)
 
 func _on_body_entered(body):

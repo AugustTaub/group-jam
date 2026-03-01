@@ -173,7 +173,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"teleport_break",
-"speed": 12.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -190,7 +190,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"teleport_idle",
-"speed": 6.0
+"speed": 12.0
 }]
 
 [node name="player_projectile" type="CharacterBody2D" unique_id=813384197]
@@ -211,8 +211,10 @@ autoplay = "barrier_idle"
 
 [node name="sprite_2" type="AnimatedSprite2D" parent="sprites" unique_id=1976167491]
 sprite_frames = SubResource("SpriteFrames_oxij3")
-animation = &"teleport_idle"
+animation = &"teleport_break"
 autoplay = "teleport_idle"
+frame = 7
+frame_progress = 1.0
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1941325051]
 

@@ -101,10 +101,10 @@ size = Vector2(51, 47)
 y_sort_enabled = true
 
 [node name="Zone_4" parent="." unique_id=1170203481 instance=ExtResource("1_y8582")]
-position = Vector2(3247, -1806)
+position = Vector2(3247, -1805)
 
 [node name="Zone_3" parent="." unique_id=1166785838 instance=ExtResource("2_rdmyl")]
-position = Vector2(1789, -1061)
+position = Vector2(1789, -1060)
 
 [node name="zone2" parent="." unique_id=1699951318 instance=ExtResource("1_5fd2q")]
 position = Vector2(-371, -317)
