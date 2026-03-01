@@ -270,7 +270,7 @@ height = 3.9999998
 radius = 19.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
-radius = 6.0
+radius = 5.0
 height = 22.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ke2ow"]

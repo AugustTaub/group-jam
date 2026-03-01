@@ -58,7 +58,7 @@ func collide_area(area: Area2D) -> void:
 		var bullet_velocity = velocity
 		body.knockback(bullet_velocity, knockback_duration, knockback_force)
 		
-	if not body.is_in_group("Bullet") and area.name == "hurtbox":
+	if not body.is_in_group("Bullet") and area.name != "ParryHitbox":
 		queue_free()
 		
 
@@ -92,6 +92,7 @@ func isParried():
 	parry_anim.visible = true 
 	
 	SignalBus.create_companion_by_name.emit(type)
+	SignalBus.play_audio.emit("blup")
 	SignalBus.parried_bullet.emit()
 	
 	parry_anim.play("player_parry")
