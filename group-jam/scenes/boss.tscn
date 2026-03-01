@@ -208,14 +208,14 @@ height = 46.0
 script = ExtResource("1_neq0i")
 
 [node name="boss_animation" type="AnimatedSprite2D" parent="." unique_id=658980174]
+light_mask = 0
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_nk50o")
-animation = &"boss_on"
+animation = &"boss_idle"
 autoplay = "boss_idle"
-frame = 2
-frame_progress = 1.0
 
 [node name="tentacle_animation" type="AnimatedSprite2D" parent="." unique_id=710469563]
+visible = false
 z_index = 1
 position = Vector2(1, -32)
 sprite_frames = SubResource("SpriteFrames_e1yhm")

@@ -22,6 +22,15 @@
 [ext_resource type="AudioStream" uid="uid://dnu1ddr7snvv3" path="res://audio_files/teleport.ogg" id="18_l71n6"]
 [ext_resource type="AudioStream" uid="uid://cgj53g6t4umhx" path="res://audio_files/throw.ogg" id="19_i4ail"]
 
+[sub_resource type="Gradient" id="Gradient_i4ail"]
+colors = PackedColorArray(1, 0.5203806, 0.987559, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a38lo"]
+gradient = SubResource("Gradient_i4ail")
+fill = 1
+fill_from = Vector2(0.4882353, 0.45294118)
+fill_to = Vector2(0.89117646, 0.12352941)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
 region = Rect2(0, 0, 32, 32)
@@ -287,12 +296,24 @@ RichTextLabel/constants/outline_size = 8
 RichTextLabel/font_sizes/normal_font_size = 8
 RichTextLabel/fonts/normal_font = ExtResource("10_y4r1p")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_i4ail"]
+cull_mode = 1
+polygon = PackedVector2Array(-5, -14, 3, -14, 3, -13, 4, -13, 4, -12, 5, -12, 5, -7, 4, -7, 4, -3, 3, -3, 3, -2, 4, -2, 4, -1, 5, -1, 5, 6, 4, 6, 4, 7, 3, 7, 3, 9, 0, 9, 0, 10, -5, 10, -5, 9, -10, 9, -10, 6, -9, 6, -9, 3, -8, 3, -8, 2, -7, 2, -7, 0, -6, 0, -6, -1, -5, -1, -5, -3, -7, -3, -7, -4, -8, -4, -8, -5, -9, -5, -9, -8, -8, -8, -8, -9, -7, -9, -7, -11, -6, -11, -6, -13, -5, -13)
+
 [node name="Player" type="CharacterBody2D" unique_id=1508676161 groups=["Player"]]
 position = Vector2(0, -9)
 collision_layer = 135
 collision_mask = 135
 script = ExtResource("1_g2els")
 number_comp = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1769901622]
+light_mask = 2
+position = Vector2(0, 4)
+scale = Vector2(1, 1.0234375)
+energy = 1.52
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_a38lo")
 
 [node name="parry_VFX" parent="." unique_id=128708271 instance=ExtResource("9_ur7pv")]
 
@@ -302,18 +323,21 @@ top_level = true
 [node name="alex_anims" type="Node2D" parent="." unique_id=1796449004]
 
 [node name="player_anim" type="AnimatedSprite2D" parent="alex_anims" unique_id=1519474849]
+light_mask = 2
 sprite_frames = SubResource("SpriteFrames_qfm1y")
 animation = &"player_walk"
 autoplay = "player_idle"
 frame_progress = 0.8144491
 
 [node name="dust_anim_left" type="AnimatedSprite2D" parent="alex_anims" unique_id=1574832808]
+light_mask = 2
 position = Vector2(-22, -1)
 sprite_frames = SubResource("SpriteFrames_pf23h")
 animation = &"player_dust"
 frame = 10
 
 [node name="dust_anim_right" type="AnimatedSprite2D" parent="alex_anims" unique_id=834159096]
+light_mask = 2
 position = Vector2(22, -1)
 sprite_frames = SubResource("SpriteFrames_pf23h")
 animation = &"player_dust"
@@ -365,40 +389,31 @@ script = ExtResource("6_smehm")
 [node name="gameplay_music" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=2003695358]
 stream = ExtResource("7_ur7pv")
 volume_db = -10.866
-bus = &"Music"
 
 [node name="blup" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=688715307]
 stream = ExtResource("8_y4r1p")
-bus = &"SFX"
 
 [node name="barrier" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=2023788992]
 stream = ExtResource("10_3v2ag")
-bus = &"SFX"
 
 [node name="bullet_parry" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1218727296]
 stream = ExtResource("11_jej6c")
-bus = &"SFX"
 
 [node name="explosion" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1017188038]
 stream = ExtResource("12_f1ej7")
-bus = &"SFX"
 
 [node name="knockback" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1544637669]
 stream = ExtResource("13_oprun")
-bus = &"SFX"
 
 [node name="step" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=884816385]
 stream = SubResource("AudioStreamRandomizer_ke2ow")
 max_polyphony = 2
-bus = &"SFX"
 
 [node name="teleport" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=953493335]
 stream = ExtResource("18_l71n6")
-bus = &"SFX"
 
 [node name="throw" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=109182000]
 stream = ExtResource("19_i4ail")
-bus = &"SFX"
 
 [node name="notification_text" type="RichTextLabel" parent="." unique_id=175903801]
 offset_left = -81.0
@@ -413,6 +428,9 @@ script = ExtResource("11_d2wvv")
 
 [node name="cast_cooldown" type="Timer" parent="." unique_id=605054546]
 wait_time = 0.05
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=254008993]
+occluder = SubResource("OccluderPolygon2D_i4ail")
 
 [connection signal="body_entered" from="ParryHitbox" to="." method="_on_parry_hitbox_body_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_parry_hitbox_body_entered"]
