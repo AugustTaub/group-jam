@@ -52,7 +52,9 @@ func collide_area(area: Area2D) -> void:
 			return
 	#if area.name == "EffectiveHitboxCompanion":
 	#	queue_free()
-		
+	
+	
+	
 	var body = area.get_parent()
 	if body.has_method("knockback") and area.name == "hurtbox":
 		var bullet_velocity = velocity

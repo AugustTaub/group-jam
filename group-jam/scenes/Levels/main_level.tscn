@@ -5,9 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dbx7e5nfe38u6" path="res://scenes/Levels/zone_3.tscn" id="2_rdmyl"]
 [ext_resource type="PackedScene" uid="uid://s43ekqyqrfgd" path="res://scenes/zone_1.tscn" id="3_aqlcq"]
 [ext_resource type="PackedScene" uid="uid://3i83m1sxh7ga" path="res://scenes/player.tscn" id="4_csk5y"]
-[ext_resource type="PackedScene" uid="uid://b2hpcn8e22kti" path="res://scenes/zone_tutorial.tscn" id="5_qm27w"]
+[ext_resource type="PackedScene" uid="uid://ca5uowp0pagwx" path="res://scenes/zone_tutorial.tscn" id="5_qm27w"]
 [ext_resource type="Texture2D" uid="uid://fdmvhfi1e5ng" path="res://2D/tileset/DekoSheet.png" id="6_kugxs"]
-[ext_resource type="Script" uid="uid://bcanyn217raae" path="res://scripts/big_boss.gd" id="7_ax252"]
 [ext_resource type="PackedScene" uid="uid://dr7v0dqryacqv" path="res://scenes/boss.tscn" id="10_f8q37"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kugxs"]
@@ -55,18 +54,6 @@ physics_layer_1/collision_layer = 64
 physics_layer_1/collision_mask = 64
 sources/2 = SubResource("TileSetAtlasSource_kugxs")
 
-[sub_resource type="Gradient" id="Gradient_1vub3"]
-offsets = PackedFloat32Array(0, 0.37272727, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.9227273, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ax252"]
-gradient = SubResource("Gradient_1vub3")
-fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.5, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax252"]
-size = Vector2(51, 47)
-
 [node name="Node2D" type="Node2D" unique_id=356752225]
 y_sort_enabled = true
 
@@ -90,23 +77,7 @@ position = Vector2(-2, -3)
 tile_set = SubResource("TileSet_ax252")
 
 [node name="Player" parent="." unique_id=1508676161 instance=ExtResource("4_csk5y")]
-position = Vector2(-1949, 1257)
-
-[node name="Big_Boss" type="Node2D" parent="." unique_id=1379803539]
-visible = false
-position = Vector2(3920, -1495)
-script = ExtResource("7_ax252")
-
-[node name="Sprite2D" type="Sprite2D" parent="Big_Boss" unique_id=2070282214]
-position = Vector2(-2.000014, -41.71791)
-scale = Vector2(0.37500167, 0.39743492)
-texture = SubResource("GradientTexture2D_ax252")
-
-[node name="Area2D" type="Area2D" parent="Big_Boss" unique_id=144841373]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Big_Boss/Area2D" unique_id=1008077784]
-position = Vector2(-7.5, 1.5)
-shape = SubResource("RectangleShape2D_ax252")
+position = Vector2(3999, -1535)
 
 [node name="Boss" parent="." unique_id=1666674495 instance=ExtResource("10_f8q37")]
-position = Vector2(3914, -1486)
+position = Vector2(3920, -1504)
