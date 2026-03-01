@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cucn5h5qt20ai"]
 
 [ext_resource type="Script" uid="uid://bxc1resaxgtdm" path="res://scripts/companion_objects/explosion.gd" id="1_fulb0"]
-[ext_resource type="Texture2D" uid="uid://gmdf1wbmmo57" path="res://Assets/Sprites/projectile_explosion.png" id="2_dbry5"]
+[ext_resource type="Texture2D" uid="uid://gmdf1wbmmo57" path="res://2D/Sprites/projectile_explosion.png" id="2_dbry5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2xo5"]
 atlas = ExtResource("2_dbry5")
@@ -76,6 +76,8 @@ frame = 6
 frame_progress = 1.0
 
 [node name="EffectiveHitboxCompanion" type="Area2D" parent="." unique_id=1247788656 groups=["CompanionEffectBullet"]]
+collision_layer = 5
+collision_mask = 5
 
 [node name="shape" type="CollisionShape2D" parent="EffectiveHitboxCompanion" unique_id=329834413]
 position = Vector2(1, -7)

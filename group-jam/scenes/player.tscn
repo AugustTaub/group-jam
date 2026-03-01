@@ -267,7 +267,7 @@ radius = 1.9999999
 height = 3.9999998
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d2wvv"]
-radius = 21.0
+radius = 19.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 6.0
@@ -339,11 +339,12 @@ zoom = Vector2(2.2, 2.2)
 
 [node name="ParryHitbox" type="Area2D" parent="." unique_id=230190237]
 position = Vector2(0, 8)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParryHitbox" unique_id=775375219]
 position = Vector2(-1, -9)
 shape = SubResource("CircleShape2D_d2wvv")
-disabled = true
 debug_color = Color(0.36449513, 0.42864174, 0.07651729, 0.41960785)
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=683468552]
@@ -367,39 +368,50 @@ script = ExtResource("6_smehm")
 [node name="gameplay_music" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=2003695358]
 stream = ExtResource("7_ur7pv")
 volume_db = -10.866
+bus = &"Music"
+parameters/looping = true
 
 [node name="blup" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=688715307]
 stream = ExtResource("8_y4r1p")
+bus = &"SFX"
 
 [node name="barrier" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=2023788992]
 stream = ExtResource("10_3v2ag")
 pitch_scale = 1.12
+bus = &"SFX"
 
 [node name="bullet_parry" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1218727296]
 stream = ExtResource("11_jej6c")
+bus = &"SFX"
 
 [node name="bullet_parry_short" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1702553842]
 stream = ExtResource("12_a38lo")
+bus = &"SFX"
 
 [node name="explosion" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1017188038]
 stream = ExtResource("12_f1ej7")
+bus = &"SFX"
 
 [node name="knockback" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1544637669]
 stream = ExtResource("13_oprun")
 volume_db = -14.611
 attenuation = 1.5691637
+bus = &"SFX"
 
 [node name="step" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=884816385]
 stream = SubResource("AudioStreamRandomizer_ke2ow")
 volume_db = -7.761
 max_polyphony = 2
+bus = &"SFX"
 
 [node name="teleport" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=953493335]
 stream = ExtResource("18_l71n6")
+bus = &"SFX"
 
 [node name="throw" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=109182000]
 stream = ExtResource("19_i4ail")
 volume_db = 0.775
+bus = &"SFX"
 
 [node name="notification_text" type="RichTextLabel" parent="." unique_id=175903801]
 offset_left = -81.0
