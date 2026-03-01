@@ -137,7 +137,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"boss_on",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3bxh"]
@@ -198,13 +198,26 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_neq0i"]
-height = 38.0
+radius = 19.0
+height = 56.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dlmty"]
-radius = 13.0
-height = 46.0
+radius = 22.0
+height = 62.0
+
+[sub_resource type="Gradient" id="Gradient_qnbj4"]
+offsets = PackedFloat32Array(0, 0.53521127, 1)
+colors = PackedColorArray(0.8117647, 0, 0.54509807, 1, 0.87937033, 0.35915494, 0.70847833, 0.64084506, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r3bxh"]
+gradient = SubResource("Gradient_qnbj4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+metadata/_snap_enabled = true
 
 [node name="Boss" type="Node2D" unique_id=1666674495]
+y_sort_enabled = true
 script = ExtResource("1_neq0i")
 
 [node name="boss_animation" type="AnimatedSprite2D" parent="." unique_id=658980174]
@@ -212,8 +225,6 @@ position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_nk50o")
 animation = &"boss_on"
 autoplay = "boss_idle"
-frame = 2
-frame_progress = 1.0
 
 [node name="tentacle_animation" type="AnimatedSprite2D" parent="." unique_id=710469563]
 z_index = 1
@@ -224,13 +235,18 @@ animation = &"boss_hug"
 [node name="collision_area" type="StaticBody2D" parent="." unique_id=1111642979]
 
 [node name="shape" type="CollisionShape2D" parent="collision_area" unique_id=715238917]
-position = Vector2(2, -41)
+position = Vector2(2, -33)
 shape = SubResource("CapsuleShape2D_neq0i")
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=435404300]
 position = Vector2(0, -37)
 
 [node name="shape" type="CollisionShape2D" parent="hurtbox" unique_id=927959395]
-position = Vector2(2, -4)
+position = Vector2(2, 3)
 shape = SubResource("CapsuleShape2D_dlmty")
 debug_color = Color(0, 0.6509804, 0.38431373, 0.1254902)
+
+[node name="boss_glow" type="PointLight2D" parent="." unique_id=849206040]
+position = Vector2(1, -21)
+scale = Vector2(1.4375, 1.359375)
+texture = SubResource("GradientTexture2D_r3bxh")
