@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name parry_bullet
+
 # 2dAnimatedSprites 
 @onready var anim_sprite = find_child("anim_sprite")
 @onready var parry_anim  = find_child("parry_anim")
@@ -41,18 +43,22 @@ func collide_area(area: Area2D) -> void:
 	
 	#if in_freeze:
 	#	return 
+	
+	print(area.name)
 	if area.name == "ParryHitbox":
-		isParried()  
-		return
+		print(GlobalVars.player_parry_active)
+		if GlobalVars.player_parry_active:
+			isParried()
+			return
 	#if area.name == "EffectiveHitboxCompanion":
 	#	queue_free()
 		
 	var body = area.get_parent()
-	if body.has_method("knockback"):
+	if body.has_method("knockback") and area.name == "hurtbox":
 		var bullet_velocity = velocity
 		body.knockback(bullet_velocity, knockback_duration, knockback_force)
 		
-	if not body.is_in_group("Bullet"):
+	if not body.is_in_group("Bullet") and area.name == "hurtbox":
 		queue_free()
 		
 
@@ -60,7 +66,8 @@ func collide_body(body: Node2D) -> void:
 	if body.is_in_group("WorldCollision"):
 		queue_free()
 	
-	
+
+
 func isParried():
 	print("is Parried")
 	if in_freeze:

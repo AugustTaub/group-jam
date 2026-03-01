@@ -82,7 +82,7 @@ func _process(delta: float) -> void:
 #TODO can_move mit einbinden bei idle 
 func player_animation():
 	var motion_vector = Input.get_vector("left", "right", "forward", "back")
-	if motion_vector and can_move:
+	if motion_vector:
 		player_anim.play("player_walk")
 		if motion_vector.x < 0:
 			player_anim.flip_h = true
@@ -140,9 +140,8 @@ func _physics_process(delta):
 		#$DustParticle.self_modulate = 0
 	else:	
 		velocity = iso_velocity.normalized() * speed
-		if can_move:
-			player_anim.play("player_walk")
-			SignalBus.player_move.emit()
+		player_anim.play("player_walk")
+		SignalBus.player_move.emit()
 		
 		if step_sound_cooldown > 0.45:
 			SignalBus.play_audio.emit("step")
@@ -219,7 +218,7 @@ func knockback(direction: Vector2, duration: float, force: float):
 	can_move = false
 	
 	hurtbox.get_child(0).set_deferred("disabled", true)
-	parry_hitbox.set_deferred("disabled", true)
+	GlobalVars.player_parry_active = false
 
 
 func parry():
@@ -236,13 +235,22 @@ func parry():
 	speed = speedVal*0.01
 	tween.tween_property(self,"speed",speedVal,parry_window*1.3).set_trans(Tween.TRANS_BOUNCE)
 	
+	for area in $ParryHitbox.get_overlapping_areas():
+		var area_parent: Node2D = area.get_parent()
+		if area_parent is parry_bullet:
+			area_parent.isParried()
 	
-	$ParryHitbox/CollisionShape2D.set_deferred("disabled", false)
+	
+	GlobalVars.player_parry_active = true
+	
 	await get_tree().create_timer(parry_window).timeout
 	#parry_anim.play("player_parry")
 	#await parry_anim.animation_finished
-	$ParryHitbox/CollisionShape2D.set_deferred("disabled", true)
-	#can_move = true
+	
+	GlobalVars.player_parry_active = false
+	
+	can_move = true
+	
 	
 	await get_tree().create_timer(parry_delay).timeout
 	can_parry = true
@@ -342,6 +350,4 @@ func _on_cast_cooldown_timeout():
 	can_cast = true
 	
 func stop_moving():
-	player_anim.stop()
-	player_anim.play("player_idle")
 	can_move = false
