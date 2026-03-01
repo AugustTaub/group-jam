@@ -46,6 +46,8 @@ var curr_floor_tilemap: TileMapLayer
 #var dustPosXreverse = 2000
 
 func _ready():
+	SignalBus.stop_player_move.connect(stop_moving)
+	
 	SignalBus.teleport_player.connect(teleport)
 	SignalBus.parried_bullet.connect(func():$parry_VFX.trigger_hit_vfx())
 	
@@ -336,3 +338,6 @@ func check_if_ground_on_layer(pos: Vector2,layer: TileMapLayer) -> bool:
 
 func _on_cast_cooldown_timeout():
 	can_cast = true
+	
+func stop_moving():
+	can_move = false

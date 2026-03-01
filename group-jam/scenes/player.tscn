@@ -289,6 +289,7 @@ RichTextLabel/font_sizes/normal_font_size = 8
 RichTextLabel/fonts/normal_font = ExtResource("10_y4r1p")
 
 [node name="Player" type="CharacterBody2D" unique_id=1508676161 groups=["Player"]]
+y_sort_enabled = true
 position = Vector2(0, -9)
 collision_layer = 135
 collision_mask = 135
@@ -366,49 +367,39 @@ script = ExtResource("6_smehm")
 [node name="gameplay_music" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=2003695358]
 stream = ExtResource("7_ur7pv")
 volume_db = -10.866
-bus = &"Music"
 
 [node name="blup" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=688715307]
 stream = ExtResource("8_y4r1p")
-bus = &"SFX"
 
 [node name="barrier" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=2023788992]
 stream = ExtResource("10_3v2ag")
 pitch_scale = 1.12
-bus = &"SFX"
 
 [node name="bullet_parry" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1218727296]
 stream = ExtResource("11_jej6c")
-bus = &"SFX"
 
 [node name="bullet_parry_short" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1702553842]
 stream = ExtResource("12_a38lo")
-bus = &"SFX"
 
 [node name="explosion" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1017188038]
 stream = ExtResource("12_f1ej7")
-bus = &"SFX"
 
 [node name="knockback" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1544637669]
 stream = ExtResource("13_oprun")
 volume_db = -14.611
 attenuation = 1.5691637
-bus = &"SFX"
 
 [node name="step" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=884816385]
 stream = SubResource("AudioStreamRandomizer_ke2ow")
 volume_db = -7.761
 max_polyphony = 2
-bus = &"SFX"
 
 [node name="teleport" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=953493335]
 stream = ExtResource("18_l71n6")
-bus = &"SFX"
 
 [node name="throw" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=109182000]
 stream = ExtResource("19_i4ail")
 volume_db = 0.775
-bus = &"SFX"
 
 [node name="notification_text" type="RichTextLabel" parent="." unique_id=175903801]
 offset_left = -81.0

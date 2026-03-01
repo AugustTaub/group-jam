@@ -6,11 +6,14 @@ extends Node2D
 @onready var boss_glow = find_child("boss_glow")
 
 func _ready():
+	GlobalVars.boss_pos = self.global_position
+	print("BOSS", GlobalVars.boss_pos)
 	boss_glow.visible = false
 	hurtbox.area_entered.connect(convert_boss)
 
 func convert_boss(area : Area2D):
 	if area.name == "ParryHitbox":
+		SignalBus.stop_player_move.emit()
 		boss_anim.play("boss_off")
 		await boss_anim.animation_finished
 		await get_tree().create_timer(2.0).timeout
