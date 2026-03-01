@@ -586,7 +586,7 @@ region = Rect2(192, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3p7l"]
 atlas = ExtResource("2_pxhkx")
-region = Rect2(0, 64, 32, 32)
+region = Rect2(168, 168, 56, 56)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vda2x"]
 animations = [{
@@ -638,11 +638,10 @@ sprite_frames = SubResource("SpriteFrames_0285d")
 animation = &"start"
 
 [node name="cannon_animation_right" type="AnimatedSprite2D" parent="animations" unique_id=1003928436]
-visible = false
 rotation = -0.41445372
 sprite_frames = SubResource("SpriteFrames_22shy")
-animation = &"shoot"
-frame = 3
+animation = &"start"
+frame = 7
 frame_progress = 1.0
 flip_h = true
 
@@ -662,10 +661,11 @@ sprite_frames = SubResource("SpriteFrames_pxhkx")
 animation = &"start_right"
 
 [node name="blow_animation" type="AnimatedSprite2D" parent="." unique_id=1095960678]
-position = Vector2(-7, -3)
+position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_vda2x")
 animation = &"blow"
 frame = 4
+frame_progress = 1.0
 
 [node name="pattern_ancor" type="Node2D" parent="." unique_id=452076657]
 

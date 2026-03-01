@@ -23,6 +23,7 @@ tile_map_data = PackedByteArray("AAA0AEwAAAAEAAEAAAA0AEsAAAAEAAEAAAAnAEwAAAABAAE
 tile_set = ExtResource("2_psgts")
 
 [node name="ZoneArea" type="Area2D" parent="." unique_id=695783494 node_paths=PackedStringArray("zone_floor_tilemap")]
+visible = false
 collision_layer = 128
 collision_mask = 128
 script = ExtResource("3_b1u07")
