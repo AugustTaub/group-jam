@@ -271,7 +271,7 @@ radius = 19.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 5.0
-height = 22.0
+height = 20.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ke2ow"]
 random_pitch = 1.3623368
@@ -353,7 +353,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="collision" type="CollisionShape2D" parent="hurtbox" unique_id=1150933128]
-position = Vector2(0, -5)
+position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_qhqgy")
 debug_color = Color(0.87248534, 0.00047322153, 0.8449739, 0.41960785)
 
