@@ -14,6 +14,8 @@ var speed : float = speedVal
 
 var active_companion_slot: int = 0
 
+var step_sound_cooldown: float = 0
+
 #für Parry The Platypus und knockback
 var can_move : bool = true:
 	set(value):
@@ -51,9 +53,22 @@ func _ready():
 	CompanionLogic.container = self.find_child("companion_container")
 	
 	SignalBus.entered_new_zone.connect(_on_entered_new_zone)
+	
+	game_start_anim()
+
+func game_start_anim():
+	await get_tree().create_timer(0.05).timeout
+	
+	var tween = create_tween()
+	
+	tween.tween_property($Camera2D,"global_position",GlobalVars.boss_pos,5)
+	tween.tween_interval(1)
+	tween.tween_property($Camera2D,"position",Vector2.ZERO,2)
+
+
 
 func _on_entered_new_zone(new_zone_floor_tilemap: TileMapLayer):
-	print(new_zone_floor_tilemap)
+	print("new_zone_floor_tilemap: ",new_zone_floor_tilemap)
 	curr_floor_tilemap = new_zone_floor_tilemap
 
 
@@ -124,20 +139,20 @@ func _physics_process(delta):
 		velocity = iso_velocity.normalized() * speed
 		player_anim.play("player_walk")
 		SignalBus.player_move.emit()
+		
+		if step_sound_cooldown > 0.45:
+			SignalBus.play_audio.emit("step")
+			step_sound_cooldown = 0
+		else:
+			step_sound_cooldown += delta
+		
 		#$DustParticle.position.x = dustPosXreverse
 		
 		
-#	if velocity.x != 0:
-#		player_anim.flip_h = velocity.x < 0
-		#$DustParticle.position.x = dustPosX
-		
+	
 	move_and_slide()
-			
-	#if Input.is_action_just_pressed("ui_accept"):
-	#	var rng = RandomNumberGenerator.new()
-	#	rng.randomize()
-	#	var my_random_number = rng.randi_range(0, 2)
-	#	SignalBus.create_companion.emit(my_random_number)
+	
+	GlobalVars.player_pos = global_position
 
 func companions_follow(delta):
 	var i: int = 0
@@ -179,6 +194,9 @@ func knockback(direction: Vector2, duration: float, force: float):
 	if gommemode:
 		return
 	
+	
+	SignalBus.play_audio.emit("knockback")
+	
 	Engine.time_scale = 1.0
 	
 	dust_anim_left.hide()
@@ -205,6 +223,7 @@ func parry():
 		return 
 	
 	$parry_VFX.trigger_normal_vfx()
+	SignalBus.play_audio.emit("bullet_parry_short")
 	
 	can_parry = false 
 	
@@ -244,6 +263,8 @@ func switch_ability():
 func cast_ability():
 	
 	if not can_cast: return
+	
+	SignalBus.play_audio.emit("throw")
 	
 	print(CompanionLogic.companion_dict[active_companion_slot])
 	if CompanionLogic.companion_dict[active_companion_slot] != null:
@@ -285,23 +306,33 @@ func teleport(pos : Vector2):
 	
 	var tilemap_layer: TileMapLayer = curr_floor_tilemap
 	
-	if not tilemap_layer:
-		print("nicht floor_new")
+	if check_if_ground_on_layer(pos, tilemap_layer):
+		self.global_position = pos
+		
 		return
+	else:
+		var erased_arr: Array = GlobalVars.zone_ground_tilelayer_arr.duplicate()
+		erased_arr.erase(tilemap_layer)
+		for layer: TileMapLayer in erased_arr:
+			if check_if_ground_on_layer(pos, layer):
+				self.global_position = pos
+				
+
+
+func check_if_ground_on_layer(pos: Vector2,layer: TileMapLayer) -> bool:
 	
-	var local_pos = tilemap_layer.to_local(pos)
-	var tile_pos = tilemap_layer.local_to_map(local_pos)
-	var tile_data = tilemap_layer.get_cell_tile_data(tile_pos)
-	
-	
+	var local_pos = layer.to_local(pos)
+	var tile_pos = layer.local_to_map(local_pos)
+	var tile_data = layer.get_cell_tile_data(tile_pos)
 	
 	if tile_data:
 		if tile_data.get_collision_polygons_count(1) > 0:
-			self.global_position = pos
-			return
+			return true
 	
-	else:
-		print("404 no tile found")
+	return false
+
+
+
 
 func _on_cast_cooldown_timeout():
 	can_cast = true

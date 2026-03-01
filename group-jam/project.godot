@@ -24,6 +24,7 @@ config/icon="res://2D/cool_icon.svg"
 SignalBus="*uid://dpri3cytp0n7n"
 CompanionLogic="*uid://4wd1beium3h8"
 GlobalWindow="*uid://7ju4u0xsmwl"
+GlobalVars="*uid://bkcdretd7xnr"
 
 [file_customization]
 
