@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bqmd5grcrgoiy" path="res://scenes/cannon.tscn" id="4_m3hsa"]
 [ext_resource type="Texture2D" uid="uid://c5ou33u28xgor" path="res://2D/tutorial_font/new_switch_companion_info.png" id="4_n7kok"]
 [ext_resource type="Texture2D" uid="uid://blhjbqj33br4t" path="res://2D/tutorial_font/parry_info.png" id="5_fslcv"]
+[ext_resource type="Texture2D" uid="uid://cyrv4q0iex2rp" path="res://2D/tutorial_font/companion_info_purple.png" id="7_m3hsa"]
 [ext_resource type="Texture2D" uid="uid://swm5uive5nyp" path="res://2D/tutorial_font/companion_info.png" id="7_ngrvx"]
 
 [node name="Zone_tutorial" type="Node2D" unique_id=1621499500]
@@ -78,3 +79,11 @@ shots_per_parry = 0
 interval = 0.5
 parry_type = "explosion"
 speed_multiplier = 0.1
+
+[node name="CompanionInfoPurple" type="Sprite2D" parent="." unique_id=970709054]
+visible = false
+z_index = 1
+position = Vector2(883.8789, 629.1702)
+rotation = 0.4886922
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_m3hsa")

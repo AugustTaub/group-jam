@@ -77,7 +77,7 @@ position = Vector2(-2, -3)
 tile_set = SubResource("TileSet_ax252")
 
 [node name="Player" parent="." unique_id=1508676161 instance=ExtResource("4_csk5y")]
-position = Vector2(-784, 660)
+position = Vector2(3999, -1535)
 
 [node name="Boss" parent="." unique_id=1666674495 instance=ExtResource("10_f8q37")]
 position = Vector2(3920, -1504)
