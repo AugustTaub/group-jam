@@ -586,7 +586,7 @@ region = Rect2(192, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3p7l"]
 atlas = ExtResource("2_pxhkx")
-region = Rect2(168, 168, 56, 56)
+region = Rect2(168, 112, 56, 56)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vda2x"]
 animations = [{
@@ -649,8 +649,6 @@ flip_h = true
 visible = false
 sprite_frames = SubResource("SpriteFrames_8ssa1")
 animation = &"shoot"
-frame = 3
-frame_progress = 1.0
 flip_h = true
 
 [node name="cannon_animation" type="AnimatedSprite2D" parent="." unique_id=909371777]

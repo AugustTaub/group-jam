@@ -175,7 +175,7 @@ func companions_follow(delta):
 		
 		if dist >= 30:
 			dir = child.global_position.direction_to(target_node.global_position)
-			speed_mult = 1
+			speed_mult = 1.2
 		elif player_dist < 35:
 			speed_mult = 0.5
 			if player_dist < 25:
