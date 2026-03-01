@@ -14,6 +14,8 @@ var speed : float = speedVal
 
 var active_companion_slot: int = 0
 
+var step_sound_cooldown: float = 0
+
 #für Parry The Platypus und knockback
 var can_move : bool = true:
 	set(value):
@@ -124,20 +126,18 @@ func _physics_process(delta):
 		velocity = iso_velocity.normalized() * speed
 		player_anim.play("player_walk")
 		SignalBus.player_move.emit()
+		
+		if step_sound_cooldown > 0.3:
+			SignalBus.play_audio.emit("step")
+			step_sound_cooldown = 0
+		else:
+			step_sound_cooldown += delta
+		
 		#$DustParticle.position.x = dustPosXreverse
 		
 		
-#	if velocity.x != 0:
-#		player_anim.flip_h = velocity.x < 0
-		#$DustParticle.position.x = dustPosX
-		
+	
 	move_and_slide()
-			
-	#if Input.is_action_just_pressed("ui_accept"):
-	#	var rng = RandomNumberGenerator.new()
-	#	rng.randomize()
-	#	var my_random_number = rng.randi_range(0, 2)
-	#	SignalBus.create_companion.emit(my_random_number)
 	
 	GlobalVars.player_pos = global_position
 
@@ -181,6 +181,9 @@ func knockback(direction: Vector2, duration: float, force: float):
 	if gommemode:
 		return
 	
+	
+	SignalBus.play_audio.emit("knockback")
+	
 	Engine.time_scale = 1.0
 	
 	dust_anim_left.hide()
@@ -207,6 +210,7 @@ func parry():
 		return 
 	
 	$parry_VFX.trigger_normal_vfx()
+	SignalBus.play_audio.emit("bullet_parry")
 	
 	can_parry = false 
 	
@@ -246,6 +250,8 @@ func switch_ability():
 func cast_ability():
 	
 	if not can_cast: return
+	
+	SignalBus.play_audio.emit("throw")
 	
 	print(CompanionLogic.companion_dict[active_companion_slot])
 	if CompanionLogic.companion_dict[active_companion_slot] != null:
@@ -289,6 +295,7 @@ func teleport(pos : Vector2):
 	
 	if check_if_ground_on_layer(pos, tilemap_layer):
 		self.global_position = pos
+		
 		return
 	else:
 		var erased_arr: Array = GlobalVars.zone_ground_tilelayer_arr.duplicate()
@@ -296,6 +303,7 @@ func teleport(pos : Vector2):
 		for layer: TileMapLayer in erased_arr:
 			if check_if_ground_on_layer(pos, layer):
 				self.global_position = pos
+				
 
 
 func check_if_ground_on_layer(pos: Vector2,layer: TileMapLayer) -> bool:

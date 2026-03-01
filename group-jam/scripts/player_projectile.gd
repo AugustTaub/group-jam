@@ -48,15 +48,17 @@ func apply_ability_effect(ability_type : int):
 		0: cast_explosion()
 		1: cast_wall()
 		2: cast_teleport()
-		
+	
 	
 func cast_explosion():
+	SignalBus.play_audio.emit("explosion")
 	var explosion = preload("res://scenes/companion_objects/explosion.tscn")
 	var new_exlposion = explosion.instantiate()
 	add_child(new_exlposion)
 	current_sprite.visible = false
 	
 func cast_wall():
+	SignalBus.play_audio.emit("barrier")
 	var wall = preload("res://scenes/companion_objects/wall.tscn")
 	var new_wall = wall.instantiate()
 	new_wall.duration = 5.0
@@ -64,6 +66,7 @@ func cast_wall():
 	current_sprite.visible = false
 	
 func cast_teleport():
+	SignalBus.play_audio.emit("teleport")
 	current_sprite.play("teleport_break")
 	await current_sprite.animation_finished
 	SignalBus.teleport_player.emit(self.global_position)
