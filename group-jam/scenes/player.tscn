@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cy6lr0mnnmfj1" path="res://2D/Sprites/PlayerDustAnimation.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bv5q81fq2bdcd" path="res://2D/Sprites/parry_particle.png" id="4_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://cgu3qetft43v8" path="res://scenes/in_game_ui.tscn" id="5_qlg0r"]
-[ext_resource type="Script" path="res://scripts/audio_manager.gd" id="6_smehm"]
+[ext_resource type="Script" uid="uid://conjvt7va7mji" path="res://scripts/audio_manager.gd" id="6_smehm"]
 [ext_resource type="AudioStream" uid="uid://00rpwav51j20" path="res://audio_files/9jackjack8-energy-electrowave-game-beat-293187.mp3" id="7_ur7pv"]
 [ext_resource type="AudioStream" uid="uid://bgg0dfqljulgc" path="res://audio_files/blup.mp3" id="8_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://cdh7tprk6ui2x" path="res://scenes/parry_vfx.tscn" id="9_ur7pv"]
@@ -256,10 +256,10 @@ radius = 1.9999999
 height = 3.9999998
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d2wvv"]
-radius = 19.0
+radius = 21.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
-radius = 5.0
+radius = 6.0
 height = 22.0
 
 [sub_resource type="Theme" id="Theme_d2wvv"]
@@ -270,11 +270,9 @@ RichTextLabel/font_sizes/normal_font_size = 8
 RichTextLabel/fonts/normal_font = ExtResource("10_y4r1p")
 
 [node name="Player" type="CharacterBody2D" unique_id=1508676161 groups=["Player"]]
-top_level = true
-y_sort_enabled = true
 position = Vector2(0, -9)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 135
+collision_mask = 135
 script = ExtResource("1_g2els")
 number_comp = 2
 
@@ -292,14 +290,12 @@ autoplay = "player_idle"
 frame_progress = 0.8144491
 
 [node name="dust_anim_left" type="AnimatedSprite2D" parent="alex_anims" unique_id=1574832808]
-self_modulate = Color(1, 1, 1, 0.47058824)
 position = Vector2(-22, -1)
 sprite_frames = SubResource("SpriteFrames_pf23h")
 animation = &"player_dust"
 frame = 10
 
 [node name="dust_anim_right" type="AnimatedSprite2D" parent="alex_anims" unique_id=834159096]
-self_modulate = Color(1, 1, 1, 0.47058824)
 position = Vector2(22, -1)
 sprite_frames = SubResource("SpriteFrames_pf23h")
 animation = &"player_dust"
@@ -325,14 +321,15 @@ zoom = Vector2(2.2, 2.2)
 position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParryHitbox" unique_id=775375219]
-position = Vector2(0, -9)
+position = Vector2(-1, -9)
 shape = SubResource("CircleShape2D_d2wvv")
 disabled = true
 debug_color = Color(0.36449513, 0.42864174, 0.07651729, 0.41960785)
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=683468552]
 position = Vector2(0, 8)
-collision_layer = 7
+collision_layer = 5
+collision_mask = 5
 
 [node name="collision" type="CollisionShape2D" parent="hurtbox" unique_id=1150933128]
 position = Vector2(0, -5)
@@ -365,5 +362,9 @@ scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("11_d2wvv")
 
+[node name="cast_cooldown" type="Timer" parent="." unique_id=605054546]
+wait_time = 0.05
+
 [connection signal="body_entered" from="ParryHitbox" to="." method="_on_parry_hitbox_body_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_parry_hitbox_body_entered"]
+[connection signal="timeout" from="cast_cooldown" to="." method="_on_cast_cooldown_timeout"]

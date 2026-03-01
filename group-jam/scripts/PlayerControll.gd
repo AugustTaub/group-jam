@@ -32,6 +32,10 @@ var gommemode: bool = false
 @export var parry_delay: float = 0.5
 var can_parry: bool = true
 
+var can_cast: bool = true
+
+var curr_floor_tilemap: TileMapLayer
+
 #@onready var dust_offset: float = $DustParticle.position.x
 #var dust_flip: float = dust_offset + 15
 
@@ -46,6 +50,11 @@ func _ready():
 	CompanionLogic.player = self
 	CompanionLogic.container = self.find_child("companion_container")
 	
+	SignalBus.entered_new_zone.connect(_on_entered_new_zone)
+
+func _on_entered_new_zone(new_zone_floor_tilemap: TileMapLayer):
+	print(new_zone_floor_tilemap)
+	curr_floor_tilemap = new_zone_floor_tilemap
 
 
 func _process(delta: float) -> void:
@@ -71,8 +80,11 @@ func _physics_process(delta):
 	#BLOCK IST WICHTIG, NICHT LÖSCHEN VRO
 	# VRO ich lösche nicht absichtlich zeug. das war der merge und das passiert öfter desto mehr zeug du in die process func rein haust und nicht in eigene Funktionen
 	if knockback_timer > 0.0:
+		
+		Engine.time_scale = 1.0
+		
 		knockback_timer -= delta
-		move_and_slide() 
+		move_and_slide()
 		
 		#anim
 		$alex_anims.skew += delta * 16
@@ -176,8 +188,10 @@ func knockback(direction: Vector2, duration: float, force: float):
 	
 	#FUNCTION: Bitte umänder falls ne nötig, ist bis jetzt für player feedback, maybe ne blink animation wenn zeit ist
 	self.modulate.a = 0.5
-	var iso_direction = Vector2(direction.x, direction.y * 0.5).normalized()
-	velocity = iso_direction * (knockback_power * force)
+	var iso_direction: Vector2 = Vector2(direction.x, direction.y * 0.5).normalized()
+	var world_back_dir: Vector2 = Vector2(-1,1).normalized()
+	var mixed_dir: Vector2 = (iso_direction*0.5 + world_back_dir*0.5).normalized()
+	velocity = mixed_dir * (knockback_power * force)
 	
 	knockback_timer = duration
 	can_move = false
@@ -228,6 +242,9 @@ func switch_ability():
 
 #creates projectile, that applies effect on landing	
 func cast_ability():
+	
+	if not can_cast: return
+	
 	print(CompanionLogic.companion_dict[active_companion_slot])
 	if CompanionLogic.companion_dict[active_companion_slot] != null:
 		
@@ -240,6 +257,9 @@ func cast_ability():
 		
 		CompanionLogic.remove_comp(active_companion_slot)
 		print("cast ability: ",ability_type)
+		
+		$cast_cooldown.start()
+		can_cast = false
 		
 		switch_ability()
 
@@ -262,7 +282,8 @@ func _input(event: InputEvent) -> void:
 		parry()
 		
 func teleport(pos : Vector2):
-	var tilemap_layer = get_parent().find_child("floor_new")
+	
+	var tilemap_layer: TileMapLayer = curr_floor_tilemap
 	
 	if not tilemap_layer:
 		print("nicht floor_new")
@@ -272,6 +293,8 @@ func teleport(pos : Vector2):
 	var tile_pos = tilemap_layer.local_to_map(local_pos)
 	var tile_data = tilemap_layer.get_cell_tile_data(tile_pos)
 	
+	
+	
 	if tile_data:
 		if tile_data.get_collision_polygons_count(1) > 0:
 			self.global_position = pos
@@ -279,3 +302,6 @@ func teleport(pos : Vector2):
 	
 	else:
 		print("404 no tile found")
+
+func _on_cast_cooldown_timeout():
+	can_cast = true
