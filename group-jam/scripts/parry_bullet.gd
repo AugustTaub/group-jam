@@ -54,6 +54,8 @@ func _on_body_entered(body: Node2D) -> void:
 	in_freeze = true
 	Engine.time_scale = 1.0
 	
+	SignalBus.play_audio.emit("bullet_parry")
+	
 	if body.has_method("knockback"):
 		var bullet_velocity = self.global_position.direction_to(move_direction).normalized()
 		body.knockback(bullet_velocity, knockback_duration, knockback_force)

@@ -24,6 +24,7 @@ config/icon="res://2D/cool_icon.svg"
 SignalBus="*uid://dpri3cytp0n7n"
 CompanionLogic="*uid://4wd1beium3h8"
 GlobalWindow="*uid://7ju4u0xsmwl"
+GlobalVars="*uid://bkcdretd7xnr"
 
 [file_customization]
 
@@ -37,8 +38,8 @@ Bullet=""
 Player=""
 Companion=""
 CompanionEffectBullet="Bin faul, wenn das auf Bullet trifft sollte das bei Wall und explosion queue_freen (Holy Spaghetti)"
-WorldCollision="used for collision of tilemap"
 world_collision="used for collision of tilemap"
+WorldCollision="used for collision of tilemap"
 
 [input]
 

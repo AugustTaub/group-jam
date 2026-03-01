@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://wnv7uoncx4gk" path="res://scripts/ui/companion_display.gd" id="12_ve7rr"]
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="13_luu0w"]
 [ext_resource type="Texture2D" uid="uid://dx423lteih8mq" path="res://2D/ui/down_arrow.png" id="14_luu0w"]
+[ext_resource type="Script" uid="uid://dvh67rojab3tv" path="res://scripts/timer.gd" id="15_gxplc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_huati"]
 
@@ -321,6 +322,11 @@ width = 32
 height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Theme" id="Theme_luu0w"]
+RichTextLabel/colors/default_color = Color(1, 1, 1, 0.38431373)
+RichTextLabel/font_sizes/normal_font_size = 35
+RichTextLabel/fonts/normal_font = ExtResource("2_a45jx")
 
 [node name="in_game_ui" type="Control" unique_id=1913189176]
 process_mode = 3
@@ -1207,6 +1213,15 @@ offset_right = -55.0
 offset_bottom = -41.0
 texture = ExtResource("14_luu0w")
 expand_mode = 2
+
+[node name="Timer" type="RichTextLabel" parent="." unique_id=1378261189]
+layout_mode = 0
+offset_left = 975.0
+offset_right = 1166.0
+offset_bottom = 64.0
+theme = SubResource("Theme_luu0w")
+text = "TIME: 00:00"
+script = ExtResource("15_gxplc")
 
 [connection signal="value_changed" from="ProgressBar" to="ProgressBar" method="_on_value_changed"]
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="main_menu_parent/main_menu_window" method="_on_close_button_pressed"]
