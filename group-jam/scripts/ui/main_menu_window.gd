@@ -2,6 +2,7 @@ extends custom_window
 
 @export var options_window: custom_window
 @export var credits_window: custom_window
+@export var controls_window: custom_window
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +30,7 @@ func appear():
 
 func dissapear():
 	options_window.dissapear()
+	controls_window.dissapear()
 	credits_window.dissapear()
 	
 	scale = Vector2.ONE
@@ -65,3 +67,7 @@ func _on_start_button_pressed():
 
 func _on_credits_button_pressed():
 	credits_window.appear()
+
+
+func _on_controls_button_pressed():
+	controls_window.appear()

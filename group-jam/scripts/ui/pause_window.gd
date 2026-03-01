@@ -1,6 +1,7 @@
 extends custom_window
 
 @export var options_window: custom_window
+@export var controls_window: custom_window
 @export var main_window: custom_window
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +27,7 @@ func appear():
 
 func dissapear():
 	options_window.dissapear()
+	controls_window.dissapear()
 	scale = Vector2.ONE
 	
 	var dissapeartween = create_tween()
@@ -65,3 +67,7 @@ func _on_continue_button_pressed():
 func _on_main_menu_button_pressed():
 	main_window.appear()
 	hide()
+
+
+func _on_controls_button_pressed():
+	controls_window.appear()

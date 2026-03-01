@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://qskhpxwgniao" path="res://2D/cool_icon.svg" id="13_luu0w"]
 [ext_resource type="Texture2D" uid="uid://dx423lteih8mq" path="res://2D/ui/down_arrow.png" id="14_luu0w"]
 [ext_resource type="Script" uid="uid://dvh67rojab3tv" path="res://scripts/timer.gd" id="15_gxplc"]
+[ext_resource type="Script" uid="uid://cv7jhnyn7jhx" path="res://scripts/ui/controls_window.gd" id="18_5gssk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_huati"]
 
@@ -336,6 +337,12 @@ shader_parameter/Texture2DParameter2 = SubResource("NoiseTexture2D_6qwj3")
 shader_parameter/ColorParameter = Color(0.0015227938, 0.050294943, 0.11231875, 1)
 shader_parameter/alpha = 0.185
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gssk"]
+shader = ExtResource("2_6qwj3")
+shader_parameter/Texture2DParameter2 = SubResource("NoiseTexture2D_6qwj3")
+shader_parameter/ColorParameter = Color(1.4439225e-06, 0.42460072, 0.40613195, 1)
+shader_parameter/alpha = 0.185
+
 [node name="in_game_ui" type="Control" unique_id=1913189176]
 process_mode = 3
 layout_mode = 3
@@ -522,7 +529,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.08, 0, 0.001333313, 0.21176471)
 
-[node name="main_menu_window" type="PanelContainer" parent="main_menu_parent" unique_id=1918995472 node_paths=PackedStringArray("options_window", "credits_window")]
+[node name="main_menu_window" type="PanelContainer" parent="main_menu_parent" unique_id=1918995472 node_paths=PackedStringArray("options_window", "credits_window", "controls_window")]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 21.0
@@ -532,6 +539,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_a45jx")
 script = ExtResource("1_276nr")
 options_window = NodePath("../../options_window")
 credits_window = NodePath("../../credits_window")
+controls_window = NodePath("../../controls_window")
 
 [node name="drag_margin" type="MarginContainer" parent="main_menu_parent/main_menu_window" unique_id=1481847120]
 layout_mode = 2
@@ -669,7 +677,7 @@ mouse_filter = 1
 theme = SubResource("Theme_6qwj3")
 text = "QUIT GAME"
 
-[node name="pause_window" type="PanelContainer" parent="." unique_id=783327449 node_paths=PackedStringArray("options_window", "main_window")]
+[node name="pause_window" type="PanelContainer" parent="." unique_id=783327449 node_paths=PackedStringArray("options_window", "controls_window", "main_window")]
 visible = false
 layout_mode = 0
 offset_left = 762.0
@@ -679,6 +687,7 @@ offset_bottom = 479.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_a45jx")
 script = ExtResource("1_fnge6")
 options_window = NodePath("../options_window")
+controls_window = NodePath("../controls_window")
 main_window = NodePath("../main_menu_parent/main_menu_window")
 
 [node name="drag_margin" type="MarginContainer" parent="pause_window" unique_id=372141954]
@@ -1327,14 +1336,251 @@ theme = SubResource("Theme_4t0bi")
 text = "Assets & Animation: Köpfespieß"
 scroll_active = false
 
+[node name="controls_window" type="PanelContainer" parent="." unique_id=189806785 node_paths=PackedStringArray("main_window", "options_window")]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 269.0
+offset_right = 767.0
+offset_bottom = 616.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fqvwy")
+script = ExtResource("18_5gssk")
+main_window = NodePath("../main_menu_parent/main_menu_window")
+options_window = NodePath("../options_window")
+
+[node name="drag_margin" type="MarginContainer" parent="controls_window" unique_id=724404294]
+layout_mode = 2
+mouse_default_cursor_shape = 12
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="in_panel" type="PanelContainer" parent="controls_window/drag_margin" unique_id=1379957631]
+material = SubResource("ShaderMaterial_5gssk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jlb72")
+
+[node name="window_patch" type="NinePatchRect" parent="controls_window/drag_margin" unique_id=971110904]
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 1
+texture = SubResource("GradientTexture2D_ria60")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="controls_window/drag_margin" unique_id=536244720]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="header" type="PanelContainer" parent="controls_window/drag_margin/VBoxContainer" unique_id=1437146581]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_276nr")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="controls_window/drag_margin/VBoxContainer/header" unique_id=799588847]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_04xgm")
+texture = SubResource("GradientTexture2D_ria60")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="controls_window/drag_margin/VBoxContainer/header" unique_id=288069563]
+layout_mode = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 9
+
+[node name="title" type="RichTextLabel" parent="controls_window/drag_margin/VBoxContainer/header/MarginContainer" unique_id=1603076130]
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_4t0bi")
+text = "CONTROLS"
+scroll_active = false
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="controls_window/drag_margin/VBoxContainer/header" unique_id=656519154]
+layout_mode = 2
+alignment_horizontal = 2
+
+[node name="close_button" type="Button" parent="controls_window/drag_margin/VBoxContainer/header/AspectRatioContainer" unique_id=1774477328]
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_5gssk")
+text = "X"
+
+[node name="MarginContainer" type="MarginContainer" parent="controls_window/drag_margin/VBoxContainer" unique_id=1922689119]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="controls_window/drag_margin/VBoxContainer/MarginContainer" unique_id=992184426]
+layout_mode = 2
+
+[node name="entry1" type="PanelContainer" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=336742561]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_276nr")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry1" unique_id=158754934]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_04xgm")
+texture = SubResource("GradientTexture2D_276nr")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry1" unique_id=1057939282]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+
+[node name="text" type="RichTextLabel" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry1/MarginContainer" unique_id=864759155]
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_4t0bi")
+text = "WASD - Move around"
+scroll_active = false
+
+[node name="entry2" type="PanelContainer" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=314530037]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_276nr")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry2" unique_id=1615395259]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_04xgm")
+texture = SubResource("GradientTexture2D_276nr")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry2" unique_id=789163742]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+
+[node name="text" type="RichTextLabel" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry2/MarginContainer" unique_id=383619457]
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_4t0bi")
+text = "SPACE - Parry to get Companions"
+scroll_active = false
+
+[node name="entry3" type="PanelContainer" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=619835288]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_276nr")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry3" unique_id=730030643]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_04xgm")
+texture = SubResource("GradientTexture2D_276nr")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry3" unique_id=2032921095]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+
+[node name="text" type="RichTextLabel" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry3/MarginContainer" unique_id=477369208]
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_4t0bi")
+text = "LEFT MOUSE - Throw Companions"
+scroll_active = false
+
+[node name="entry4" type="PanelContainer" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=883468908]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_276nr")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry4" unique_id=1991464515]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_04xgm")
+texture = SubResource("GradientTexture2D_276nr")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry4" unique_id=2032874308]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+
+[node name="text" type="RichTextLabel" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry4/MarginContainer" unique_id=2040301934]
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_4t0bi")
+text = "RIGHT MOUSE - Switch Companions"
+scroll_active = false
+
+[node name="entry5" type="PanelContainer" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1953994659]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_276nr")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry5" unique_id=1007542656]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_04xgm")
+texture = SubResource("GradientTexture2D_276nr")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry5" unique_id=1427649294]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+
+[node name="text" type="RichTextLabel" parent="controls_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/entry5/MarginContainer" unique_id=1259721396]
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_4t0bi")
+text = "ESC - Pause Game"
+scroll_active = false
+
 [connection signal="value_changed" from="ProgressBar" to="ProgressBar" method="_on_value_changed"]
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="main_menu_parent/main_menu_window" method="_on_close_button_pressed"]
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/MarginContainer4/start_button" to="main_menu_parent/main_menu_window" method="_on_start_button_pressed"]
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/MarginContainer/options_button" to="main_menu_parent/main_menu_window" method="_on_options_button_pressed"]
+[connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/MarginContainer3/controls_button" to="main_menu_parent/main_menu_window" method="_on_controls_button_pressed"]
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/MarginContainer5/credits_button" to="main_menu_parent/main_menu_window" method="_on_credits_button_pressed"]
 [connection signal="pressed" from="pause_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="pause_window" method="_on_close_button_pressed"]
 [connection signal="pressed" from="pause_window/drag_margin/VBoxContainer/MarginContainer4/continue_button" to="pause_window" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="pause_window/drag_margin/VBoxContainer/MarginContainer/options_button" to="pause_window" method="_on_options_button_pressed"]
+[connection signal="pressed" from="pause_window/drag_margin/VBoxContainer/MarginContainer3/controls_button" to="pause_window" method="_on_controls_button_pressed"]
 [connection signal="pressed" from="pause_window/drag_margin/VBoxContainer/MarginContainer2/main_menu_button" to="pause_window" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="options_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="options_window" method="_on_close_button_pressed"]
 [connection signal="value_changed" from="options_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/music_slider" to="options_window" method="_on_music_slider_value_changed"]
@@ -1344,3 +1590,4 @@ scroll_active = false
 [connection signal="pressed" from="endscreen_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer5/credits_button" to="endscreen_window" method="_on_credits_button_pressed"]
 [connection signal="pressed" from="endscreen_window/drag_margin/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer4/exit_button" to="endscreen_window" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="credits_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="credits_window" method="_on_close_button_pressed"]
+[connection signal="pressed" from="controls_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="controls_window" method="_on_close_button_pressed"]

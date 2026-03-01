@@ -40,4 +40,5 @@ func dissapear():
 
 
 func _on_close_button_pressed():
+	
 	dissapear()

@@ -121,7 +121,7 @@ position = Vector2(1718, 317)
 position = Vector2(102, 91)
 direction = "left"
 shots_per_parry = 0
-interval = 2.62
+interval = 2.02
 parry_type = "explosion"
 speed_multiplier = 0.29
 
@@ -130,7 +130,7 @@ position = Vector2(37, 120)
 direction = "right"
 delay = 0.2
 shots_per_parry = 0
-interval = 2.62
+interval = 2.02
 parry_type = "explosion"
 speed_multiplier = 0.29
 
@@ -139,7 +139,7 @@ position = Vector2(-101, 115)
 rotation = -0.56548667
 direction = "up"
 shots_per_parry = 0
-interval = 2.62
+interval = 2.02
 parry_type = "explosion"
 speed_multiplier = 0.29
 
@@ -147,7 +147,7 @@ speed_multiplier = 0.29
 position = Vector2(-249, 32)
 direction = "up"
 shots_per_parry = 0
-interval = 2.62
+interval = 2.02
 parry_type = "explosion"
 speed_multiplier = 0.29
 
@@ -158,7 +158,7 @@ z_index = 1
 position = Vector2(1735, 220)
 delay = 0.4
 shots_per_parry = 0
-interval = 2.62
+interval = 2.02
 parry_type = "explosion"
 speed_multiplier = 0.29
 
@@ -167,7 +167,7 @@ position = Vector2(1608, 244)
 direction = "right"
 delay = 1.0
 shots_per_parry = 0
-interval = 2.62
+interval = 2.02
 parry_type = "explosion"
 speed_multiplier = 0.29
 
@@ -175,14 +175,14 @@ speed_multiplier = 0.29
 position = Vector2(1890, 297)
 delay = 0.6
 shots_per_parry = 0
-interval = 2.62
+interval = 2.02
 parry_type = "explosion"
 speed_multiplier = 0.29
 
 [node name="cannon28" parent="big_room_upper" unique_id=964192205 instance=ExtResource("3_yexht")]
 position = Vector2(1947, 324)
 shots_per_parry = 0
-interval = 2.62
+interval = 2.02
 parry_type = "explosion"
 speed_multiplier = 0.29
 
@@ -190,7 +190,7 @@ speed_multiplier = 0.29
 position = Vector2(1802, 251.99994)
 rotation = -0.56548667
 shots_per_parry = 0
-interval = 2.62
+interval = 2.02
 parry_type = "explosion"
 speed_multiplier = 0.29
 
@@ -199,7 +199,7 @@ position = Vector2(1497.0001, 298.00006)
 rotation = -0.84648466
 direction = "right"
 shots_per_parry = 0
-interval = 2.62
+interval = 2.02
 parry_type = "explosion"
 speed_multiplier = 0.29
 
@@ -209,7 +209,7 @@ rotation = -0.42411494
 direction = "left"
 delay = 0.6
 shots_per_parry = 0
-interval = 2.62
+interval = 2.02
 parry_type = "explosion"
 speed_multiplier = 0.29
 
