@@ -267,7 +267,7 @@ radius = 1.9999999
 height = 3.9999998
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d2wvv"]
-radius = 21.0
+radius = 19.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 6.0
@@ -289,6 +289,7 @@ RichTextLabel/font_sizes/normal_font_size = 8
 RichTextLabel/fonts/normal_font = ExtResource("10_y4r1p")
 
 [node name="Player" type="CharacterBody2D" unique_id=1508676161 groups=["Player"]]
+y_sort_enabled = true
 position = Vector2(0, -9)
 collision_layer = 135
 collision_mask = 135
@@ -338,11 +339,12 @@ zoom = Vector2(2.2, 2.2)
 
 [node name="ParryHitbox" type="Area2D" parent="." unique_id=230190237]
 position = Vector2(0, 8)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParryHitbox" unique_id=775375219]
 position = Vector2(-1, -9)
 shape = SubResource("CircleShape2D_d2wvv")
-disabled = true
 debug_color = Color(0.36449513, 0.42864174, 0.07651729, 0.41960785)
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=683468552]
@@ -367,6 +369,7 @@ script = ExtResource("6_smehm")
 stream = ExtResource("7_ur7pv")
 volume_db = -10.866
 bus = &"Music"
+parameters/looping = true
 
 [node name="blup" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=688715307]
 stream = ExtResource("8_y4r1p")

@@ -1,6 +1,7 @@
 extends Node
 
 signal player_move()
+signal stop_player_move #stops player from moving
 signal create_companion_by_id(type : int)
 signal create_companion_by_name(type : String)
 signal teleport_player(pos : Vector2)

@@ -120,7 +120,7 @@ position = Vector2(-2, -3)
 tile_set = SubResource("TileSet_ax252")
 
 [node name="Player" parent="." unique_id=1508676161 instance=ExtResource("4_csk5y")]
-position = Vector2(-2292, 1082)
+position = Vector2(-1945, 1252)
 
 [node name="Big_Boss" type="Node2D" parent="." unique_id=1379803539]
 visible = false

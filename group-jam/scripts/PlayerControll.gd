@@ -46,6 +46,8 @@ var curr_floor_tilemap: TileMapLayer
 #var dustPosXreverse = 2000
 
 func _ready():
+	SignalBus.stop_player_move.connect(stop_moving)
+	
 	SignalBus.teleport_player.connect(teleport)
 	SignalBus.parried_bullet.connect(func():$parry_VFX.trigger_hit_vfx())
 	
@@ -54,7 +56,8 @@ func _ready():
 	
 	SignalBus.entered_new_zone.connect(_on_entered_new_zone)
 	
-	game_start_anim()
+	if not OS.has_feature("editor"):
+		game_start_anim()
 
 func game_start_anim():
 	await get_tree().create_timer(0.05).timeout
@@ -215,7 +218,7 @@ func knockback(direction: Vector2, duration: float, force: float):
 	can_move = false
 	
 	hurtbox.get_child(0).set_deferred("disabled", true)
-	parry_hitbox.set_deferred("disabled", true)
+	GlobalVars.player_parry_active = false
 
 
 func parry():
@@ -232,13 +235,22 @@ func parry():
 	speed = speedVal*0.01
 	tween.tween_property(self,"speed",speedVal,parry_window*1.3).set_trans(Tween.TRANS_BOUNCE)
 	
+	for area in $ParryHitbox.get_overlapping_areas():
+		var area_parent: Node2D = area.get_parent()
+		if area_parent is parry_bullet:
+			area_parent.isParried()
 	
-	$ParryHitbox/CollisionShape2D.set_deferred("disabled", false)
+	
+	GlobalVars.player_parry_active = true
+	
 	await get_tree().create_timer(parry_window).timeout
 	#parry_anim.play("player_parry")
 	#await parry_anim.animation_finished
-	$ParryHitbox/CollisionShape2D.set_deferred("disabled", true)
+	
+	GlobalVars.player_parry_active = false
+	
 	can_move = true
+	
 	
 	await get_tree().create_timer(parry_delay).timeout
 	can_parry = true
@@ -336,3 +348,6 @@ func check_if_ground_on_layer(pos: Vector2,layer: TileMapLayer) -> bool:
 
 func _on_cast_cooldown_timeout():
 	can_cast = true
+	
+func stop_moving():
+	can_move = false
