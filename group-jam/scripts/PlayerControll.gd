@@ -53,6 +53,19 @@ func _ready():
 	CompanionLogic.container = self.find_child("companion_container")
 	
 	SignalBus.entered_new_zone.connect(_on_entered_new_zone)
+	
+	game_start_anim()
+
+func game_start_anim():
+	await get_tree().create_timer(0.05).timeout
+	
+	var tween = create_tween()
+	
+	tween.tween_property($Camera2D,"global_position",GlobalVars.boss_pos,5)
+	tween.tween_interval(1)
+	tween.tween_property($Camera2D,"position",Vector2.ZERO,2)
+
+
 
 func _on_entered_new_zone(new_zone_floor_tilemap: TileMapLayer):
 	print("new_zone_floor_tilemap: ",new_zone_floor_tilemap)
@@ -127,7 +140,7 @@ func _physics_process(delta):
 		player_anim.play("player_walk")
 		SignalBus.player_move.emit()
 		
-		if step_sound_cooldown > 0.3:
+		if step_sound_cooldown > 0.45:
 			SignalBus.play_audio.emit("step")
 			step_sound_cooldown = 0
 		else:
@@ -210,7 +223,7 @@ func parry():
 		return 
 	
 	$parry_VFX.trigger_normal_vfx()
-	SignalBus.play_audio.emit("bullet_parry")
+	SignalBus.play_audio.emit("bullet_parry_short")
 	
 	can_parry = false 
 	
