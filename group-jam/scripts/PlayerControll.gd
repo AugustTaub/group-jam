@@ -53,7 +53,7 @@ func _ready():
 	SignalBus.entered_new_zone.connect(_on_entered_new_zone)
 
 func _on_entered_new_zone(new_zone_floor_tilemap: TileMapLayer):
-	print(new_zone_floor_tilemap)
+	print("new_zone_floor_tilemap: ",new_zone_floor_tilemap)
 	curr_floor_tilemap = new_zone_floor_tilemap
 
 
@@ -138,6 +138,8 @@ func _physics_process(delta):
 	#	rng.randomize()
 	#	var my_random_number = rng.randi_range(0, 2)
 	#	SignalBus.create_companion.emit(my_random_number)
+	
+	GlobalVars.player_pos = global_position
 
 func companions_follow(delta):
 	var i: int = 0
@@ -285,23 +287,31 @@ func teleport(pos : Vector2):
 	
 	var tilemap_layer: TileMapLayer = curr_floor_tilemap
 	
-	if not tilemap_layer:
-		print("nicht floor_new")
+	if check_if_ground_on_layer(pos, tilemap_layer):
+		self.global_position = pos
 		return
+	else:
+		var erased_arr: Array = GlobalVars.zone_ground_tilelayer_arr.duplicate()
+		erased_arr.erase(tilemap_layer)
+		for layer: TileMapLayer in erased_arr:
+			if check_if_ground_on_layer(pos, layer):
+				self.global_position = pos
+
+
+func check_if_ground_on_layer(pos: Vector2,layer: TileMapLayer) -> bool:
 	
-	var local_pos = tilemap_layer.to_local(pos)
-	var tile_pos = tilemap_layer.local_to_map(local_pos)
-	var tile_data = tilemap_layer.get_cell_tile_data(tile_pos)
-	
-	
+	var local_pos = layer.to_local(pos)
+	var tile_pos = layer.local_to_map(local_pos)
+	var tile_data = layer.get_cell_tile_data(tile_pos)
 	
 	if tile_data:
 		if tile_data.get_collision_polygons_count(1) > 0:
-			self.global_position = pos
-			return
+			return true
 	
-	else:
-		print("404 no tile found")
+	return false
+
+
+
 
 func _on_cast_cooldown_timeout():
 	can_cast = true

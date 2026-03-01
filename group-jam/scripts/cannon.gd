@@ -50,6 +50,9 @@ func _process(delta: float) -> void:
 
 #play anim and shoot bullet
 func shoot():
+	
+	if global_position.distance_to(GlobalVars.player_pos) > 500: return
+	
 	cannon_anim.play("shoot")
 	fill_pattern()
 	blow_anim.play("blow")
