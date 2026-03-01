@@ -31,9 +31,33 @@ ProgressBar/styles/background = SubResource("StyleBoxEmpty_huati")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_huati")
 
 [sub_resource type="Theme" id="Theme_luu0w"]
-RichTextLabel/colors/default_color = Color(1, 1, 1, 0.38431373)
+RichTextLabel/colors/default_color = Color(1, 1, 1, 0.67058825)
 RichTextLabel/font_sizes/normal_font_size = 35
 RichTextLabel/fonts/normal_font = ExtResource("2_a45jx")
+
+[sub_resource type="Gradient" id="Gradient_mv4mu"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5090909)
+colors = PackedColorArray(0.11119685, 0.11119684, 0.11119684, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1m1a"]
+gradient = SubResource("Gradient_mv4mu")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_5gssk"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5318182, 0.68636364)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4t0bi"]
+gradient = SubResource("Gradient_5gssk")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a45jx"]
 
@@ -312,30 +336,6 @@ shader_parameter/Texture2DParameter2 = SubResource("NoiseTexture2D_6qwj3")
 shader_parameter/ColorParameter = Color(0.0015227938, 0.050294943, 0.11231875, 1)
 shader_parameter/alpha = 0.185
 
-[sub_resource type="Gradient" id="Gradient_mv4mu"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.5090909)
-colors = PackedColorArray(0.11119685, 0.11119684, 0.11119684, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1m1a"]
-gradient = SubResource("Gradient_mv4mu")
-width = 32
-height = 32
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="Gradient" id="Gradient_5gssk"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.5318182, 0.68636364)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4t0bi"]
-gradient = SubResource("Gradient_5gssk")
-width = 32
-height = 32
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [node name="in_game_ui" type="Control" unique_id=1913189176]
 process_mode = 3
 layout_mode = 3
@@ -382,6 +382,127 @@ mouse_filter = 1
 theme = SubResource("Theme_luu0w")
 text = "TIME: 00:00"
 script = ExtResource("15_gxplc")
+
+[node name="companion_display" type="Control" parent="." unique_id=576656353]
+anchors_preset = 0
+offset_left = 1089.0
+offset_top = 584.0
+offset_right = 1129.0
+offset_bottom = 624.0
+script = ExtResource("12_ve7rr")
+
+[node name="2" type="Control" parent="companion_display" unique_id=1360300381]
+anchors_preset = 0
+offset_left = -169.0
+offset_top = -32.0
+offset_right = -129.0
+offset_bottom = 8.0
+
+[node name="bg" type="TextureRect" parent="companion_display/2" unique_id=1299394229]
+texture_filter = 1
+layout_mode = 0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 86.0
+offset_bottom = 86.0
+texture = SubResource("GradientTexture2D_y1m1a")
+
+[node name="tex" type="TextureRect" parent="companion_display/2" unique_id=1427592726]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 143.00006
+offset_bottom = 147.6576
+scale = Vector2(0.37493914, 0.35350838)
+texture = ExtResource("13_luu0w")
+
+[node name="rim" type="TextureRect" parent="companion_display/2" unique_id=293444514]
+texture_filter = 1
+layout_mode = 0
+offset_right = 93.0
+offset_bottom = 93.0
+scale = Vector2(0.81599, 0.81599)
+texture = SubResource("GradientTexture2D_4t0bi")
+
+[node name="0" type="Control" parent="companion_display" unique_id=483580348]
+z_index = 2
+anchors_preset = 0
+offset_left = -122.0
+offset_top = -45.0
+offset_right = -82.0
+offset_bottom = -5.0
+scale = Vector2(1.2091846, 1.2091846)
+
+[node name="bg" type="TextureRect" parent="companion_display/0" unique_id=1845926044]
+texture_filter = 1
+layout_mode = 0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 86.0
+offset_bottom = 86.0
+texture = SubResource("GradientTexture2D_y1m1a")
+
+[node name="tex" type="TextureRect" parent="companion_display/0" unique_id=579969164]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 143.00006
+offset_bottom = 147.6576
+scale = Vector2(0.37493914, 0.35350838)
+texture = ExtResource("13_luu0w")
+
+[node name="rim" type="TextureRect" parent="companion_display/0" unique_id=658632640]
+texture_filter = 1
+layout_mode = 0
+offset_right = 93.0
+offset_bottom = 93.0
+scale = Vector2(0.81599, 0.81599)
+texture = SubResource("GradientTexture2D_4t0bi")
+
+[node name="1" type="Control" parent="companion_display" unique_id=1725212909]
+anchors_preset = 0
+offset_left = -59.0
+offset_top = -30.0
+offset_right = -19.0
+offset_bottom = 10.0
+
+[node name="bg" type="TextureRect" parent="companion_display/1" unique_id=1848989153]
+texture_filter = 1
+layout_mode = 0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 86.0
+offset_bottom = 86.0
+texture = SubResource("GradientTexture2D_y1m1a")
+
+[node name="tex" type="TextureRect" parent="companion_display/1" unique_id=1496810169]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 143.00006
+offset_bottom = 147.6576
+scale = Vector2(0.37493914, 0.35350838)
+texture = ExtResource("13_luu0w")
+
+[node name="rim" type="TextureRect" parent="companion_display/1" unique_id=2115331005]
+texture_filter = 1
+layout_mode = 0
+offset_right = 93.0
+offset_bottom = 93.0
+scale = Vector2(0.81599, 0.81599)
+texture = SubResource("GradientTexture2D_4t0bi")
+
+[node name="arrow" type="TextureRect" parent="companion_display" unique_id=1453883244]
+layout_mode = 0
+offset_left = -96.0
+offset_top = -67.0
+offset_right = -55.0
+offset_bottom = -41.0
+texture = ExtResource("14_luu0w")
+expand_mode = 2
 
 [node name="main_menu_parent" type="Control" parent="." unique_id=186638233]
 visible = false
@@ -846,7 +967,8 @@ scroll_active = false
 layout_mode = 2
 theme = SubResource("Theme_qinws")
 
-[node name="endscreen_window" type="PanelContainer" parent="." unique_id=815164162 node_paths=PackedStringArray("main_window", "credits_window")]
+[node name="endscreen_window" type="PanelContainer" parent="." unique_id=815164162 node_paths=PackedStringArray("main_window", "credits_window", "companion_display", "timernode")]
+visible = false
 layout_mode = 0
 offset_left = 155.0
 offset_top = 24.0
@@ -856,6 +978,8 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_fqvwy")
 script = ExtResource("12_y1m1a")
 main_window = NodePath("../main_menu_parent/main_menu_window")
 credits_window = NodePath("../credits_window")
+companion_display = NodePath("../companion_display")
+timernode = NodePath("../Timer")
 
 [node name="drag_margin" type="MarginContainer" parent="endscreen_window" unique_id=1107442528]
 layout_mode = 2
@@ -1202,128 +1326,6 @@ mouse_filter = 2
 theme = SubResource("Theme_4t0bi")
 text = "Assets & Animation: Köpfespieß"
 scroll_active = false
-
-[node name="companion_display" type="Control" parent="." unique_id=576656353]
-visible = false
-anchors_preset = 0
-offset_left = 1089.0
-offset_top = 584.0
-offset_right = 1129.0
-offset_bottom = 624.0
-script = ExtResource("12_ve7rr")
-
-[node name="2" type="Control" parent="companion_display" unique_id=1360300381]
-anchors_preset = 0
-offset_left = -169.0
-offset_top = -32.0
-offset_right = -129.0
-offset_bottom = 8.0
-
-[node name="bg" type="TextureRect" parent="companion_display/2" unique_id=1299394229]
-texture_filter = 1
-layout_mode = 0
-offset_left = -7.0
-offset_top = -7.0
-offset_right = 86.0
-offset_bottom = 86.0
-texture = SubResource("GradientTexture2D_y1m1a")
-
-[node name="tex" type="TextureRect" parent="companion_display/2" unique_id=1427592726]
-visible = false
-layout_mode = 0
-offset_left = 15.0
-offset_top = 14.0
-offset_right = 143.00006
-offset_bottom = 147.6576
-scale = Vector2(0.37493914, 0.35350838)
-texture = ExtResource("13_luu0w")
-
-[node name="rim" type="TextureRect" parent="companion_display/2" unique_id=293444514]
-texture_filter = 1
-layout_mode = 0
-offset_right = 93.0
-offset_bottom = 93.0
-scale = Vector2(0.81599, 0.81599)
-texture = SubResource("GradientTexture2D_4t0bi")
-
-[node name="0" type="Control" parent="companion_display" unique_id=483580348]
-z_index = 2
-anchors_preset = 0
-offset_left = -122.0
-offset_top = -45.0
-offset_right = -82.0
-offset_bottom = -5.0
-scale = Vector2(1.2091846, 1.2091846)
-
-[node name="bg" type="TextureRect" parent="companion_display/0" unique_id=1845926044]
-texture_filter = 1
-layout_mode = 0
-offset_left = -7.0
-offset_top = -7.0
-offset_right = 86.0
-offset_bottom = 86.0
-texture = SubResource("GradientTexture2D_y1m1a")
-
-[node name="tex" type="TextureRect" parent="companion_display/0" unique_id=579969164]
-visible = false
-layout_mode = 0
-offset_left = 15.0
-offset_top = 14.0
-offset_right = 143.00006
-offset_bottom = 147.6576
-scale = Vector2(0.37493914, 0.35350838)
-texture = ExtResource("13_luu0w")
-
-[node name="rim" type="TextureRect" parent="companion_display/0" unique_id=658632640]
-texture_filter = 1
-layout_mode = 0
-offset_right = 93.0
-offset_bottom = 93.0
-scale = Vector2(0.81599, 0.81599)
-texture = SubResource("GradientTexture2D_4t0bi")
-
-[node name="1" type="Control" parent="companion_display" unique_id=1725212909]
-anchors_preset = 0
-offset_left = -59.0
-offset_top = -30.0
-offset_right = -19.0
-offset_bottom = 10.0
-
-[node name="bg" type="TextureRect" parent="companion_display/1" unique_id=1848989153]
-texture_filter = 1
-layout_mode = 0
-offset_left = -7.0
-offset_top = -7.0
-offset_right = 86.0
-offset_bottom = 86.0
-texture = SubResource("GradientTexture2D_y1m1a")
-
-[node name="tex" type="TextureRect" parent="companion_display/1" unique_id=1496810169]
-visible = false
-layout_mode = 0
-offset_left = 15.0
-offset_top = 14.0
-offset_right = 143.00006
-offset_bottom = 147.6576
-scale = Vector2(0.37493914, 0.35350838)
-texture = ExtResource("13_luu0w")
-
-[node name="rim" type="TextureRect" parent="companion_display/1" unique_id=2115331005]
-texture_filter = 1
-layout_mode = 0
-offset_right = 93.0
-offset_bottom = 93.0
-scale = Vector2(0.81599, 0.81599)
-texture = SubResource("GradientTexture2D_4t0bi")
-
-[node name="arrow" type="TextureRect" parent="companion_display" unique_id=1453883244]
-layout_mode = 0
-offset_left = -96.0
-offset_top = -67.0
-offset_right = -55.0
-offset_bottom = -41.0
-texture = ExtResource("14_luu0w")
-expand_mode = 2
 
 [connection signal="value_changed" from="ProgressBar" to="ProgressBar" method="_on_value_changed"]
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="main_menu_parent/main_menu_window" method="_on_close_button_pressed"]

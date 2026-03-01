@@ -2,6 +2,8 @@ extends custom_window
 
 @export var main_window: custom_window
 @export var credits_window: custom_window
+@export var companion_display: Control
+@export var timernode: Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,16 +16,21 @@ func _ready():
 	header.gui_input.connect(_on_header_gui_input)
 	
 	SignalBus.open_thanks_window.connect(appear)
+	
 
 func appear():
 	if visible : return
 	show()
+	companion_display.hide()
+	timernode.running = false
+	
 	scale = Vector2.ONE * 0.05
 	
 	var appeartween = create_tween()
 	
 	appeartween.tween_property(self,"scale",Vector2.ONE,0.2).set_trans(Tween.TRANS_BOUNCE)
 	
+	get_tree().paused = true
 
 
 func dissapear():

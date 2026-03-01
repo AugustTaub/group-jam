@@ -22,6 +22,7 @@ func appear():
 	
 	appeartween.tween_property(self,"scale",Vector2.ONE,0.2).set_trans(Tween.TRANS_BOUNCE)
 	
+	
 
 
 func dissapear():

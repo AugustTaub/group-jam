@@ -454,7 +454,7 @@ position = Vector2(2723, -1077)
 position = Vector2(3384, -1575)
 
 [node name="Boss" parent="." unique_id=1666674495 instance=ExtResource("12_kkxpw")]
-position = Vector2(3920, -1482)
+position = Vector2(3915, -1480)
 
 [node name="Zone_4" parent="." unique_id=1170203481 instance=ExtResource("1_y8582")]
 position = Vector2(3247, -1805)
@@ -476,4 +476,4 @@ position = Vector2(-2, -3)
 tile_set = SubResource("TileSet_ax252")
 
 [node name="Player" parent="." unique_id=1508676161 instance=ExtResource("4_csk5y")]
-position = Vector2(3973, -1525)
+position = Vector2(-1956, 1252)
