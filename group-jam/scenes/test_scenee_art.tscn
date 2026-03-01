@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://b541dpaey2jq" path="res://Assets/BackgroundTest.png" id="1_ucy2x"]
 [ext_resource type="Texture2D" uid="uid://86x4yti8bjus" path="res://Assets/Tiles/SpritesheetEnviTiles.png" id="2_7v3yg"]
 [ext_resource type="Texture2D" uid="uid://xvykabqkqv3l" path="res://Assets/Tiles/SpritesheetEnviTiles lower.png" id="3_nxjp5"]
-[ext_resource type="PackedScene" uid="uid://d1vkpxvywieuh" path="res://scenes/bullet.tscn" id="4_7v3yg"]
 [ext_resource type="PackedScene" uid="uid://dr7v0dqryacqv" path="res://scenes/boss.tscn" id="5_nxjp5"]
 [ext_resource type="PackedScene" uid="uid://c1i7kf11tfbjp" path="res://scenes/parry_bullet.tscn" id="6_8twcg"]
 [ext_resource type="PackedScene" uid="uid://bqmd5grcrgoiy" path="res://scenes/cannon.tscn" id="7_bhb6l"]
@@ -257,28 +256,29 @@ gradient = SubResource("Gradient_smrky")
 fill_from = Vector2(0.5521739, 0.9152174)
 fill_to = Vector2(0.523913, 0.4695652)
 
-[sub_resource type="Gradient" id="Gradient_nxjp5"]
-offsets = PackedFloat32Array(0, 0.99698794)
+[sub_resource type="Gradient" id="Gradient_bhb6l"]
+offsets = PackedFloat32Array(0, 0.7311321)
 colors = PackedColorArray(0.044797316, 0.06871167, 0.085889585, 1, 0.52156866, 0.8, 1, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8twcg"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i2b6n"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bhb6l"]
-noise = SubResource("FastNoiseLite_8twcg")
-color_ramp = SubResource("Gradient_nxjp5")
+noise = SubResource("FastNoiseLite_i2b6n")
+color_ramp = SubResource("Gradient_bhb6l")
+seamless = true
 
 [sub_resource type="Gradient" id="Gradient_i2b6n"]
 colors = PackedColorArray(0, 0, 0, 1, 0.6208477, 0.72798973, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_smrky"]
 gradient = SubResource("Gradient_i2b6n")
-fill_from = Vector2(0.7058824, 1)
-fill_to = Vector2(0.5764706, 0)
+fill_from = Vector2(0.8352941, 1)
+fill_to = Vector2(0.65882355, 0)
 
 [node name="Test Scenee Art" type="Node2D" unique_id=1215963964]
 
 [node name="BackgroundTest" type="Sprite2D" parent="." unique_id=1432660120]
-position = Vector2(0, -11.999999)
+position = Vector2(13, -7.9999695)
 scale = Vector2(0.78, 0.78)
 skew = -0.015707964
 texture = ExtResource("1_ucy2x")
@@ -310,22 +310,18 @@ scale = Vector2(1.0216837, 5.2475247)
 texture = SubResource("GradientTexture2D_gxtej")
 
 [node name="PointLight2D3" type="PointLight2D" parent="light" unique_id=1485613464]
-position = Vector2(5, -15)
+position = Vector2(1, -12)
 scale = Vector2(1.6191406, 1)
-energy = 0.49
+energy = 0.7
 blend_mode = 1
 texture = SubResource("NoiseTexture2D_bhb6l")
 
 [node name="PointLight2D4" type="PointLight2D" parent="light" unique_id=1107545793]
-position = Vector2(-70, -114.99999)
+position = Vector2(-71, -114)
 rotation = -0.39791209
 scale = Vector2(1, 2.625)
 energy = 4.12
 texture = SubResource("GradientTexture2D_smrky")
-
-[node name="Bullet" parent="." unique_id=1939860656 instance=ExtResource("4_7v3yg")]
-visible = false
-position = Vector2(37, -40)
 
 [node name="Boss" parent="." unique_id=1666674495 instance=ExtResource("5_nxjp5")]
 position = Vector2(139, -52)
@@ -350,5 +346,5 @@ pattern = "three_spray"
 shots_per_parry = 3
 
 [node name="Player" parent="." unique_id=1508676161 instance=ExtResource("8_i2b6n")]
-position = Vector2(-160, 69)
+position = Vector2(-113, 53)
 scale = Vector2(0.69, 0.69)

@@ -19,6 +19,10 @@ func _ready() -> void:
 	await get_tree().create_timer(invincible).timeout
 	hitbox.set_collision_mask_value(1,true)
 	
+	$Bullets.frame_coords.x = randi_range(0,2)
+	
+
+
 func _physics_process(delta: float) -> void:
 	velocity = move_direction.normalized() * speed * speed_mult
 	move_and_slide()
@@ -30,8 +34,9 @@ func colliding_body(body: Node2D) -> void:
 
 func colliding_area(area: Area2D) -> void:
 	var body = area.get_parent()
-	if body.has_method("knockback"):
+	if body.has_method("knockback") and area.name != "ParryHitbox":
 		var bullet_velocity = velocity
 		body.knockback(bullet_velocity, knockback_duration, knockback_force)
-	if not body.is_in_group("Bullet"):
+	if not body.is_in_group("Bullet") and area.name != "ParryHitbox":
+		print("DELETE",area.name)
 		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://s43ekqyqrfgd"]
+[gd_scene format=4 uid="uid://c2osv4bfg4ew8"]
 
 [ext_resource type="TileSet" uid="uid://cywacxvy6e7ba" path="res://misc/tileset/floor_tiles.tres" id="1_id7sw"]
 [ext_resource type="TileSet" uid="uid://8t6c4cumvig4" path="res://misc/tileset/wall_tiles.tres" id="2_7dojk"]
@@ -15,7 +15,7 @@ tile_set = ExtResource("1_id7sw")
 
 [node name="deco_layer" type="TileMapLayer" parent="." unique_id=1609156416]
 position = Vector2(15, 9)
-tile_map_data = PackedByteArray("AABDABcAAgACAAAAAABDABgAAgACAAAAAABDABkAAgACAAAAAABCABgAAgACAAAAAABDABYAAgADAAAAAGBDABUAAgADAAAAAGBEABUAAgACAAAAAABDABQAAgADAAAAAGBCABMAAgADAAAAAGBDABMAAgADAAAAAGBBABQAAgADAAAAAGBCABQAAgADAAAAAGBHABMAAgAEAAAAAABIABIAAgADAAAAAABEABQAAgAEAAAAAABFABMAAgAEAAAAAABEABMAAgAEAAAAAABFABQAAgAEAAAAAABGABQAAgAEAAAAAABHABQAAgAEAAAAAABIABQAAgAEAAAAAABIABMAAgADAAAAAABHABIAAgAEAAAAAABGABMAAgADAAAAAABJABQAAgADAAAAAABJABMAAgADAAAAAABIABEAAgADAAAAAABJABEAAgADAAAAAABJABAAAgADAAAAAABKABIAAgADAAAAAABKABEAAgADAAAAAABKABAAAgADAAAAAABIABUAAgAFAAAAAABJABUAAgABAAAAAAA=")
+tile_map_data = PackedByteArray("AABOAAsAAgAAAAIAAABOAAoAAgABAAIAAABNAAsAAgADAAIAAABNAAoAAgACAAIAAABLABUAAgACAAIAAABCABEAAgACAAIAAABEABYAAgACAAIAAABJAA8AAgACAAIAAABFAAcAAgAEAAEAAABMAP3/AgACAAIAAABFAPz/AgACAAIAAABJAAEAAgACAAIAAABIAPX/AgACAAIAAABMAO7/AgACAAIAAABHAO7/AgACAAIAAABDAOX/AgACAAIAAABEAN7/AgACAAIAAABAANn/AgACAAIAAABMANn/AgACAAIAAABPAOb/AgACAAIAAABWANr/AgACAAIAAABcANr/AgADAAEAAABaANX/AgACAAIAAABcANT/AgADAAIAAABcANv/AgADAAIAAABTANj/AgADAAIAAABBANn/AgADAAIAAABDAOb/AgADAAIAAABHAPT/AgADAAIAABBFAPv/AgADAAIAABBKAAEAAgADAAIAABBGAAcAAgADAAIAAABCABIAAgADAAIAAABJAA4AAgADAAEAAABKABUAAgADAAEAAABDABEAAgADAAEAAABFABYAAgAEAAEAAABFAAgAAgACAAIAAABJAAIAAgADAAEAAABEAP3/AgADAAEAAABIAPT/AgADAAEAAABMAO//AgADAAEAAABGAO7/AgABAAIAABBCAOb/AgADAAEAAABFAN7/AgADAAEAAABBANj/AgADAAEAAABWANn/AgADAAEAAABaANT/AgADAAEAAABcANX/AgAEAAEAAABbANv/AgAEAAEAAABVANr/AgAEAAEAAABSANv/AgACAAIAAABKAOD/AgACAAIAAABKAN7/AgADAAIAAABEABEAAgABAAIAAABKABQAAgABAAIAABBLAP3/AgABAAIAABBAAOT/AgABAAIAABBCANj/AgABAAIAABBHANj/AgABAAIAAABAAN7/AgABAAIAAABPANj/AgABAAIAADBKAN//AgABAAIAAABEAN3/AgABAAIAABBLAPz/AgADAAEAAABOAPb/AgAEAAEAAABEAOb/AgAEAAEAAABAAN//AgAEAAEAAABPAOf/AgAEAAEAAABLAN//AgADAAEAAABMANj/AgADAAEAAABbANj/AgADAAEAAABaANb/AgAFAAEAAAA=")
 tile_set = ExtResource("2_yexht")
 
 [node name="wall_new1" type="TileMapLayer" parent="." unique_id=835267346 groups=["WorldCollision"]]
@@ -24,6 +24,7 @@ tile_map_data = PackedByteArray("AABKABcAAAAJAAEAAABLABcAAAADAAEAAABMABcAAAADAAE
 tile_set = ExtResource("2_7dojk")
 
 [node name="ZoneArea" type="Area2D" parent="." unique_id=1446064858 node_paths=PackedStringArray("zone_floor_tilemap")]
+visible = false
 collision_layer = 128
 collision_mask = 128
 script = ExtResource("3_id7sw")
@@ -121,87 +122,85 @@ position = Vector2(1718, 317)
 position = Vector2(102, 91)
 direction = "left"
 shots_per_parry = 0
-interval = 2.62
+interval = 1.3
 parry_type = "explosion"
-speed_multiplier = 0.29
+speed_multiplier = 1.2
 
 [node name="cannon23" parent="big_room_lower" unique_id=995584730 instance=ExtResource("3_yexht")]
 position = Vector2(37, 120)
 direction = "right"
 delay = 0.2
 shots_per_parry = 0
-interval = 2.62
+interval = 0.8
 parry_type = "explosion"
-speed_multiplier = 0.29
+speed_multiplier = 0.8
 
 [node name="cannon25" parent="big_room_lower" unique_id=347822069 instance=ExtResource("3_yexht")]
-position = Vector2(-101, 115)
+position = Vector2(-121, 105.99994)
 rotation = -0.56548667
 direction = "up"
 shots_per_parry = 0
-interval = 2.62
 parry_type = "explosion"
-speed_multiplier = 0.29
 
 [node name="cannon18" parent="big_room_lower" unique_id=656424667 instance=ExtResource("3_yexht")]
 position = Vector2(-249, 32)
 direction = "up"
 shots_per_parry = 0
-interval = 2.62
 parry_type = "explosion"
-speed_multiplier = 0.29
 
 [node name="big_room_upper" type="Node2D" parent="." unique_id=486125277]
 z_index = 1
+
+[node name="cannon19" parent="big_room_upper" unique_id=1868221521 instance=ExtResource("3_yexht")]
+position = Vector2(1564, 266)
+direction = "right"
+delay = 0.2
+shots_per_parry = 0
+parry_type = "explosion"
 
 [node name="cannon20" parent="big_room_upper" unique_id=1443733111 instance=ExtResource("3_yexht")]
 position = Vector2(1735, 220)
 delay = 0.4
 shots_per_parry = 0
-interval = 2.62
+interval = 0.7
 parry_type = "explosion"
-speed_multiplier = 0.29
 
 [node name="cannon27" parent="big_room_upper" unique_id=1028762391 instance=ExtResource("3_yexht")]
 position = Vector2(1608, 244)
 direction = "right"
 delay = 1.0
 shots_per_parry = 0
-interval = 2.62
+interval = 0.5
 parry_type = "explosion"
-speed_multiplier = 0.29
+speed_multiplier = 1.5
 
 [node name="cannon22" parent="big_room_upper" unique_id=161128491 instance=ExtResource("3_yexht")]
 position = Vector2(1890, 297)
 delay = 0.6
 shots_per_parry = 0
-interval = 2.62
+interval = 0.5
 parry_type = "explosion"
-speed_multiplier = 0.29
+speed_multiplier = 0.8
 
 [node name="cannon28" parent="big_room_upper" unique_id=964192205 instance=ExtResource("3_yexht")]
 position = Vector2(1947, 324)
 shots_per_parry = 0
-interval = 2.62
+interval = 1.7
 parry_type = "explosion"
-speed_multiplier = 0.29
+speed_multiplier = 0.8
 
 [node name="cannon24" parent="big_room_upper" unique_id=2057314164 instance=ExtResource("3_yexht")]
 position = Vector2(1802, 251.99994)
 rotation = -0.56548667
 shots_per_parry = 0
-interval = 2.62
 parry_type = "explosion"
-speed_multiplier = 0.29
 
 [node name="cannon26" parent="big_room_upper" unique_id=261218711 instance=ExtResource("3_yexht")]
 position = Vector2(1497.0001, 298.00006)
 rotation = -0.84648466
 direction = "right"
 shots_per_parry = 0
-interval = 2.62
 parry_type = "explosion"
-speed_multiplier = 0.29
 
 [node name="cannon30" parent="big_room_upper" unique_id=1493449263 instance=ExtResource("3_yexht")]
 position = Vector2(1985, 339.99988)
@@ -209,9 +208,8 @@ rotation = -0.42411494
 direction = "left"
 delay = 0.6
 shots_per_parry = 0
-interval = 2.62
+interval = 2.0
 parry_type = "explosion"
-speed_multiplier = 0.29
 
 [node name="cannon_bulllet_wall" type="Node2D" parent="." unique_id=1503922457]
 position = Vector2(2161, 461)

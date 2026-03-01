@@ -7,6 +7,8 @@ signal create_companion_by_name(type : String)
 signal teleport_player(pos : Vector2)
 
 signal game_started
+signal end_game
+signal open_thanks_window
 signal play_audio(audio_name: String)
 
 signal switch_companion_pressed(new_active_index:int)

@@ -236,11 +236,12 @@ scale = Vector2(0.39062583, 0.30809253)
 texture = SubResource("GradientTexture2D_qnbj4")
 
 [node name="boss_animation" type="AnimatedSprite2D" parent="." unique_id=658980174]
-y_sort_enabled = true
+light_mask = 0
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_nk50o")
-animation = &"boss_on"
+animation = &"boss_idle"
 autoplay = "boss_idle"
+frame_progress = 0.9963082
 
 [node name="tentacle_animation" type="AnimatedSprite2D" parent="." unique_id=710469563]
 z_index = 1
@@ -248,13 +249,16 @@ position = Vector2(1, -32)
 sprite_frames = SubResource("SpriteFrames_e1yhm")
 animation = &"boss_hug"
 
-[node name="collision_area" type="StaticBody2D" parent="." unique_id=1111642979]
+[node name="boss_collision_area" type="StaticBody2D" parent="." unique_id=1111642979]
+collision_layer = 5
+collision_mask = 5
 
-[node name="shape" type="CollisionShape2D" parent="collision_area" unique_id=715238917]
+[node name="shape" type="CollisionShape2D" parent="boss_collision_area" unique_id=715238917]
 position = Vector2(2, -33)
 shape = SubResource("CapsuleShape2D_neq0i")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1516591664]
+visible = false
 position = Vector2(-2, -3)
 texture = ExtResource("5_r3bxh")
 

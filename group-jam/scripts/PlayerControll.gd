@@ -240,6 +240,10 @@ func parry():
 		var area_parent: Node2D = area.get_parent()
 		if area_parent is parry_bullet:
 			area_parent.isParried()
+		
+	
+	if global_position.distance_to(GlobalVars.boss_pos) <= 30:
+		SignalBus.end_game.emit()
 	
 	
 	GlobalVars.player_parry_active = true

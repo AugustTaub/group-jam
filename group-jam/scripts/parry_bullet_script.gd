@@ -44,9 +44,7 @@ func collide_area(area: Area2D) -> void:
 	#if in_freeze:
 	#	return 
 	
-	print(area.name)
 	if area.name == "ParryHitbox":
-		print(GlobalVars.player_parry_active)
 		if GlobalVars.player_parry_active:
 			isParried()
 			return
