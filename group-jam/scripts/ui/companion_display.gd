@@ -90,3 +90,10 @@ func cycle_display(_active_slot_i: int = 1):
 func _on_anims_done():
 	anims_running = false
 	if queued_anim: cycle_display()
+
+
+func _on_quit_button_pressed():
+	if OS.get_name() == "Web":
+		get_tree().reload_current_scene()
+	else:
+		get_tree().quit()

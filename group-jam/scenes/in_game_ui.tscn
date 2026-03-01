@@ -353,7 +353,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1192651337]
-layout_mode = 0
+layout_mode = 1
 offset_left = 26.0
 offset_top = 7.0
 offset_right = 385.0
@@ -381,21 +381,29 @@ offset_bottom = 46.0
 texture = ExtResource("4_huati")
 
 [node name="Timer" type="RichTextLabel" parent="." unique_id=1378261189]
-layout_mode = 0
-offset_left = 975.0
-offset_right = 1166.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -185.0
 offset_bottom = 64.0
+grow_horizontal = 0
 mouse_filter = 1
 theme = SubResource("Theme_luu0w")
 text = "TIME: 00:00"
 script = ExtResource("15_gxplc")
 
 [node name="companion_display" type="Control" parent="." unique_id=576656353]
-anchors_preset = 0
-offset_left = 1089.0
-offset_top = 584.0
-offset_right = 1129.0
-offset_bottom = 624.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -66.0
+grow_horizontal = 0
+grow_vertical = 0
 script = ExtResource("12_ve7rr")
 
 [node name="2" type="Control" parent="companion_display" unique_id=1360300381]
@@ -1338,7 +1346,7 @@ scroll_active = false
 
 [node name="controls_window" type="PanelContainer" parent="." unique_id=189806785 node_paths=PackedStringArray("main_window", "options_window")]
 layout_mode = 0
-offset_left = 381.0
+offset_left = 218.0
 offset_top = 269.0
 offset_right = 767.0
 offset_bottom = 616.0
@@ -1577,6 +1585,7 @@ scroll_active = false
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/MarginContainer/options_button" to="main_menu_parent/main_menu_window" method="_on_options_button_pressed"]
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/MarginContainer3/controls_button" to="main_menu_parent/main_menu_window" method="_on_controls_button_pressed"]
 [connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/MarginContainer5/credits_button" to="main_menu_parent/main_menu_window" method="_on_credits_button_pressed"]
+[connection signal="pressed" from="main_menu_parent/main_menu_window/drag_margin/VBoxContainer/MarginContainer2/quit_button" to="companion_display" method="_on_quit_button_pressed"]
 [connection signal="pressed" from="pause_window/drag_margin/VBoxContainer/header/AspectRatioContainer/close_button" to="pause_window" method="_on_close_button_pressed"]
 [connection signal="pressed" from="pause_window/drag_margin/VBoxContainer/MarginContainer4/continue_button" to="pause_window" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="pause_window/drag_margin/VBoxContainer/MarginContainer/options_button" to="pause_window" method="_on_options_button_pressed"]
