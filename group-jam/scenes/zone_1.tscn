@@ -277,8 +277,4 @@ interval = 2.0
 parry_type = "explosion"
 speed_multiplier = 0.4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1279627963]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [connection signal="body_entered" from="ZoneArea" to="ZoneArea" method="_on_body_entered"]

@@ -5,9 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://dbx7e5nfe38u6" path="res://scenes/Levels/zone_3.tscn" id="2_rdmyl"]
 [ext_resource type="PackedScene" uid="uid://s43ekqyqrfgd" path="res://scenes/zone_1.tscn" id="3_aqlcq"]
 [ext_resource type="PackedScene" uid="uid://3i83m1sxh7ga" path="res://scenes/player.tscn" id="4_csk5y"]
+[ext_resource type="PackedScene" uid="uid://ca5uowp0pagwx" path="res://scenes/zone_tutorial.tscn" id="5_qm27w"]
 [ext_resource type="Texture2D" uid="uid://fdmvhfi1e5ng" path="res://2D/tileset/DekoSheet.png" id="6_kugxs"]
 [ext_resource type="Texture2D" uid="uid://kxq180lvm817" path="res://2D/Sprites/EnemySprites_BossIdle.png" id="7_07ygo"]
 [ext_resource type="Script" uid="uid://bcanyn217raae" path="res://scripts/big_boss.gd" id="7_ax252"]
+[ext_resource type="PackedScene" uid="uid://dr7v0dqryacqv" path="res://scenes/boss.tscn" id="10_f8q37"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kugxs"]
 texture = ExtResource("6_kugxs")
@@ -83,12 +85,12 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_07ygo"]
+[sub_resource type="Gradient" id="Gradient_1vub3"]
 offsets = PackedFloat32Array(0, 0.37272727, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.9227273, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ax252"]
-gradient = SubResource("Gradient_07ygo")
+gradient = SubResource("Gradient_1vub3")
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
@@ -96,6 +98,7 @@ fill_to = Vector2(0.5, 0)
 size = Vector2(51, 47)
 
 [node name="Node2D" type="Node2D" unique_id=356752225]
+y_sort_enabled = true
 
 [node name="Zone_4" parent="." unique_id=1170203481 instance=ExtResource("1_y8582")]
 position = Vector2(3247, -1805)
@@ -106,17 +109,21 @@ position = Vector2(1789, -1060)
 [node name="zone2" parent="." unique_id=1699951318 instance=ExtResource("1_5fd2q")]
 position = Vector2(-371, -317)
 
-[node name="level_build_scene" parent="." unique_id=2131921601 instance=ExtResource("3_aqlcq")]
+[node name="zone_1" parent="." unique_id=2131921601 instance=ExtResource("3_aqlcq")]
 position = Vector2(-1922, 59)
+
+[node name="Zone_tutorial" parent="." unique_id=1621499500 instance=ExtResource("5_qm27w")]
+position = Vector2(-2402.0002, 75)
 
 [node name="deco_layer" type="TileMapLayer" parent="." unique_id=1474351948]
 position = Vector2(-2, -3)
 tile_set = SubResource("TileSet_ax252")
 
 [node name="Player" parent="." unique_id=1508676161 instance=ExtResource("4_csk5y")]
-position = Vector2(-1366, 873)
+position = Vector2(-1962, 1002)
 
 [node name="Big_Boss" type="Node2D" parent="." unique_id=1379803539]
+visible = false
 position = Vector2(3920, -1495)
 script = ExtResource("7_ax252")
 
@@ -137,3 +144,6 @@ texture = SubResource("GradientTexture2D_ax252")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Big_Boss/Area2D" unique_id=1008077784]
 position = Vector2(-7.5, 1.5)
 shape = SubResource("RectangleShape2D_ax252")
+
+[node name="Boss" parent="." unique_id=1666674495 instance=ExtResource("10_f8q37")]
+position = Vector2(3914, -1486)
