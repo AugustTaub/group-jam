@@ -24,6 +24,7 @@ tile_map_data = PackedByteArray("AABKABcAAAAJAAEAAABLABcAAAADAAEAAABMABcAAAADAAE
 tile_set = ExtResource("2_7dojk")
 
 [node name="ZoneArea" type="Area2D" parent="." unique_id=1446064858 node_paths=PackedStringArray("zone_floor_tilemap")]
+visible = false
 collision_layer = 128
 collision_mask = 128
 script = ExtResource("3_id7sw")
@@ -137,6 +138,7 @@ speed_multiplier = 0.8
 [node name="cannon25" parent="big_room_lower" unique_id=347822069 instance=ExtResource("3_yexht")]
 position = Vector2(-121, 105.99994)
 rotation = -0.56548667
+enabled = false
 direction = "up"
 shots_per_parry = 0
 parry_type = "explosion"
@@ -152,6 +154,7 @@ z_index = 1
 
 [node name="cannon19" parent="big_room_upper" unique_id=1868221521 instance=ExtResource("3_yexht")]
 position = Vector2(1564, 266)
+enabled = false
 direction = "right"
 delay = 0.2
 shots_per_parry = 0
@@ -276,10 +279,5 @@ shots_per_parry = 0
 interval = 2.0
 parry_type = "explosion"
 speed_multiplier = 0.4
-
-[node name="Label" type="Label" parent="." unique_id=1344942064]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0.57254905, 0.39215687, 0.73333335, 1)
 
 [connection signal="body_entered" from="ZoneArea" to="ZoneArea" method="_on_body_entered"]

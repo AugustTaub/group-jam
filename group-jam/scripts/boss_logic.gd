@@ -13,7 +13,8 @@ func _ready():
 
 func convert_boss(area : Area2D):
 	
-	if area.name == "ParryHitbox":
+	if area.name == "ParryHitbox" and GlobalVars.player_parry_active:
+		print("ww")
 		hurtbox.get_child(0).disabled = true
 		SignalBus.stop_player_move.emit()
 		boss_anim.play("boss_off")
