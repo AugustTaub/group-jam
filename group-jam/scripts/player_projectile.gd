@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var sprites = find_child("sprites")
 @onready var hitbox = find_child("hitbox")
 
-var speed = 200.0
+var speed = 500.0
 
 var ability_type : int
 var target_position : Vector2
