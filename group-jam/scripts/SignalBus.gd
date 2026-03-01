@@ -15,3 +15,5 @@ signal removed_companion(remove_index:int)
 signal parried_bullet
 
 signal show_player_notification(text: String)
+
+signal entered_new_zone(zone_floor_tilemap: TileMapLayer)

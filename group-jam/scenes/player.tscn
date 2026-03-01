@@ -271,8 +271,8 @@ RichTextLabel/fonts/normal_font = ExtResource("10_y4r1p")
 
 [node name="Player" type="CharacterBody2D" unique_id=1508676161 groups=["Player"]]
 position = Vector2(0, -9)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 135
+collision_mask = 135
 script = ExtResource("1_g2els")
 number_comp = 2
 
