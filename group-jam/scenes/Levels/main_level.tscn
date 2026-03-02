@@ -317,7 +317,7 @@ texture = SubResource("GradientTexture2D_07ygo")
 [node name="PointLight2D" type="PointLight2D" parent="Light/gott" unique_id=1539351783]
 position = Vector2(-1959.0001, 1253.9999)
 scale = Vector2(2.898438, 2.2343755)
-energy = 1.4
+energy = 0.55
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_qm27w")
 
@@ -476,4 +476,4 @@ position = Vector2(-2, -3)
 tile_set = SubResource("TileSet_ax252")
 
 [node name="Player" parent="." unique_id=1508676161 instance=ExtResource("4_csk5y")]
-position = Vector2(-1955, 1254)
+position = Vector2(-1944, 1262)

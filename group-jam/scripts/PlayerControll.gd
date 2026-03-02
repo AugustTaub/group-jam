@@ -17,7 +17,7 @@ var active_companion_slot: int = 0
 var step_sound_cooldown: float = 0
 
 #für Parry The Platypus und knockback
-var can_move : bool = true:
+var can_move : bool = false:
 	set(value):
 		can_move = value
 		if value == false:
@@ -58,15 +58,48 @@ func _ready():
 	
 	if not OS.has_feature("editor"):
 		game_start_anim()
+	else:
+		can_move = true
 
 func game_start_anim():
-	await get_tree().create_timer(0.05).timeout
+	
+	var player_tween = create_tween()
+	
+	$alex_anims.position.y = -600
+	player_tween.tween_property($alex_anims,"position:y", 0,0.8)
+	
+	await player_tween.finished
+	
+	SignalBus.play_audio.emit("step")
+	SignalBus.play_audio.emit("step")
+	
+	var scale_tween = create_tween()
+	
+	scale_tween.set_parallel()
+	scale_tween.tween_property($alex_anims,"scale:y", 0.5,0.1)
+	scale_tween.tween_property($alex_anims,"position:y", 8,0.1)
+	
+	await scale_tween.finished
+	
+	var scale_tween2 = create_tween()
+	
+	scale_tween2.set_parallel()
+	scale_tween2.tween_property($alex_anims,"scale:y", 1,0.1)
+	scale_tween2.tween_property($alex_anims,"position:y", 0,0.1)
+	
+	await scale_tween2.finished
+	
+	await get_tree().create_timer(0.44).timeout
 	
 	var tween = create_tween()
 	
 	tween.tween_property($Camera2D,"global_position",GlobalVars.boss_pos,5)
 	tween.tween_interval(1)
 	tween.tween_property($Camera2D,"position",Vector2.ZERO,2)
+	
+	await tween.finished
+	can_move = true
+
 
 
 
@@ -226,7 +259,7 @@ func parry():
 	if not can_parry: 
 		return 
 	
-	$parry_VFX.trigger_normal_vfx()
+	
 	SignalBus.play_audio.emit("bullet_parry_short")
 	
 	can_parry = false 
@@ -240,10 +273,14 @@ func parry():
 		var area_parent: Node2D = area.get_parent()
 		if area_parent is parry_bullet:
 			area_parent.isParried()
-		
 	
-	if global_position.distance_to(GlobalVars.boss_pos) <= 30:
+	$parry_VFX.trigger_normal_vfx()
+	
+	if global_position.distance_to(GlobalVars.boss_pos) <= 60:
 		SignalBus.end_game.emit()
+		var movetween = create_tween()
+		var offset: Vector2 = Vector2(5,-10)
+		movetween.tween_property(self,"global_position",GlobalVars.boss_pos+offset,0.4)
 	
 	
 	GlobalVars.player_parry_active = true

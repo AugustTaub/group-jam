@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bqmd5grcrgoiy" path="res://scenes/cannon.tscn" id="4_m3hsa"]
 [ext_resource type="Texture2D" uid="uid://c5ou33u28xgor" path="res://2D/tutorial_font/new_switch_companion_info.png" id="4_n7kok"]
 [ext_resource type="Texture2D" uid="uid://blhjbqj33br4t" path="res://2D/tutorial_font/parry_info.png" id="5_fslcv"]
+[ext_resource type="TileSet" uid="uid://ds70x1vnxh1r5" path="res://misc/tileset/deco_tile_set.tres" id="5_m3hsa"]
 [ext_resource type="Texture2D" uid="uid://cyrv4q0iex2rp" path="res://2D/tutorial_font/companion_info_purple.png" id="7_m3hsa"]
 [ext_resource type="Texture2D" uid="uid://swm5uive5nyp" path="res://2D/tutorial_font/companion_info.png" id="7_ngrvx"]
 
@@ -33,6 +34,11 @@ position = Vector2(1191.8489, 785.2295)
 rotation = 0.4886922
 scale = Vector2(0.20000002, 0.20000002)
 texture = ExtResource("4_n7kok")
+
+[node name="deco_layer" type="TileMapLayer" parent="." unique_id=325578295]
+position = Vector2(32, 2)
+tile_map_data = PackedByteArray("AAA/ABMAAgACAAAAAABAABwAAgAFAAAAAABEAPH/AgACAAIAAABNAPH/AgACAAIAABBUADoAAgAFAAEAAABMAD4AAgAFAAEAAABGADsAAgAFAAEAAAA7AD0AAgAFAAEAAAAwAD0AAgAFAAEAAAAwADEAAgAFAAEAAAA5ADAAAgAFAAEAAAA8ADAAAgAEAAEAAABHADQAAgAEAAEAAABJACsAAgAEAAEAAAA+ACUAAgAEAAEAAABBAC8AAgADAAEAAABIACcAAgADAAEAAABCAB0AAgADAAEAAABGABoAAgADAAEAAABCADMAAgADAAEAAABFACIAAgADAAEAAAA+AA0AAgADAAEAAABGAAsAAgADAAEAAABQAA4AAgADAAEAAABYAAoAAgADAAEAAABPAAsAAgADAAIAAABFAAsAAgADAAIAABA9AAsAAgADAAIAABA9ADIAAgACAAIAAAA7ADMAAgACAAIAAAA3ADMAAgACAAIAAAAyAC8AAgACAAIAAAA5AD4AAgACAAIAAABJADsAAgACAAIAAABYAD8AAgACAAIAAABTADsAAgADAAIAAAAwADoAAgADAAIAAAA4ADAAAgADAAIAAAA+AC8AAgADAAIAAABJADAAAgADAAIAAABJACUAAgADAAIAAAA/ACUAAgADAAIAABA+ACkAAgADAAIAABBIABsAAgADAAIAABA+AAsAAgAEAAEAAABUAAoAAgAEAAEAAABXAA0AAgACAAIAAABYAA4AAgADAAIAAABFABMAAgAEAAEAAABOAAsAAgAEAAEAAABDACkAAgADAAEAAAA+ADMAAgADAAEAAAA4ADIAAgADAAEAAAA7ADAAAgADAAEAAAA9ADQAAgADAAEAAAAzADkAAgADAAEAAAA0AD8AAgADAAEAAAA+ADsAAgADAAEAAABPADsAAgADAAEAAABUAD8AAgADAAEAAABYADoAAgADAAEAAAAyAD8AAgACAAIAAAAyADUAAgACAAIAAAAxADQAAgADAAIAAABJAA4AAgAFAAEAAABJAA0AAgADAAEAAABFAA8AAgADAAEAAABCABUAAgADAAEAAAA+ADAAAgABAAEAABA=")
+tile_set = ExtResource("5_m3hsa")
 
 [node name="wall_new1" type="TileMapLayer" parent="." unique_id=2120930634 groups=["WorldCollision"]]
 y_sort_enabled = true

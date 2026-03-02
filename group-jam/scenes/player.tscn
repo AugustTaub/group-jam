@@ -275,13 +275,6 @@ animations = [{
 radius = 1.9999999
 height = 3.9999998
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_d2wvv"]
-radius = 21.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
-radius = 3.0
-height = 16.0
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ke2ow"]
 random_pitch = 1.3623368
 streams_count = 4
@@ -289,6 +282,13 @@ stream_0/stream = ExtResource("14_60mlk")
 stream_1/stream = ExtResource("15_i4ail")
 stream_2/stream = ExtResource("16_a38lo")
 stream_3/stream = ExtResource("17_4ni07")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d2wvv"]
+radius = 21.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
+radius = 3.0
+height = 16.0
 
 [sub_resource type="Theme" id="Theme_d2wvv"]
 RichTextLabel/colors/default_color = Color(1, 1, 1, 0.85882354)
@@ -357,6 +357,58 @@ shape = SubResource("CapsuleShape2D_qlg0r")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=878384511]
 zoom = Vector2(2.2, 2.2)
 
+[node name="audio_manager" type="Node2D" parent="Camera2D" unique_id=1723057523]
+process_mode = 3
+script = ExtResource("6_smehm")
+
+[node name="gameplay_music" type="AudioStreamPlayer2D" parent="Camera2D/audio_manager" unique_id=2003695358]
+stream = ExtResource("8_a38lo")
+volume_db = -10.866
+bus = &"Music"
+parameters/looping = true
+
+[node name="blup" type="AudioStreamPlayer2D" parent="Camera2D/audio_manager" unique_id=688715307]
+stream = ExtResource("8_y4r1p")
+bus = &"SFX"
+
+[node name="barrier" type="AudioStreamPlayer2D" parent="Camera2D/audio_manager" unique_id=2023788992]
+stream = ExtResource("10_3v2ag")
+pitch_scale = 1.12
+bus = &"SFX"
+
+[node name="bullet_parry" type="AudioStreamPlayer2D" parent="Camera2D/audio_manager" unique_id=1218727296]
+stream = ExtResource("11_jej6c")
+bus = &"SFX"
+
+[node name="bullet_parry_short" type="AudioStreamPlayer2D" parent="Camera2D/audio_manager" unique_id=1702553842]
+stream = ExtResource("12_a38lo")
+bus = &"SFX"
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="Camera2D/audio_manager" unique_id=1017188038]
+stream = ExtResource("12_f1ej7")
+bus = &"SFX"
+
+[node name="knockback" type="AudioStreamPlayer2D" parent="Camera2D/audio_manager" unique_id=1544637669]
+stream = ExtResource("13_oprun")
+volume_db = -14.611
+attenuation = 1.5691637
+bus = &"SFX"
+
+[node name="step" type="AudioStreamPlayer2D" parent="Camera2D/audio_manager" unique_id=884816385]
+stream = SubResource("AudioStreamRandomizer_ke2ow")
+volume_db = -7.761
+max_polyphony = 2
+bus = &"SFX"
+
+[node name="teleport" type="AudioStreamPlayer2D" parent="Camera2D/audio_manager" unique_id=953493335]
+stream = ExtResource("18_l71n6")
+bus = &"SFX"
+
+[node name="throw" type="AudioStreamPlayer2D" parent="Camera2D/audio_manager" unique_id=109182000]
+stream = ExtResource("19_i4ail")
+volume_db = 0.775
+bus = &"SFX"
+
 [node name="ParryHitbox" type="Area2D" parent="." unique_id=230190237]
 position = Vector2(0, 8)
 collision_layer = 5
@@ -380,48 +432,6 @@ debug_color = Color(0.87248534, 0.00047322153, 0.8449739, 0.41960785)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1532940292]
 
 [node name="in_game_ui" parent="CanvasLayer" unique_id=1913189176 instance=ExtResource("5_qlg0r")]
-
-[node name="audio_manager" type="Node2D" parent="." unique_id=1723057523]
-process_mode = 3
-script = ExtResource("6_smehm")
-
-[node name="gameplay_music" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=2003695358]
-stream = ExtResource("8_a38lo")
-volume_db = -10.866
-parameters/looping = true
-
-[node name="blup" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=688715307]
-stream = ExtResource("8_y4r1p")
-
-[node name="barrier" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=2023788992]
-stream = ExtResource("10_3v2ag")
-pitch_scale = 1.12
-
-[node name="bullet_parry" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1218727296]
-stream = ExtResource("11_jej6c")
-
-[node name="bullet_parry_short" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1702553842]
-stream = ExtResource("12_a38lo")
-
-[node name="explosion" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1017188038]
-stream = ExtResource("12_f1ej7")
-
-[node name="knockback" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=1544637669]
-stream = ExtResource("13_oprun")
-volume_db = -14.611
-attenuation = 1.5691637
-
-[node name="step" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=884816385]
-stream = SubResource("AudioStreamRandomizer_ke2ow")
-volume_db = -7.761
-max_polyphony = 2
-
-[node name="teleport" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=953493335]
-stream = ExtResource("18_l71n6")
-
-[node name="throw" type="AudioStreamPlayer2D" parent="audio_manager" unique_id=109182000]
-stream = ExtResource("19_i4ail")
-volume_db = 0.775
 
 [node name="notification_text" type="RichTextLabel" parent="." unique_id=175903801]
 offset_left = -81.0
