@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://cucn5h5qt20ai"]
+
+[ext_resource type="Script" uid="uid://bxc1resaxgtdm" path="res://scripts/companion_objects/explosion.gd" id="1_fulb0"]
+[ext_resource type="Texture2D" uid="uid://gmdf1wbmmo57" path="res://2D/Sprites/projectile_explosion.png" id="2_dbry5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2xo5"]
+atlas = ExtResource("2_dbry5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kntio"]
+atlas = ExtResource("2_dbry5")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vi1l"]
+atlas = ExtResource("2_dbry5")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c387"]
+atlas = ExtResource("2_dbry5")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yrwg"]
+atlas = ExtResource("2_dbry5")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um30u"]
+atlas = ExtResource("2_dbry5")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkl7v"]
+atlas = ExtResource("2_dbry5")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3f7cu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2xo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kntio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vi1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c387")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yrwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um30u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkl7v")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2tb70"]
+radius = 26.0
+
+[node name="explosion" type="Node2D" unique_id=1547341819]
+scale = Vector2(2, 2)
+script = ExtResource("1_fulb0")
+
+[node name="animation" type="AnimatedSprite2D" parent="." unique_id=2046174482]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_3f7cu")
+animation = &"explode"
+autoplay = "explode"
+frame = 6
+frame_progress = 1.0
+
+[node name="EffectiveHitboxCompanion" type="Area2D" parent="." unique_id=1247788656 groups=["CompanionEffectBullet"]]
+collision_layer = 5
+collision_mask = 5
+
+[node name="shape" type="CollisionShape2D" parent="EffectiveHitboxCompanion" unique_id=329834413]
+position = Vector2(1, -7)
+shape = SubResource("CircleShape2D_2tb70")

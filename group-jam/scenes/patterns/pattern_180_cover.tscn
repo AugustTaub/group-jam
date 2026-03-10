@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cp5i8eqhpm8qq"]
+
+[node name="pattern_180_cover" type="Node2D" unique_id=630182112]
+
+[node name="vector_1" type="RayCast2D" parent="." unique_id=339876823]
+target_position = Vector2(-50, 0)
+
+[node name="target_pos" type="Node2D" parent="vector_1" unique_id=81842823]
+position = Vector2(-50, 0)
+
+[node name="vector_2" type="RayCast2D" parent="." unique_id=1673391014]
+target_position = Vector2(-37, 12)
+
+[node name="target_pos" type="Node2D" parent="vector_2" unique_id=417159982]
+position = Vector2(-37, 12)
+
+[node name="vector_3" type="RayCast2D" parent="." unique_id=1248013981]
+target_position = Vector2(-25, 25)
+
+[node name="target_pos" type="Node2D" parent="vector_3" unique_id=1559146655]
+position = Vector2(-25, 25)
+
+[node name="vector_4" type="RayCast2D" parent="." unique_id=638713325]
+target_position = Vector2(-12, 37)
+
+[node name="target_pos" type="Node2D" parent="vector_4" unique_id=294497514]
+position = Vector2(-12, 37)
+
+[node name="vector_5" type="RayCast2D" parent="." unique_id=763247584]
+target_position = Vector2(12, 37)
+
+[node name="target_pos" type="Node2D" parent="vector_5" unique_id=370017350]
+position = Vector2(12, 37)
+
+[node name="vector_6" type="RayCast2D" parent="." unique_id=903297618]
+target_position = Vector2(25, 25)
+
+[node name="target_pos" type="Node2D" parent="vector_6" unique_id=424041018]
+position = Vector2(25, 25)
+
+[node name="vector_7" type="RayCast2D" parent="." unique_id=1870357254]
+target_position = Vector2(37, 12)
+
+[node name="target_pos" type="Node2D" parent="vector_7" unique_id=1350136454]
+position = Vector2(37, 12)
+
+[node name="vector_8" type="RayCast2D" parent="." unique_id=442009664]
+target_position = Vector2(50, 0)
+
+[node name="target_pos" type="Node2D" parent="vector_8" unique_id=436508840]
+position = Vector2(50, 0)
+
+[node name="vector_9" type="RayCast2D" parent="." unique_id=1119614487]
+
+[node name="target_pos" type="Node2D" parent="vector_9" unique_id=420159431]
+position = Vector2(0, 50)

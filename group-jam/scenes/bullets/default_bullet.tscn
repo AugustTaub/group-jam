@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://er7fm1fuhtik"]
+
+[ext_resource type="Script" uid="uid://cay4ufuogv8th" path="res://scripts/default_bullet_script.gd" id="1_cw1u5"]
+[ext_resource type="Texture2D" uid="uid://r1cj3opnva2u" path="res://Assets/bullets.png" id="2_801s8"]
+
+[sub_resource type="Gradient" id="Gradient_eoqba"]
+offsets = PackedFloat32Array(0.3554217, 0.62650603, 1)
+colors = PackedColorArray(0.6862745, 1, 1, 1, 0.42745098, 1, 1, 0.8784314, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qiyw0"]
+gradient = SubResource("Gradient_eoqba")
+fill = 1
+fill_from = Vector2(0.50869566, 0.49130434)
+fill_to = Vector2(0.87608695, 0.13043478)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_td8n5"]
+radius = 4.0
+
+[node name="default_bullet" type="CharacterBody2D" unique_id=306601767 groups=["Bullet"]]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_cw1u5")
+
+[node name="Bullets" type="Sprite2D" parent="." unique_id=358859182]
+scale = Vector2(0.77, 0.77)
+texture = ExtResource("2_801s8")
+hframes = 3
+
+[node name="PointLight2D" type="PointLight2D" parent="Bullets" unique_id=1070943179]
+scale = Vector2(0.35, 0.35)
+texture = SubResource("GradientTexture2D_qiyw0")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=223905391]
+collision_layer = 12
+collision_mask = 12
+
+[node name="collision" type="CollisionShape2D" parent="hitbox" unique_id=98885801]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_td8n5")
